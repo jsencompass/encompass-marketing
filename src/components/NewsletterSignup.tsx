@@ -102,12 +102,12 @@ export function NewsletterSignup({ variant = "footer" }: { variant?: "footer" | 
             name="email"
             required
             placeholder="you@company.com"
-            className="flex-1 rounded-lg border border-border bg-bg-raised px-4 py-2.5 text-14 text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+            className="flex-1 rounded-lg border border-border bg-bg-raised px-4 py-3 text-16 text-text-primary placeholder:text-text-tertiary focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="rounded-full bg-accent px-5 py-2.5 text-14 font-semibold text-white transition-colors hover:bg-accent-dim disabled:opacity-50"
+            className="rounded-full bg-accent px-5 py-3 text-14 font-semibold text-white transition-colors hover:bg-accent-dim disabled:opacity-50"
           >
             {status === "submitting" ? "…" : "Subscribe"}
           </button>
