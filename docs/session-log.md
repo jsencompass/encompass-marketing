@@ -16,6 +16,27 @@
 - Placeholder routes for all nav links: /how-it-works, /services, /insights, /who-we-are, /contact
 - Documentation: design-system.md, site-ia.md, session-log.md, backlog.md
 
+## Session 1.1: Fix 404 on Production Deployment
+
+**Date**: 2026-04-12
+
+### Diagnosis
+
+1. **Build logs**: Vercel build succeeded — route table shows `○ /` and all 7 routes as static content
+2. **`src/app/page.tsx`**: Exists on main, 215 lines, non-empty — code is correct
+3. **Vercel project settings**: Framework Preset was `Other` (not `Next.js`), Output Directory was `public if it exists, or .`
+4. **Local build**: Passes cleanly, `/` in route manifest — builds locally but 404s on Vercel
+
+### Root Cause
+
+The Vercel project was created via `vercel project add` + `vercel link`, which skipped framework auto-detection. Framework Preset was set to `Other` instead of `nextjs`. Vercel ran `next build` (which succeeded), but served the output as a static site from `public/` instead of using the Next.js output adapter from `.next/`.
+
+### Fix
+
+- Updated Vercel project Framework Preset from `Other` to `nextjs` via Vercel REST API
+- Disabled Deployment Protection (Vercel Authentication) so the site is publicly accessible
+- Triggered production redeploy with correct framework settings
+
 ### Deferred
 
 - See `backlog.md` for full deferred list
