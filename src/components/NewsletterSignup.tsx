@@ -89,9 +89,9 @@ export function NewsletterSignup({ variant = "footer" }: { variant?: "footer" | 
         Quarterly notes on parking controllership.
       </h3>
       <p className="mt-2 text-14 leading-relaxed text-text-secondary">
-        What we&rsquo;re seeing across portfolios &mdash; operator incentive
-        conflicts, validation drift, PARCS tradeoffs. No spam. Unsubscribe
-        anytime.
+        What we see across portfolios &mdash; rate drift, validation leakage,
+        operator incentive conflicts, PARCS tradeoffs, and the operating
+        disciplines that keep NOI intact. First edition shipping soon.
       </p>
       {status === "success" ? (
         <p className="mt-4 text-14 text-accent-text">{message}</p>

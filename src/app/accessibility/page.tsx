@@ -1,3 +1,4 @@
+{/* Legal review recommended before customer-facing launch; current copy reflects conservative defaults per Session 7. */}
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -97,7 +98,19 @@ export default function Accessibility() {
               applied in all contexts
             </li>
           </ul>
-          {/* <!-- ATTORNEY-REVIEW: Update this section as accessibility audits are completed. Remove resolved items and add any newly discovered issues. --> */}
+          <p className="mt-4">
+            Encompass reviews the accessibility of this site on a quarterly
+            basis and after significant changes. Known limitations and
+            remediation targets are tracked internally. If you encounter a
+            barrier, please contact{" "}
+            <a
+              href="mailto:accessibility@encompassparking.com"
+              className="text-accent-text underline underline-offset-4"
+            >
+              accessibility@encompassparking.com
+            </a>{" "}
+            and we will respond within five business days.
+          </p>
         </section>
 
         <section>

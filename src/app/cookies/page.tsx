@@ -1,3 +1,4 @@
+{/* Legal review recommended before customer-facing launch; current copy reflects conservative defaults per Session 7. */}
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

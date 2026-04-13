@@ -47,16 +47,18 @@
 
 ## Legal Review
 
-ATTORNEY-REVIEW flags in compliance pages requiring legal counsel review:
+All 8 ATTORNEY-REVIEW flags closed with conservative defaults (Sessions 5 + 7):
 
-1. **Privacy → Information Sharing**: Confirm third-party services disclosure (now includes Resend)
-2. **Privacy → CCPA Verification**: Confirm verification process for CCPA requests
-3. **Privacy → CCPA Analytics**: Verify cookieless analytics "sharing" under CPRA
-4. **Privacy → Security**: Confirm "reasonable security measures" language
-5. **Privacy → Contact Address**: Add physical mailing address if required
-6. **Terms → Trademarks**: Confirm registration status for PACT, Parking PI, ProTrack
-7. **Terms → Liability Cap**: Consider adding a liability cap
-8. **Accessibility → Known Limitations**: Update as audits complete
+1. ~~Privacy → Information Sharing~~ — CLOSED S7: Added Third-Party Services section (Vercel, Resend, Cloudflare Turnstile)
+2. ~~Privacy → CCPA Verification~~ — CLOSED S7: Added identity verification language
+3. ~~Privacy → CCPA Analytics~~ — CLOSED S7: Added explicit CPRA "not a sale or sharing" clause
+4. ~~Privacy → Security~~ — CLOSED S7: Replaced "reasonable measures" with specific enumeration (HTTPS, CSP, HSTS, least-privilege, processor review)
+5. ~~Privacy → Contact Address~~ — CLOSED S5: Added Attn: Privacy Officer + [Mailing address TBD]
+6. ~~Terms → Trademarks~~ — CLOSED S5: Changed to "trademarks used in commerce, federal applications pending"
+7. ~~Terms → Liability Cap~~ — CLOSED S7: Added $100 aggregate liability cap with jurisdictional savings clause
+8. ~~Accessibility → Known Limitations~~ — CLOSED S7: Added quarterly review cadence + remediation tracking
+
+**Remaining**: Full legal review of privacy, terms, accessibility, cookies pages by qualified attorney before customer-facing campaign launch.
 
 ## Jason to Provide
 

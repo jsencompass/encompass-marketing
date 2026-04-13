@@ -65,7 +65,7 @@ export default function HowItWorks() {
         >
           <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_1fr] md:py-32">
             <div>
-              <span className="font-mono text-48 font-medium text-accent/30 md:text-64" aria-hidden="true">
+              <span className="font-mono text-48 font-medium text-accent-text/40 md:text-64" aria-hidden="true">
                 {lane.number}
               </span>
               <p className="mt-4 text-12 font-semibold uppercase tracking-widest text-text-tertiary">
