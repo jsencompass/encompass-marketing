@@ -1,0 +1,239 @@
+{
+  "severityCounts": {
+    "minor": 0,
+    "moderate": 0,
+    "serious": 4,
+    "critical": 0
+  },
+  "perPage": {
+    "/": {
+      "violations": 0,
+      "passes": 24,
+      "incomplete": 1,
+      "details": []
+    },
+    "/how-it-works": {
+      "violations": 1,
+      "passes": 24,
+      "incomplete": 0,
+      "details": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": "#27234d",
+                    "bgColor": "#0a0a0b",
+                    "contrastRatio": 1.35,
+                    "fontSize": "36.0pt (48px)",
+                    "fontWeight": "normal",
+                    "messageKey": null,
+                    "expectedContrastRatio": "3:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"min-h-full flex flex-col bg-bg-base text-text-primary font-sans\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element has insufficient color contrast of 1.35 (foreground color: #27234d, background color: #0a0a0b, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"font-mono text-48 font-medium text-accent/30 md:text-64\" aria-hidden=\"true\">01</span>",
+              "target": [
+                "section:nth-child(2) > .md\\:grid-cols-\\[1fr_1fr\\].grid.gap-12 > div:nth-child(1) > .font-mono.text-accent\\/30[aria-hidden=\"true\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.35 (foreground color: #27234d, background color: #0a0a0b, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": "#2c2753",
+                    "bgColor": "#111113",
+                    "contrastRatio": 1.36,
+                    "fontSize": "36.0pt (48px)",
+                    "fontWeight": "normal",
+                    "messageKey": null,
+                    "expectedContrastRatio": "3:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"border-t border-border bg-bg-raised\">",
+                      "target": [
+                        "section:nth-child(3)"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element has insufficient color contrast of 1.36 (foreground color: #2c2753, background color: #111113, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"font-mono text-48 font-medium text-accent/30 md:text-64\" aria-hidden=\"true\">02</span>",
+              "target": [
+                "section:nth-child(3) > .md\\:grid-cols-\\[1fr_1fr\\].grid.gap-12 > div:nth-child(1) > .font-mono.text-accent\\/30[aria-hidden=\"true\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #2c2753, background color: #111113, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": "#27234d",
+                    "bgColor": "#0a0a0b",
+                    "contrastRatio": 1.35,
+                    "fontSize": "36.0pt (48px)",
+                    "fontWeight": "normal",
+                    "messageKey": null,
+                    "expectedContrastRatio": "3:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"min-h-full flex flex-col bg-bg-base text-text-primary font-sans\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element has insufficient color contrast of 1.35 (foreground color: #27234d, background color: #0a0a0b, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"font-mono text-48 font-medium text-accent/30 md:text-64\" aria-hidden=\"true\">03</span>",
+              "target": [
+                "section:nth-child(4) > .md\\:grid-cols-\\[1fr_1fr\\].grid.gap-12 > div:nth-child(1) > .font-mono.text-accent\\/30[aria-hidden=\"true\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.35 (foreground color: #27234d, background color: #0a0a0b, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": "#2c2753",
+                    "bgColor": "#111113",
+                    "contrastRatio": 1.36,
+                    "fontSize": "36.0pt (48px)",
+                    "fontWeight": "normal",
+                    "messageKey": null,
+                    "expectedContrastRatio": "3:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"border-t border-border bg-bg-raised\">",
+                      "target": [
+                        "section:nth-child(5)"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element has insufficient color contrast of 1.36 (foreground color: #2c2753, background color: #111113, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"font-mono text-48 font-medium text-accent/30 md:text-64\" aria-hidden=\"true\">04</span>",
+              "target": [
+                "section:nth-child(5) > .md\\:grid-cols-\\[1fr_1fr\\].grid.gap-12 > div:nth-child(1) > .font-mono.text-accent\\/30[aria-hidden=\"true\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #2c2753, background color: #111113, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+            }
+          ]
+        }
+      ]
+    },
+    "/services": {
+      "violations": 0,
+      "passes": 25,
+      "incomplete": 1,
+      "details": []
+    },
+    "/who-we-are": {
+      "violations": 0,
+      "passes": 23,
+      "incomplete": 1,
+      "details": []
+    },
+    "/insights": {
+      "violations": 0,
+      "passes": 23,
+      "incomplete": 1,
+      "details": []
+    },
+    "/contact": {
+      "violations": 0,
+      "passes": 27,
+      "incomplete": 0,
+      "details": []
+    },
+    "/privacy": {
+      "violations": 0,
+      "passes": 24,
+      "incomplete": 1,
+      "details": []
+    },
+    "/terms": {
+      "violations": 0,
+      "passes": 23,
+      "incomplete": 1,
+      "details": []
+    },
+    "/accessibility": {
+      "violations": 0,
+      "passes": 23,
+      "incomplete": 1,
+      "details": []
+    },
+    "/cookies": {
+      "violations": 0,
+      "passes": 24,
+      "incomplete": 1,
+      "details": []
+    }
+  },
+  "violations": {
+    "color-contrast": {
+      "id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "count": 4,
+      "pages": [
+        "/how-it-works"
+      ]
+    }
+  }
+}

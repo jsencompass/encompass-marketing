@@ -77,7 +77,7 @@ export default function Contact() {
       <div className="grid gap-16 lg:grid-cols-[1fr_1fr]">
         {/* ─── Left: Form ─── */}
         <div>
-          <p className="text-12 font-semibold uppercase tracking-widest text-accent">
+          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
             Request an Engagement
           </p>
           <h1 className="mt-4 text-48 font-semibold tracking-tight">
@@ -247,7 +247,7 @@ export default function Contact() {
                 href={calUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-block rounded-full border border-accent bg-accent/10 px-6 py-3 text-14 font-semibold text-accent transition-colors hover:bg-accent/20"
+                className="mt-4 inline-block rounded-full border border-accent bg-accent/10 px-6 py-3 text-14 font-semibold text-accent-text transition-colors hover:bg-accent/20"
               >
                 Schedule on Cal.com &rarr;
               </a>
@@ -265,7 +265,7 @@ export default function Contact() {
               Or email{" "}
               <a
                 href="mailto:contact@encompassparking.com"
-                className="text-accent underline underline-offset-4"
+                className="text-accent-text underline underline-offset-4"
               >
                 contact@encompassparking.com
               </a>

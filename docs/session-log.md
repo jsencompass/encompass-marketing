@@ -269,3 +269,58 @@ The Vercel project was created via `vercel project add` + `vercel link`, which s
 - Best Practices Lighthouse diagnostic (Step 7) — deferred pending production deploy verification
 - axe-core CLI testing — system Chrome not installed; Lighthouse a11y (96) used as proxy
 - Remaining 6 ATTORNEY-REVIEW flags (items #1–4, #7, #8)
+
+## Session 6: Bio Rewrite + axe Audit + MDX Blog + SVG Assets + Contrast Fix
+
+**Date**: 2026-04-13
+
+### Bio Rewrite (from inline parking-guru source material)
+
+**Joe Dudek** — Before: 2 paragraphs from investor brief (LAX paragraph + governance paragraph). After: 3 paragraphs from parking-guru (35+ years scope, LAX detailed credential with 200% NOI improvement, governance role description) + closing line.
+
+**Jason Scott** — Before: 2 paragraphs (LAX operations + JDE/Parking PI). After: 4 paragraphs from parking-guru (two-chapter career intro, LAX operations with $22M payroll/30%+ margins, JDE detailed with One Beverly Hills/$10B + LA Metro/28K spaces + SKIDATA/40 concurrent + PreFlight audits/Little Tokyo/Kilroy + Parking PI, delivery role) + closing line.
+
+**Steven Grant** — Before: 2 paragraphs (Oracle/Booz Allen + Westfield Century City). After: 3 paragraphs from parking-guru (blue-chip consulting DNA, Westfield Valley Fair/$1.1B + Sacramento/Portland + One Beverly Hills alignment story, technology architecture role) + closing line.
+
+**Formation story** — Updated to match parking-guru: replaced generic "independently engaged on overlapping scopes" with specific "opposing consultants on Westfield Valley Fair — $1.1B renovation, 4,200+ new spaces, complicated by COVID."
+
+**Homepage credibility band** — Stats verified against source: all 5 stats accurate, no changes needed.
+
+### axe-core Audit (via @axe-core/playwright)
+
+- **Before fixes**: 0 critical, 34 serious (all color-contrast on `text-accent` foreground text)
+- **Fix applied**: Added `--accent-text: #9B8FFF` token for foreground text use; replaced `text-accent` with `text-accent-text` across 13 files (27 replacements)
+- **After fixes**: 0 critical, 4 serious (decorative lane numbers on /how-it-works — intentionally low-contrast, marked `aria-hidden`)
+- **Net**: 30 serious violations fixed, 4 remaining (decorative, logged to backlog)
+
+### Shipped
+
+**MDX blog system**:
+- `src/lib/insights/index.ts` — post loading (getAllPosts, getPostBySlug) with gray-matter + reading-time
+- `src/lib/insights/authors.ts` — author metadata map
+- `/insights` index: featured post hero card + two-column grid + newsletter signup
+- `/insights/[slug]` post page: breadcrumb, byline with avatar, prose rendering, author card, prev/next nav, Article JSON-LD
+- Launch post: "Why parking needs a controllership layer" (01-why-controllership.mdx)
+- Prose CSS in globals.css (`.prose-encompass`)
+
+**SVG assets (replacing CSS gradient placeholders)**:
+- 4 capability icons: PactIcon (concentric squares), ParkingPiIcon (magnifying glass + grid), ProTrackIcon (connected nodes), CommandCenterIcon (radar sweep) — 32px, currentColor stroke
+- 3 section breakers: BreakerGrid (orthogonal grid pattern), BreakerDiagonal (angled lines), BreakerDots (sparse dot grid) — SVG `<pattern>` at 8–12% opacity
+
+**Accessibility**:
+- `--accent-text: #9B8FFF` token for WCAG AA-compliant accent foreground text
+- 27 `text-accent` → `text-accent-text` replacements across 13 files
+- Decorative lane numbers marked `aria-hidden="true"`
+- Lighthouse accessibility: 96 → **100**
+
+**Lighthouse (desktop production build)**:
+- Performance: **100**, Accessibility: **100**, Best Practices: **96**, SEO: **100**
+- LCP: 0.5s
+
+### Deferred
+
+- Integration verification (Step 5) — env vars not confirmed as set in Vercel; scaffolded with graceful fallbacks. See docs/integrations.md activation checklist.
+- 4 remaining axe serious violations (decorative lane numbers — intentional low-contrast, aria-hidden applied)
+- 6 remaining ATTORNEY-REVIEW flags (#1–4, #7, #8)
+- MDX syntax highlighting for code blocks
+- CSP enforcement (still report-only)

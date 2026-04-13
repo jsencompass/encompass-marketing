@@ -1,5 +1,12 @@
 import Link from "next/link";
 import { ClosingCTA } from "@/components/ClosingCTA";
+import { PactIcon } from "@/components/icons/PactIcon";
+import { ParkingPiIcon } from "@/components/icons/ParkingPiIcon";
+import { ProTrackIcon } from "@/components/icons/ProTrackIcon";
+import { CommandCenterIcon } from "@/components/icons/CommandCenterIcon";
+import { BreakerGrid } from "@/components/breakers/BreakerGrid";
+import { BreakerDiagonal } from "@/components/breakers/BreakerDiagonal";
+import { BreakerDots } from "@/components/breakers/BreakerDots";
 
 const capabilities = [
   {
@@ -52,26 +59,37 @@ const tiers = [
   },
 ];
 
+const platformIcons: Record<string, React.ReactNode> = {
+  pact: <PactIcon className="text-accent" />,
+  pi: <ParkingPiIcon className="text-accent" />,
+  protrack: <ProTrackIcon className="text-accent" />,
+  command: <CommandCenterIcon className="text-accent" />,
+};
+
 const platforms = [
   {
+    key: "pact",
     name: "PACT\u2122",
     title: "Parking Asset Control Tower",
     description:
       "The vendor-agnostic controllership layer. Reconciles revenue, governs exceptions, enforces policy across any operator and any stack.",
   },
   {
+    key: "pi",
     name: "Parking PI\u2122",
     title: "Mystery Shop Platform",
     description:
       "The industry\u2019s only mystery shop platform purpose-built for parking. 3,000+ shops completed. Shopper portal, weighted scoring, client dashboard.",
   },
   {
+    key: "protrack",
     name: "ProTrack\u2122",
     title: "Project Management",
     description:
       "Project management platform for PARCS installations and technology upgrades. 800+ projects. Backbone of institutional-grade delivery.",
   },
   {
+    key: "command",
     name: "Command Center",
     title: "Remote Operations",
     description:
@@ -106,12 +124,12 @@ export default function Home() {
         }}
       >
         <div className="mx-auto max-w-[1200px] px-6 pt-24 pb-24 md:pt-32 md:pb-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-accent">
+          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
             Controllership for Parking Revenue
           </p>
           <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
             Operators run the garage.{" "}
-            <span className="text-accent">We own the proof.</span>
+            <span className="text-accent-text">We own the proof.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
             Encompass is the controllership layer for parking assets. We sit
@@ -185,29 +203,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section breaker: decorative data motif
-        Spec: abstract data motif — subtle grid pattern or low-opacity dashboard fragment in --accent-dim.
-        Path: /public/breakers/breaker-01.svg. Static. Decorative (no alt text).
-        Placeholder: CSS repeating-linear-gradient at 2% opacity. */}
-      <div
-        className="h-[240px] w-full border-y border-border"
-        style={{
-          background: `repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 59px,
-            rgba(108, 92, 231, 0.02) 59px,
-            rgba(108, 92, 231, 0.02) 60px
-          ), repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 59px,
-            rgba(108, 92, 231, 0.02) 59px,
-            rgba(108, 92, 231, 0.02) 60px
-          )`,
-        }}
-        role="presentation"
-      />
+      <BreakerGrid />
 
       {/* ─── What We Do — PACT ─── */}
       <section className="border-b border-border">
@@ -231,7 +227,7 @@ export default function Home() {
                   <span
                     className={`rounded-full px-3 py-0.5 text-12 font-medium ${
                       cap.tag === "Base"
-                        ? "bg-accent/10 text-accent"
+                        ? "bg-accent/10 text-accent-text"
                         : "bg-bg-elevated text-text-tertiary"
                     }`}
                   >
@@ -305,9 +301,9 @@ export default function Home() {
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {platforms.map((p) => (
-              <div key={p.name} className="rounded-lg border border-border bg-bg-raised p-8">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-bg-elevated">
-                  <div className="h-3 w-3 rounded-full bg-accent" />
+              <div key={p.key} className="card-hover rounded-lg border border-border bg-bg-raised p-8">
+                <div className="flex h-8 w-8 items-center justify-center">
+                  {platformIcons[p.key]}
                 </div>
                 <h3 className="mt-4 text-16 font-semibold text-text-primary">
                   {p.name}
@@ -322,27 +318,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section breaker 02: decorative
-        Path: /public/breakers/breaker-02.svg. Different motif from breaker-01. */}
-      <div
-        className="h-[240px] w-full border-b border-border"
-        style={{
-          background: `repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 79px,
-            rgba(108, 92, 231, 0.02) 79px,
-            rgba(108, 92, 231, 0.02) 80px
-          ), repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 79px,
-            rgba(108, 92, 231, 0.02) 79px,
-            rgba(108, 92, 231, 0.02) 80px
-          )`,
-        }}
-        role="presentation"
-      />
+      <BreakerDiagonal />
 
       {/* ─── Team Credibility Band ─── */}
       <section className="border-b border-border bg-bg-raised">
@@ -394,27 +370,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section breaker 03: decorative
-        Path: /public/breakers/breaker-03.svg. */}
-      <div
-        className="h-[240px] w-full border-b border-border"
-        style={{
-          background: `repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 39px,
-            rgba(108, 92, 231, 0.02) 39px,
-            rgba(108, 92, 231, 0.02) 40px
-          ), repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 119px,
-            rgba(108, 92, 231, 0.02) 119px,
-            rgba(108, 92, 231, 0.02) 120px
-          )`,
-        }}
-        role="presentation"
-      />
+      <BreakerDots />
 
       {/* ─── Closing CTA ─── */}
       <ClosingCTA />

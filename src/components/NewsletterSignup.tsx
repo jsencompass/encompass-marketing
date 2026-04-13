@@ -53,7 +53,7 @@ export function NewsletterSignup({ variant = "footer" }: { variant?: "footer" | 
           anytime.
         </p>
         {status === "success" ? (
-          <p className="mt-6 text-14 text-accent">{message}</p>
+          <p className="mt-6 text-14 text-accent-text">{message}</p>
         ) : (
           <form onSubmit={handleSubmit} className="mt-6 flex gap-3">
             <input
@@ -94,7 +94,7 @@ export function NewsletterSignup({ variant = "footer" }: { variant?: "footer" | 
         anytime.
       </p>
       {status === "success" ? (
-        <p className="mt-4 text-14 text-accent">{message}</p>
+        <p className="mt-4 text-14 text-accent-text">{message}</p>
       ) : (
         <form onSubmit={handleSubmit} className="mt-4 flex gap-3">
           <input

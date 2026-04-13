@@ -12,6 +12,7 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
   --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
   --color-accent-dim: var(--accent-dim);
   --color-status-revenue: var(--status-revenue);
   --color-status-loss: var(--status-loss);
@@ -25,6 +26,58 @@ body {
   background: var(--bg-base);
   color: var(--text-primary);
   font-family: var(--font-inter), sans-serif;
+}
+
+/* Blog prose styling */
+.prose-encompass h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.prose-encompass h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.prose-encompass p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.prose-encompass strong {
+  color: var(--text-primary);
+}
+.prose-encompass blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+.prose-encompass code {
+  background: var(--bg-elevated);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+.prose-encompass pre {
+  background: var(--bg-elevated);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.prose-encompass ul, .prose-encompass ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.prose-encompass li {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
 }
 
 /* Type scale utilities */

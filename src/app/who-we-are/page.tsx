@@ -12,31 +12,38 @@ const principals = [
     id: "joe",
     name: "Joe Dudek",
     initials: "JD",
-    role: "Operations & Governance",
+    role: "Co-Founder & Managing Principal, Operations & Governance",
     bio: [
-      "Joe Dudek served as Chief Operating Officer for LAX parking — a single-campus operation generating $85 million in annual gross revenue with more than 800 employees across multiple operators. In that role he owned every control surface: session reconciliation, rate integrity, validation governance, employee credentialing, cash handling, and audit response. Under his leadership the operation achieved a 40% net revenue increase while simultaneously onboarding a new PARCS platform, restructuring operator contracts, and standing up a real-time exception-management discipline.",
-      "Before LAX, Joe held senior operating roles across institutional parking portfolios in Southern California, building a governance philosophy grounded in three principles: controls must be documented before they can be audited, exceptions must be closed to a standard and a deadline, and no month-end packet should require faith. That philosophy is the foundation of PACT\u2019s oversight methodology and the reason Encompass exists as a controllership layer rather than another consulting firm.",
+      "Joe has spent 35+ years in parking, with deep expertise in financial management, operational leadership, and asset-level governance across airports, hospitality, medical centers, Class A office, valet, and municipal contracts. He is a super-connector in the industry and one of the most respected operational voices in the western United States.",
+      "His defining operational credential is LAX. Joe ran one of the largest parking operations in the country \u2014 800+ employees, $85M+ in annual gross revenue, and simultaneous oversight of multiple third-party operators across the airport campus. Under his leadership the operation delivered a 40% increase in net revenue and a 200% improvement in net operating income. That came not from technology upgrades but from financial controls, staff discipline, contract enforcement, and operational accountability. Joe has seen every way a parking operation can underperform \u2014 and built the playbook for fixing it.",
+      "Joe leads governance at Encompass. He sets the standards for what proof looks like, how exceptions get handled, how close packs are verified, and what separates an auditable operation from a reporting exercise.",
     ],
+    closing: "At Encompass, Joe owns the discipline \u2014 what gets reconciled, how, and to what standard.",
   },
   {
     id: "jason",
     name: "Jason Scott",
     initials: "JS",
-    role: "Delivery & Assurance",
+    role: "Co-Founder & Managing Partner, Delivery & Assurance",
     bio: [
-      "Jason Scott spent a decade at LAX managing large-scale PARCS implementations, technology rollouts, and operational transitions across one of the most complex parking campuses in the country. He oversaw 800+ projects representing more than $150 million in installation value — coordinating between equipment manufacturers, systems integrators, airport operations, and multiple concurrent operators. That experience built an intuition for where technology promises break down: at the seam between what a system can do and what an operation actually disciplines itself to use.",
-      "After LAX, Jason founded JDE Parking Consultants and created Parking PI, a mystery-shopping and compliance-audit platform that has completed over 3,000 shops across the western United States. Parking PI proved a thesis that would become central to Encompass: controls that aren\u2019t independently verified aren\u2019t controls — they\u2019re assumptions. Jason brings to Encompass the delivery methodology, field-verification discipline, and technology integration rigor that turns PACT from a reporting framework into an operating standard.",
+      "Jason brings 20+ years of parking operations, project management, and assurance experience. His career has two chapters and both are essential to what Encompass delivers.",
+      "The first chapter was operations. At LAX, Jason managed 450+ employees, a $22M payroll, and parking operations generating 30%+ profit margins. He learned what breaks inside a parking operation when nobody is watching \u2014 and what it takes to build systems that catch it.",
+      "The second chapter was JDE, where Jason built the project management and assurance practice into a nationally recognized capability: 800+ projects, $150M+ in installation value managed, 30,000+ PGS spaces across 90+ facilities. The range tells the story \u2014 from One Beverly Hills ($10B luxury development, active engagement) to the LAX PARCS program ($6M airport installation) to LA Metro (28,000+ spaces across 92 facilities) to 40 concurrent SKIDATA projects run simultaneously. He also built the assurance practice end-to-end: PreFlight audits across 8-city portfolios, Little Tokyo Mall ($600K projected revenue increase), Kilroy Realty portfolio reviews, and the Parking PI mystery shop program from concept through 3,000+ completed shops.",
+      "Jason leads delivery at Encompass. He sets the standard for how sites get onboarded, how governance cadences run, and how quality holds as the delivery team grows beyond the founders.",
     ],
+    closing: "At Encompass, Jason owns execution \u2014 how the work gets done, at every site, every month.",
   },
   {
     id: "steven",
     name: "Steven Grant",
     initials: "SG",
-    role: "Technology & Architecture",
+    role: "Co-Founder, Technology & Architecture",
     bio: [
-      "Steven Grant built technology platforms at Oracle, Booz Allen Hamilton, and LTK Engineering before bringing that enterprise architecture discipline to parking. His career spans five major airport technology deployments — projects where failure modes aren\u2019t theoretical, uptime requirements are absolute, and integration complexity across legacy systems, real-time data feeds, and regulatory reporting is the defining challenge.",
-      "At Westfield Century City, Steven designed and deployed one of the industry\u2019s first fully frictionless parking environments — LPR-based entry and exit, mobile payment integration, and real-time occupancy management operating without gates or ticket dispensers. That project became a proof point for the thesis that parking technology works when it\u2019s governed, and fails when it\u2019s installed and forgotten. Steven brings to Encompass the platform architecture, data-pipeline design, and systems-integration methodology that makes PACT a technology product, not a spreadsheet exercise.",
+      "Steven brings blue-chip consulting DNA to the parking industry. His career includes Oracle, Booz Allen Hamilton, and LTK Engineering \u2014 a combination of enterprise systems architecture, strategic consulting, and large-scale infrastructure program management that is rare in parking. He has led five major airport parking technology deployments and pioneered the frictionless parking system at Westfield Century City.",
+      "Jason and Steven first met as opposing consultants on Westfield Valley Fair in San Jose \u2014 a $1.1B renovation for Unibail-Rodamco-Westfield with 4,200+ new parking spaces and full PARCS deployment, complicated mid-construction by COVID. They crossed paths again on opposing sides at Sacramento International Airport and the Port of Portland before aligning at One Beverly Hills, where JDE brought AMG in as a strategic technology partner. Working together at that scale proved the combined model.",
+      "Steven leads technology architecture at Encompass. He ensures integrations are designed correctly, data pipelines are reliable, and the PACT platform scales without accumulating technical debt. His experience bridging enterprise technology frameworks with parking-specific requirements is what makes Encompass\u2019s vendor-agnostic approach technically credible.",
     ],
+    closing: "At Encompass, Steven owns the architecture \u2014 how data moves, how systems connect, how the platform scales.",
   },
 ];
 
@@ -45,7 +52,7 @@ export default function WhoWeAre() {
     <>
       {/* ─── Page Header ─── */}
       <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-        <p className="text-12 font-semibold uppercase tracking-widest text-accent">
+        <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
           The Team
         </p>
         <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
@@ -68,10 +75,11 @@ export default function WhoWeAre() {
           <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_2fr] md:py-32">
             {/* Headshot placeholder */}
             <div className="flex justify-center md:justify-start">
-              <div className="flex h-[120px] w-[120px] items-center justify-center rounded-full bg-bg-elevated md:h-[200px] md:w-[200px]">
-                <span className="text-36 font-semibold text-text-secondary md:text-48">
+              <div className="relative flex h-[120px] w-[120px] items-center justify-center rounded-full border border-accent-dim bg-bg-elevated md:h-[200px] md:w-[200px]">
+                <span className="text-36 font-semibold text-text-primary md:text-48">
                   {p.initials}
                 </span>
+                <span className="absolute bottom-1 right-1 h-2 w-2 rounded-full bg-accent md:bottom-2 md:right-2 md:h-3 md:w-3" />
               </div>
             </div>
 
@@ -91,9 +99,12 @@ export default function WhoWeAre() {
                   </p>
                 ))}
               </div>
+              <p className="mt-8 text-16 font-medium text-text-secondary">
+                {p.closing}
+              </p>
               <a
                 href="#"
-                className="group mt-8 inline-flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary"
+                className="group mt-6 inline-flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary"
               >
                 Connect on LinkedIn
                 <span className="transition-transform group-hover:translate-x-0.5">
@@ -116,27 +127,27 @@ export default function WhoWeAre() {
           </h2>
           <div className="mt-8 max-w-3xl space-y-6">
             <p className="text-16 leading-relaxed text-text-secondary">
-              Joe, Jason, and Steven first worked together at Westfield Valley
-              Fair, where their firms were independently engaged on overlapping
-              scopes — operations consulting, technology implementation, and
-              compliance auditing. That project revealed an uncomfortable truth:
-              each firm was diagnosing the same systemic gaps, writing parallel
-              reports, and handing recommendations to an owner who lacked the
-              standing team to implement them continuously.
+              Jason and Steven first met as opposing consultants on Westfield
+              Valley Fair in San Jose &mdash; a $1.1B renovation for
+              Unibail-Rodamco-Westfield with 4,200+ new parking spaces and full
+              PARCS deployment, complicated mid-construction by COVID. They
+              crossed paths again on opposing sides at Sacramento International
+              Airport and the Port of Portland before aligning at One Beverly
+              Hills, where JDE brought AMG in as a strategic technology partner.
             </p>
             <p className="text-16 leading-relaxed text-text-secondary">
-              Subsequent engagements at Sacramento International Airport and
-              the Port of Portland deepened the conviction. In both cases, the
-              consulting deliverables were strong, the technology was capable,
-              and the operations team was competent — but the proof layer that
-              should connect all three didn&rsquo;t exist. Month-end packets
-              arrived as articles of faith rather than auditable evidence.
+              Working together at that scale proved what each firm had
+              independently concluded: the parking industry&rsquo;s control
+              gap was structural, not incidental. Each firm was diagnosing the
+              same systemic problems, writing parallel reports, and handing
+              recommendations to owners who lacked the standing team to
+              implement them continuously.
             </p>
             <p className="text-16 leading-relaxed text-text-secondary">
               One Beverly Hills became the catalyst. A $10 billion mixed-use
               development with institutional governance requirements that no
               single consulting engagement could satisfy on a recurring basis.
-              The owner didn&rsquo;t need another audit — they needed a
+              The owner didn&rsquo;t need another audit &mdash; they needed a
               permanent controllership function that could operate across
               operators, normalize across technology stacks, and deliver
               closure-grade evidence every month.

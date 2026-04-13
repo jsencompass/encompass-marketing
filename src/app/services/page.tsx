@@ -14,7 +14,7 @@ export default function Services() {
     <>
       {/* ─── Page Header ─── */}
       <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-        <p className="text-12 font-semibold uppercase tracking-widest text-accent">
+        <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
           Services &amp; Pricing
         </p>
         <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">

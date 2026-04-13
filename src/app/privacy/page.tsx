@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Privacy() {
   return (
     <article className="mx-auto max-w-[800px] px-6 py-24 md:py-32">
-      <p className="text-12 font-semibold uppercase tracking-widest text-accent">
+      <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
         Legal
       </p>
       <h1 className="mt-4 text-48 font-semibold tracking-tight">
@@ -152,7 +152,7 @@ export default function Privacy() {
             To exercise any of these rights, please contact us at{" "}
             <a
               href="mailto:privacy@encompassparking.com"
-              className="text-accent underline underline-offset-4"
+              className="text-accent-text underline underline-offset-4"
             >
               privacy@encompassparking.com
             </a>
@@ -220,7 +220,7 @@ export default function Privacy() {
             under 16, please contact us at{" "}
             <a
               href="mailto:privacy@encompassparking.com"
-              className="text-accent underline underline-offset-4"
+              className="text-accent-text underline underline-offset-4"
             >
               privacy@encompassparking.com
             </a>
@@ -257,7 +257,7 @@ export default function Privacy() {
             <p>
               <a
                 href="mailto:privacy@encompassparking.com"
-                className="text-accent underline underline-offset-4"
+                className="text-accent-text underline underline-offset-4"
               >
                 privacy@encompassparking.com
               </a>
