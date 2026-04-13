@@ -5,6 +5,7 @@ import { Nav } from "@/components/chrome/Nav";
 import { Footer } from "@/components/chrome/Footer";
 import { ConsentBanner } from "@/components/compliance/ConsentBanner";
 import { AnalyticsProvider } from "@/components/compliance/AnalyticsProvider";
+import { RouteProgress } from "@/components/motion/RouteProgress";
 import "./globals.css";
 
 const inter = Inter({
@@ -52,6 +53,7 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg-base text-text-primary font-sans">
+        <RouteProgress />
         <SkipLink />
         <Nav />
         <main id="main-content" className="flex-1">{children}</main>

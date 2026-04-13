@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/insights";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { PageHeaderBand } from "@/components/PageHeaderBand";
 
 export const metadata: Metadata = {
   title: "Insights — Encompass Parking",
@@ -15,19 +16,26 @@ export default function Insights() {
   const remaining = posts.filter((p) => p !== featured);
 
   return (
-    <section className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-      <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-        Insights
-      </p>
-      <h1 className="mt-4 text-48 font-semibold tracking-tight">
-        Notes on parking controllership.
-      </h1>
-      <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-        Quarterly perspective from the Encompass principals on what
-        we&rsquo;re seeing across portfolios &mdash; operator incentive
-        conflicts, validation drift, PARCS tradeoffs, and the operating
-        disciplines that keep NOI intact.
-      </p>
+    <>
+      {/* ─── Page Header ─── */}
+      <PageHeaderBand imageSrc="/imagery/insights-contextual.jpg">
+        <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
+          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
+            Insights
+          </p>
+          <h1 className="mt-4 text-48 font-semibold tracking-tight">
+            Notes on parking controllership.
+          </h1>
+          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
+            Quarterly perspective from the Encompass principals on what
+            we&rsquo;re seeing across portfolios &mdash; operator incentive
+            conflicts, validation drift, PARCS tradeoffs, and the operating
+            disciplines that keep NOI intact.
+          </p>
+        </section>
+      </PageHeaderBand>
+
+      <section className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
 
       {posts.length === 0 ? (
         <div className="mt-16 max-w-xl">
@@ -44,7 +52,7 @@ export default function Insights() {
           {featured && (
             <Link
               href={`/insights/${featured.slug}`}
-              className="card-hover mt-16 block rounded-lg border border-border bg-bg-raised p-8 md:p-12"
+              className="card-lift mt-16 block rounded-lg border border-border bg-bg-raised p-8 md:p-12"
             >
               <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
                 Featured
@@ -72,7 +80,7 @@ export default function Insights() {
                 <Link
                   key={post.slug}
                   href={`/insights/${post.slug}`}
-                  className="card-hover rounded-lg border border-border bg-bg-raised p-8"
+                  className="card-lift rounded-lg border border-border bg-bg-raised p-8"
                 >
                   <h3 className="text-18 font-semibold text-text-primary">
                     {post.title}
@@ -99,5 +107,6 @@ export default function Insights() {
         </>
       )}
     </section>
+    </>
   );
 }

@@ -46,7 +46,13 @@
 ## Accessibility Polish
 
 - ~~4 decorative lane numbers~~ — FIXED Session 7: text-accent-text/40, aria-hidden
-- MDX syntax highlighting for code blocks in blog posts (logged, not blocking)
+- ~~MDX syntax highlighting~~ — SHIPPED Session 9: Shiki v4, github-dark-dimmed theme
+
+## Motion Polish (Future)
+
+- SVG line-draw icon reveals on capability icons (stroke-dasharray animation)
+- Nav scroll transformation (height compression 80→56px, blur intensify)
+- Mobile hero pulse animation (centered glow 4s ease-in-out loop)
 
 ## Motion & Animation (Polish Session)
 

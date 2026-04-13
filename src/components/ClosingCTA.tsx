@@ -15,7 +15,7 @@ export function ClosingCTA() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/contact"
-            className="rounded-full bg-accent px-8 py-3.5 text-16 font-semibold text-white transition-colors hover:bg-accent-dim"
+            className="cta-primary rounded-full bg-accent px-8 py-3.5 text-16 font-semibold text-white transition-colors hover:bg-accent-dim"
           >
             Request an engagement
           </Link>
