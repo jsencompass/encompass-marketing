@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { Reveal } from "@/components/motion/Reveal";
-import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
 
 export const metadata: Metadata = {
   title: "Who We Are — Encompass Parking",
@@ -14,6 +14,7 @@ const principals = [
     id: "joe",
     name: "Joe Dudek",
     initials: "JD",
+    image: "/team/joe-dudek.jpg",
     role: "Co-Founder & Managing Principal, Operations & Governance",
     bio: [
       "Joe has spent 35+ years in parking, with deep expertise in financial management, operational leadership, and asset-level governance across airports, hospitality, medical centers, Class A office, valet, and municipal contracts. He is a super-connector in the industry and one of the most respected operational voices in the western United States.",
@@ -26,6 +27,7 @@ const principals = [
     id: "jason",
     name: "Jason Scott",
     initials: "JS",
+    image: "/team/jason-scott.jpg",
     role: "Co-Founder & Managing Partner, Delivery & Assurance",
     bio: [
       "Jason brings 20+ years of parking operations, project management, and assurance experience. His career has two chapters and both are essential to what Encompass delivers.",
@@ -39,7 +41,8 @@ const principals = [
     id: "steven",
     name: "Steven Grant",
     initials: "SG",
-    role: "Co-Founder, Technology & Architecture",
+    image: "/team/steven-grant.jpg",
+    role: "Co-Founder & Managing Partner, Technology & Architecture",
     bio: [
       "Steven brings blue-chip consulting DNA to the parking industry. His career includes Oracle, Booz Allen Hamilton, and LTK Engineering \u2014 a combination of enterprise systems architecture, strategic consulting, and large-scale infrastructure program management that is rare in parking. He has led five major airport parking technology deployments and pioneered the frictionless parking system at Westfield Century City.",
       "Jason and Steven first met as opposing consultants on Westfield Valley Fair in San Jose \u2014 a $1.1B renovation for Unibail-Rodamco-Westfield with 4,200+ new parking spaces and full PARCS deployment, complicated mid-construction by COVID. They crossed paths again on opposing sides at Sacramento International Airport and the Port of Portland before aligning at One Beverly Hills, where JDE brought AMG in as a strategic technology partner. Working together at that scale proved the combined model.",
@@ -76,15 +79,18 @@ export default function WhoWeAre() {
         >
           <Reveal delay={i * 0.2}>
             <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_2fr] md:py-32">
-              {/* Headshot placeholder */}
+              {/* Headshot */}
               <div className="flex justify-center md:justify-start">
-                <div className="relative flex h-[120px] w-[120px] items-center justify-center rounded-full border border-accent-dim bg-bg-elevated md:h-[200px] md:w-[200px]">
-                  <span className="text-36 font-semibold text-text-primary md:text-48">
-                    {p.initials}
-                  </span>
+                <div className="relative h-[120px] w-[120px] overflow-hidden rounded-full border border-accent-dim md:h-[200px] md:w-[200px]">
+                  <Image
+                    src={p.image}
+                    alt={`${p.name}, ${p.role}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 120px, 200px"
+                  />
                   <span className="absolute bottom-1 right-1 h-2 w-2 rounded-full bg-accent md:bottom-2 md:right-2 md:h-3 md:w-3" />
                 </div>
-                <ImagePlaceholder path={"/public/team/" + p.id + ".jpg"} dimensions="800 × 800" format="JPG, ~150KB optimized" description={p.name + " — professional headshot, neutral dark background, institutional posture, color-graded for dark site aesthetic."} />
               </div>
 
               {/* Bio */}

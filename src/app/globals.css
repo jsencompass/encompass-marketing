@@ -80,6 +80,15 @@ body {
   color: var(--text-secondary);
 }
 
+/* ─── Map pin pulse ─── */
+@keyframes map-pin-pulse {
+  0%, 100% { r: 1.2; opacity: 0.8; }
+  50% { r: 1.7; opacity: 1; }
+}
+.map-pin-pulse {
+  animation: map-pin-pulse 2.5s ease-in-out infinite;
+}
+
 /* ─── PACT confidence ring pulse ─── */
 @keyframes confidence-pulse {
   0%, 100% { opacity: 0.8; }
@@ -145,24 +154,29 @@ body {
   transform: translateX(100%);
 }
 
-/* ─── Card interaction (calibrated) ─── */
-.card-lift {
+/* ─── Card interaction — spark-pulse ─── */
+@keyframes card-spark {
+  0% { box-shadow: 0 0 0 rgba(108, 92, 231, 0); border-color: var(--border); }
+  30% { box-shadow: 0 0 32px rgba(108, 92, 231, 0.35); border-color: var(--accent); }
+  100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 16px rgba(108, 92, 231, 0.2); border-color: var(--accent-dim); }
+}
+.card-interactive {
   transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 250ms cubic-bezier(0.22, 1, 0.36, 1);
+              border-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.card-lift:hover {
+.card-interactive:hover {
   transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4),
-              0 0 32px rgba(108, 92, 231, 0.28);
+  animation: card-spark 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.card-lift-accent:hover {
+.card-interactive-accent:hover {
   transform: translateY(-8px);
-  border-color: var(--accent);
-  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.45),
-              0 0 40px rgba(108, 92, 231, 0.32);
+  animation: card-spark 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+/* Compat aliases */
+.card-lift { transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1), border-color 150ms cubic-bezier(0.22, 1, 0.36, 1); }
+.card-lift:hover { transform: translateY(-6px); animation: card-spark 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.card-lift-accent:hover { transform: translateY(-8px); animation: card-spark 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 
 /* ─── MDX code blocks (rehype-pretty-code) ─── */
 [data-rehype-pretty-code-figure] pre {

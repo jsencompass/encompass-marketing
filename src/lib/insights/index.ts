@@ -18,6 +18,8 @@ export interface Post {
   featured: boolean;
   draft: boolean;
   readingTime: string;
+  canonicalUrl?: string;
+  originalPublication?: string;
   content: string;
 }
 
@@ -56,6 +58,8 @@ export function getPostBySlug(slug: string): Post | null {
     featured: data.featured || false,
     draft: data.draft || false,
     readingTime: rt.text,
+    canonicalUrl: data.originallyPublished?.url,
+    originalPublication: data.originallyPublished?.publication,
     content,
   };
 }
