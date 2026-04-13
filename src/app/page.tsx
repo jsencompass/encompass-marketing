@@ -4,7 +4,6 @@ import { PactIcon } from "@/components/icons/PactIcon";
 import { ParkingPiIcon } from "@/components/icons/ParkingPiIcon";
 import { ProTrackIcon } from "@/components/icons/ProTrackIcon";
 import { CommandCenterIcon } from "@/components/icons/CommandCenterIcon";
-
 import { HeroSpotlight } from "@/components/hero/HeroSpotlight";
 import { HeroBackground } from "@/components/hero/HeroBackground";
 import { HeroEntrance, HeroEyebrow, HeroTitle, HeroSubhead, HeroCTAs } from "@/components/hero/HeroEntrance";
@@ -12,56 +11,19 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CredibilityBand } from "@/components/CredibilityBand";
 import { PactProofVisual } from "@/components/proof/PactProofVisual";
 import { DrawOnReveal } from "@/components/motion/DrawOnReveal";
+import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
 
 const capabilities = [
-  {
-    name: "Implementation + PPB",
-    description:
-      "Paid onboarding that establishes the starting truth set. Maps sessions, transactions, validations, and credentials into one reconcilable view.",
-    tag: "Base",
-  },
-  {
-    name: "PACT Oversight",
-    description:
-      "Monthly close-pack audit, session-to-deposit tie-out, and exception governance. Rate, product, and validation integrity managed as operating levers.",
-    tag: "Base",
-  },
-  {
-    name: "Remote Command Center",
-    description:
-      "24/7 monitoring, alert triage, and dispatch for revenue-at-risk incidents. Permissioned actions with time-stamped evidence.",
-    tag: "Optional",
-  },
-  {
-    name: "Remote Call Center",
-    description:
-      "Customer support via Umojo\u2019s NexPark platform, operated under Encompass scripts and authority limits.",
-    tag: "Optional",
-  },
+  { name: "Implementation + PPB", description: "Paid onboarding that establishes the starting truth set. Maps sessions, transactions, validations, and credentials into one reconcilable view.", tag: "Base" },
+  { name: "PACT Oversight", description: "Monthly close-pack audit, session-to-deposit tie-out, and exception governance. Rate, product, and validation integrity managed as operating levers.", tag: "Base" },
+  { name: "Remote Command Center", description: "24/7 monitoring, alert triage, and dispatch for revenue-at-risk incidents. Permissioned actions with time-stamped evidence.", tag: "Optional" },
+  { name: "Remote Call Center", description: "Customer support via Umojo\u2019s NexPark platform, operated under Encompass scripts and authority limits.", tag: "Optional" },
 ];
 
 const tiers = [
-  {
-    name: "Foundation",
-    price: "$2,250",
-    description:
-      "For portfolios establishing controllership for the first time. Automated data feeds required.",
-    highlight: false,
-  },
-  {
-    name: "Performance",
-    price: "$3,500",
-    description:
-      "For portfolios with mixed data posture and deeper variance closure needs.",
-    highlight: true,
-  },
-  {
-    name: "Enterprise",
-    price: "$6,750",
-    description:
-      "For institutional portfolios requiring cross-operator normalization and executive-level rollups.",
-    highlight: false,
-  },
+  { name: "Foundation", price: "$2,250", description: "For portfolios establishing controllership for the first time. Automated data feeds required.", highlight: false },
+  { name: "Performance", price: "$3,500", description: "For portfolios with mixed data posture and deeper variance closure needs.", highlight: true },
+  { name: "Enterprise", price: "$6,750", description: "For institutional portfolios requiring cross-operator normalization and executive-level rollups.", highlight: false },
 ];
 
 const platformIcons: Record<string, React.ReactNode> = {
@@ -72,36 +34,11 @@ const platformIcons: Record<string, React.ReactNode> = {
 };
 
 const platforms = [
-  {
-    key: "pact",
-    name: "PACT\u2122",
-    title: "Parking Asset Control Tower",
-    description:
-      "The vendor-agnostic controllership layer. Reconciles revenue, governs exceptions, enforces policy across any operator and any stack.",
-  },
-  {
-    key: "pi",
-    name: "Parking PI\u2122",
-    title: "Mystery Shop Platform",
-    description:
-      "The industry\u2019s only mystery shop platform purpose-built for parking. 3,000+ shops completed. Shopper portal, weighted scoring, client dashboard.",
-  },
-  {
-    key: "protrack",
-    name: "ProTrack\u2122",
-    title: "Project Management",
-    description:
-      "Project management platform for PARCS installations and technology upgrades. 800+ projects. Backbone of institutional-grade delivery.",
-  },
-  {
-    key: "command",
-    name: "Command Center",
-    title: "Remote Operations",
-    description:
-      "Remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. 24/7 coverage with permissioned operational response.",
-  },
+  { key: "pact", name: "PACT\u2122", title: "Parking Asset Control Tower", description: "The vendor-agnostic controllership layer. Reconciles revenue, governs exceptions, enforces policy across any operator and any stack." },
+  { key: "pi", name: "Parking PI\u2122", title: "Mystery Shop Platform", description: "The industry\u2019s only mystery shop platform purpose-built for parking. 3,000+ shops completed. Shopper portal, weighted scoring, client dashboard." },
+  { key: "protrack", name: "ProTrack\u2122", title: "Project Management", description: "Project management platform for PARCS installations and technology upgrades. 800+ projects. Backbone of institutional-grade delivery." },
+  { key: "command", name: "Command Center", title: "Remote Operations", description: "Remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. 24/7 coverage with permissioned operational response." },
 ];
-
 
 export default function Home() {
   return (
@@ -110,6 +47,21 @@ export default function Home() {
       <HeroSpotlight>
         <section className="relative min-h-[70vh] md:min-h-[85vh] bg-bg-base">
           <HeroBackground />
+          {/* Hero imagery placeholder — overlay card */}
+          <div className="absolute top-20 right-6 z-10 hidden w-[300px] lg:block">
+            <div className="rounded-xl border border-dashed border-accent-dim bg-bg-raised/70 p-4 backdrop-blur-md">
+              <div className="flex items-center gap-2 text-[11px] text-text-tertiary">
+                <span className="text-accent-text">&#x25C8;</span>
+                <span className="font-semibold uppercase tracking-widest">Image Placeholder</span>
+              </div>
+              <p className="mt-2 font-mono text-12 text-text-secondary">/public/hero/hero-bg.jpg</p>
+              <p className="mt-1 font-mono text-14 font-medium text-accent-text">2400 &times; 1400</p>
+              <p className="mt-1 text-[11px] text-text-tertiary">JPG, progressive, ~300KB</p>
+              <p className="mt-2 text-12 leading-relaxed text-text-secondary">
+                Institutional parking structure at dusk, downtown LA. Avoid foreign-language signage. Will render behind hero with dark overlay.
+              </p>
+            </div>
+          </div>
           <div className="relative mx-auto max-w-[1100px] px-6 pt-32 pb-24 md:pt-40 md:pb-32">
             <HeroEntrance>
               <HeroEyebrow>Controllership for Parking Revenue</HeroEyebrow>
@@ -124,20 +76,12 @@ export default function Home() {
                 across every site in the portfolio.
               </HeroSubhead>
               <HeroCTAs>
-                <Link
-                  href="/contact"
-                  className="cta-primary rounded-full bg-accent px-6 py-3 text-14 font-semibold text-white transition-colors hover:bg-accent-dim"
-                >
+                <Link href="/contact" className="cta-primary rounded-full bg-accent px-6 py-3 text-14 font-semibold text-white transition-colors hover:bg-accent-dim">
                   Request an engagement
                 </Link>
-                <Link
-                  href="/contact#schedule"
-                  className="group flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary"
-                >
+                <Link href="/contact#schedule" className="group flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary">
                   Book an intro call
-                  <span className="transition-transform group-hover:translate-x-0.5">
-                    &rarr;
-                  </span>
+                  <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
                 </Link>
               </HeroCTAs>
             </HeroEntrance>
@@ -145,192 +89,120 @@ export default function Home() {
         </section>
       </HeroSpotlight>
 
-      {/* ─── Why Encompass Exists (The Control Gap) ─── */}
-      <section className="border-t border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            Why Encompass Exists
-          </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            Until Encompass, nobody did.
-          </h2>
-          <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
-            Parking is a $30B industry managed by capable parties across
-            fractured seams. Operators run throughput. PARCS vendors run
-            devices. Finance teams receive month-end packets. Everyone is doing
-            a real job &mdash; and until Encompass, the full chain of proof,
-            closure, and policy discipline belonged to no one. That gap is
-            where NOI erodes quietly, through drift, exceptions, and controls
-            that go unverified. We built the controllership layer to close it.
-          </p>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                eyebrow: "Operators",
-                text: "Manage throughput and staffing",
-              },
-              { eyebrow: "Vendors", text: "Manage devices and settlement" },
-              {
-                eyebrow: "Your Asset",
-                text: "Has no standing controllership",
-              },
-            ].map((card) => (
-              <div
-                key={card.eyebrow}
-                className="rounded-lg border border-border bg-bg-raised p-8"
-              >
-                <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-                  {card.eyebrow}
-                </p>
-                <p className="mt-3 text-18 font-medium text-text-primary">
-                  {card.text}
-                </p>
-              </div>
-            ))}
+      {/* ─── Why Encompass Exists ─── */}
+      <Reveal>
+        <section className="border-t border-border">
+          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Why Encompass Exists</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Until Encompass, nobody did.</h2>
+            <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
+              Parking is a $30B industry managed by capable parties across fractured seams. Operators run throughput. PARCS vendors run devices. Finance teams receive month-end packets. Everyone is doing a real job &mdash; and until Encompass, the full chain of proof, closure, and policy discipline belonged to no one. That gap is where NOI erodes quietly, through drift, exceptions, and controls that go unverified. We built the controllership layer to close it.
+            </p>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                { eyebrow: "Operators", text: "Manage throughput and staffing" },
+                { eyebrow: "Vendors", text: "Manage devices and settlement" },
+                { eyebrow: "Your Asset", text: "Has no standing controllership" },
+              ].map((card, i) => (
+                <Reveal key={card.eyebrow} delay={i * 0.1}>
+                  <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
+                    <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">{card.eyebrow}</p>
+                    <p className="mt-3 text-18 font-medium text-text-primary">{card.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </Reveal>
 
       {/* ─── What We Do — PACT ─── */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            Parking Asset Control Tower
-          </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            A recurring controllership layer, delivered per site-month.
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {capabilities.map((cap) => (
-              <div
-                key={cap.name}
-                className="rounded-lg border border-border bg-bg-raised p-8"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-18 font-semibold text-text-primary">
-                    {cap.name}
-                  </h3>
-                  <span
-                    className={`rounded-full px-3 py-0.5 text-12 font-medium ${
-                      cap.tag === "Base"
-                        ? "bg-accent/10 text-accent-text"
-                        : "bg-bg-elevated text-text-tertiary"
-                    }`}
-                  >
-                    {cap.tag}
-                  </span>
-                </div>
-                <p className="mt-3 text-14 leading-relaxed text-text-secondary">
-                  {cap.description}
-                </p>
-              </div>
-            ))}
+      <Reveal>
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Parking Asset Control Tower</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">A recurring controllership layer, delivered per site-month.</h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+              {capabilities.map((cap, i) => (
+                <Reveal key={cap.name} delay={i * 0.12}>
+                  <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-18 font-semibold text-text-primary">{cap.name}</h3>
+                      <span className={`rounded-full px-3 py-0.5 text-12 font-medium ${cap.tag === "Base" ? "bg-accent/10 text-accent-text" : "bg-bg-elevated text-text-tertiary"}`}>{cap.tag}</span>
+                    </div>
+                    <p className="mt-3 text-14 leading-relaxed text-text-secondary">{cap.description}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </Reveal>
 
       {/* ─── Services & Pricing ─── */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            Services &amp; Pricing
-          </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            Three tiers. One standard of rigor.
-          </h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {tiers.map((tier) => (
-              <div
-                key={tier.name}
-                className={`rounded-lg border p-8 ${
-                  tier.highlight
-                    ? "border-accent bg-bg-raised"
-                    : "border-border bg-bg-raised"
-                }`}
-              >
-                <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-                  {tier.name}
-                </p>
-                <p className="mt-3 font-mono text-32 font-medium text-text-primary">
-                  {tier.price}
-                </p>
-                <p className="mt-1 text-14 text-text-tertiary">
-                  per site-month
-                </p>
-                <p className="mt-4 text-14 leading-relaxed text-text-secondary">
-                  {tier.description}
-                </p>
-              </div>
-            ))}
+      <Reveal>
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Services &amp; Pricing</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Three tiers. One standard of rigor.</h2>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {tiers.map((tier, i) => (
+                <Reveal key={tier.name} delay={i * 0.1}>
+                  <div className={`card-lift rounded-lg border p-8 ${tier.highlight ? "card-lift-accent border-accent bg-bg-raised" : "border-border bg-bg-raised"}`}>
+                    <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">{tier.name}</p>
+                    <p className="mt-3 font-mono text-32 font-medium text-text-primary">{tier.price}</p>
+                    <p className="mt-1 text-14 text-text-tertiary">per site-month</p>
+                    <p className="mt-4 text-14 leading-relaxed text-text-secondary">{tier.description}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <p className="mt-8 text-14 text-text-tertiary">
+              Implementation + PPB: $4,500 per site. Optional modules priced separately.{" "}
+              <Link href="/services" className="text-text-secondary underline underline-offset-4 transition-colors hover:text-text-primary">See Services for the full matrix.</Link>
+            </p>
           </div>
-          <p className="mt-8 text-14 text-text-tertiary">
-            Implementation + PPB: $4,500 per site. Optional modules priced
-            separately.{" "}
-            <Link
-              href="/services"
-              className="text-text-secondary underline underline-offset-4 transition-colors hover:text-text-primary"
-            >
-              See Services for the full matrix.
-            </Link>
-          </p>
-        </div>
-      </section>
+        </section>
+      </Reveal>
 
       {/* ─── Capabilities Band ─── */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            What We Bring to the Asset
-          </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            Four proprietary platforms. One recurring operating system.
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {platforms.map((p, i) => (
-              <div key={p.key} className="card-lift rounded-lg border border-border bg-bg-raised p-8">
-                <DrawOnReveal delay={i * 0.18}>
-                  <div className="flex h-8 w-8 items-center justify-center">
-                    {platformIcons[p.key]}
-                  </div>
-                </DrawOnReveal>
-                <h3 className="mt-4 text-16 font-semibold text-text-primary">
-                  {p.name}
-                </h3>
-                <p className="mt-1 text-12 text-text-tertiary">{p.title}</p>
-                <p className="mt-3 text-14 leading-relaxed text-text-secondary">
-                  {p.description}
-                </p>
-              </div>
-            ))}
+      <Reveal>
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">What We Bring to the Asset</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Four proprietary platforms. One recurring operating system.</h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {platforms.map((p, i) => (
+                <div key={p.key} className="card-lift rounded-lg border border-border bg-bg-raised p-8">
+                  <DrawOnReveal delay={i * 0.18}>
+                    <div className="flex h-8 w-8 items-center justify-center">{platformIcons[p.key]}</div>
+                  </DrawOnReveal>
+                  <h3 className="mt-4 text-16 font-semibold text-text-primary">{p.name}</h3>
+                  <p className="mt-1 text-12 text-text-tertiary">{p.title}</p>
+                  <p className="mt-3 text-14 leading-relaxed text-text-secondary">{p.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </Reveal>
 
       {/* ─── Team Credibility Band ─── */}
       <CredibilityBand />
 
       {/* ─── Proof Visual ─── */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            What Governance Looks Like
-          </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            PACT makes revenue proof continuous.
-          </h2>
-          <div className="mt-12">
-            <PactProofVisual />
+      <Reveal>
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">What Governance Looks Like</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">PACT makes revenue proof continuous.</h2>
+            <div className="mt-12"><PactProofVisual /></div>
+            <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
+              Session-to-deposit tie-out. Exception governance with reason codes and closure standards. Rate, product, and validation integrity tracked as operating levers. Every site, every month.
+            </p>
           </div>
-          <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
-            Session-to-deposit tie-out. Exception governance with reason codes
-            and closure standards. Rate, product, and validation integrity
-            tracked as operating levers. Every site, every month.
-          </p>
-        </div>
-      </section>
-
+        </section>
+      </Reveal>
 
       {/* ─── Closing CTA ─── */}
       <ClosingCTA />

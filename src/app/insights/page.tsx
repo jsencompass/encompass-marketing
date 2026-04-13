@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/insights";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Insights — Encompass Parking",
@@ -47,52 +48,55 @@ export default function Insights() {
         <>
           {/* Featured post */}
           {featured && (
-            <Link
-              href={`/insights/${featured.slug}`}
-              className="card-lift mt-16 block rounded-lg border border-border bg-bg-raised p-8 md:p-12"
-            >
-              <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-                Featured
-              </p>
-              <h2 className="mt-4 text-32 font-semibold tracking-tight text-text-primary md:text-48">
-                {featured.title}
-              </h2>
-              <p className="mt-4 max-w-2xl text-18 leading-relaxed text-text-secondary">
-                {featured.excerpt}
-              </p>
-              <div className="mt-6 flex items-center gap-4 text-14 text-text-tertiary">
-                <span>{featured.author.name}</span>
-                <span>&middot;</span>
-                <span>{new Date(featured.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
-                <span>&middot;</span>
-                <span>{featured.readingTime}</span>
-              </div>
-            </Link>
+            <Reveal>
+              <Link
+                href={`/insights/${featured.slug}`}
+                className="card-lift mt-16 block rounded-lg border border-border bg-bg-raised p-8 md:p-12"
+              >
+                <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
+                  Featured
+                </p>
+                <h2 className="mt-4 text-32 font-semibold tracking-tight text-text-primary md:text-48">
+                  {featured.title}
+                </h2>
+                <p className="mt-4 max-w-2xl text-18 leading-relaxed text-text-secondary">
+                  {featured.excerpt}
+                </p>
+                <div className="mt-6 flex items-center gap-4 text-14 text-text-tertiary">
+                  <span>{featured.author.name}</span>
+                  <span>&middot;</span>
+                  <span>{new Date(featured.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+                  <span>&middot;</span>
+                  <span>{featured.readingTime}</span>
+                </div>
+              </Link>
+            </Reveal>
           )}
 
           {/* Remaining posts */}
           {remaining.length > 0 && (
             <div className="mt-12 grid gap-8 md:grid-cols-2">
-              {remaining.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/insights/${post.slug}`}
-                  className="card-lift rounded-lg border border-border bg-bg-raised p-8"
-                >
-                  <h3 className="text-18 font-semibold text-text-primary">
-                    {post.title}
-                  </h3>
-                  <p className="mt-3 text-14 leading-relaxed text-text-secondary">
-                    {post.excerpt}
-                  </p>
-                  <div className="mt-4 flex items-center gap-3 text-12 text-text-tertiary">
-                    <span>{post.author.name}</span>
-                    <span>&middot;</span>
-                    <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
-                    <span>&middot;</span>
-                    <span>{post.readingTime}</span>
-                  </div>
-                </Link>
+              {remaining.map((post, index) => (
+                <Reveal key={post.slug} delay={index * 0.1}>
+                  <Link
+                    href={`/insights/${post.slug}`}
+                    className="card-lift rounded-lg border border-border bg-bg-raised p-8"
+                  >
+                    <h3 className="text-18 font-semibold text-text-primary">
+                      {post.title}
+                    </h3>
+                    <p className="mt-3 text-14 leading-relaxed text-text-secondary">
+                      {post.excerpt}
+                    </p>
+                    <div className="mt-4 flex items-center gap-3 text-12 text-text-tertiary">
+                      <span>{post.author.name}</span>
+                      <span>&middot;</span>
+                      <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                      <span>&middot;</span>
+                      <span>{post.readingTime}</span>
+                    </div>
+                  </Link>
+                </Reveal>
               ))}
             </div>
           )}

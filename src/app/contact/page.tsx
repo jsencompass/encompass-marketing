@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import type { Metadata } from "next";
+import { Reveal } from "@/components/motion/Reveal";
 
 const portfolioSizes = [
   "Select one",
@@ -76,6 +77,7 @@ export default function Contact() {
     <section className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
       <div className="grid gap-16 lg:grid-cols-[1fr_1fr]">
         {/* ─── Left: Form ─── */}
+        <Reveal>
         <div>
           <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
             Request an Engagement
@@ -231,8 +233,10 @@ export default function Contact() {
             </form>
           )}
         </div>
+        </Reveal>
 
         {/* ─── Right: Schedule ─── */}
+        <Reveal delay={0.15}>
         <div id="schedule" className="scroll-mt-24">
           <h2 className="text-24 font-semibold text-text-primary">
             Prefer to schedule directly?
@@ -277,6 +281,7 @@ export default function Contact() {
             </p>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );
