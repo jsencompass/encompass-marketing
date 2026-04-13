@@ -6,7 +6,7 @@
 |---|---|---|---|
 | `/` | Shipped | 3 | Full homepage with pricing, capabilities, proof sections |
 | `/how-it-works` | Shipped | 4 | Four-lane operating model + governance cadence |
-| `/services` | Shipped | 4 | Three-tier pricing + optional modules + Parking PI |
+| `/services` | Shipped | 5 | Comparison matrix + optional modules + Parking PI |
 | `/who-we-are` | Shipped | 2 | Three principal bios + formation story |
 | `/insights` | Shipped | 4 | Newsletter signup + first-edition teaser |
 | `/contact` | Shipped | 4 | Contact form + Cal.com scheduling + Turnstile |

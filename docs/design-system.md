@@ -56,6 +56,39 @@ Standard Tailwind spacing scale (4px base unit). Section padding: 96–128px ver
 - **Tags**: Pill-shaped, small — `rounded-full px-3 py-0.5 text-12 font-medium`
 - **CTA buttons**: `rounded-full bg-accent px-6 py-3 text-14 font-semibold text-white`
 
+## Interaction States
+
+All interactive elements use four states with smooth transitions:
+
+1. **Default** — current styling
+2. **Hover** — brightness +8% for buttons, `translateY(-2px)` + accent border for cards, accent color for text links
+3. **Focus-visible** — 2px `--accent` outline with 2px offset (keyboard only, not mouse)
+4. **Active** — `scale(0.98)` for tactile feedback
+
+Shared utilities in `src/styles/interactions.css`: `.btn-primary`, `.btn-secondary`, `.link-text`, `.card-hover`, `.input-field`.
+
+## Motion System
+
+Tokens in `src/styles/motion.css`:
+
+| Token | Value | Usage |
+|---|---|---|
+| `--motion-fast` | 150ms | Hover, focus, active feedback |
+| `--motion-base` | 250ms | Card lifts, state changes |
+| `--motion-slow` | 400ms | Section reveals, page transitions |
+| `--ease-out` | `cubic-bezier(0.16, 1, 0.3, 1)` | Exits, reveals |
+| `--ease-in-out` | `cubic-bezier(0.65, 0, 0.35, 1)` | Symmetric motion |
+
+Animations:
+- **Hero stagger**: Fade-up + translate 12px, staggered 80ms per element
+- **Section reveal**: Fade-in + translate 16px on scroll via `IntersectionObserver`
+- **Card lift**: `translateY(-2px)` + accent border on hover
+- **Button press**: `scale(0.98)` on `:active`
+
+### Reduced Motion
+
+`@media (prefers-reduced-motion: reduce)` disables all transitions and animations globally. The `Reveal` component checks `matchMedia` and auto-applies the revealed state immediately.
+
 ## Dark Mode
 
 Site is dark-only for v1. No light mode toggle.

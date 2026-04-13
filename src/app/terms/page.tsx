@@ -76,28 +76,15 @@ export default function Terms() {
             trademark, and other intellectual property laws.
           </p>
           <p className="mt-4">
-            The following are trademarks of Encompass Parking, LLC:
+            PACT, Parking PI, and ProTrack are trademarks of Encompass
+            Parking, LLC used in commerce. Federal trademark applications are
+            pending.
           </p>
-          <ul className="mt-4 list-disc space-y-2 pl-6">
-            <li>
-              <strong className="text-text-primary">PACT&trade;</strong>{" "}
-              (Parking Asset Control Tower)
-            </li>
-            <li>
-              <strong className="text-text-primary">Parking PI&trade;</strong>{" "}
-              (mystery shop and compliance audit platform)
-            </li>
-            <li>
-              <strong className="text-text-primary">ProTrack&trade;</strong>{" "}
-              (project management platform)
-            </li>
-          </ul>
           <p className="mt-4">
             You may not use, reproduce, modify, or distribute any content from
             the Site without our prior written consent, except as permitted by
             applicable law.
           </p>
-          {/* <!-- ATTORNEY-REVIEW: Confirm trademark registration status for PACT, Parking PI, and ProTrack. If unregistered, consider switching from ™ to SM (service mark) or removing mark designation until registration is filed. --> */}
         </section>
 
         <section>

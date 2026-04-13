@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { SkipLink } from "@/components/chrome/SkipLink";
 import { Nav } from "@/components/chrome/Nav";
 import { Footer } from "@/components/chrome/Footer";
 import { ConsentBanner } from "@/components/compliance/ConsentBanner";
@@ -51,8 +52,9 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg-base text-text-primary font-sans">
+        <SkipLink />
         <Nav />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
         <ConsentBanner />
         <AnalyticsProvider />
