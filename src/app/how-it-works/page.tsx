@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { VerticalsGrid } from "@/components/verticals/VerticalsGrid";
 import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
+import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "How It Works — Encompass Parking",
@@ -65,85 +66,99 @@ export default function HowItWorks() {
           key={lane.number}
           className={`border-t border-border ${i % 2 === 1 ? "bg-bg-raised" : ""}`}
         >
-          <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_1fr] md:py-32">
-            <div>
-              <span className="font-mono text-48 font-medium text-accent-text/40 md:text-64" aria-hidden="true">
-                {lane.number}
-              </span>
-              <p className="mt-4 text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-                {lane.eyebrow}
-              </p>
-              <p className="mt-6 text-18 leading-relaxed text-text-secondary">
-                {lane.description}
-              </p>
+          <Reveal>
+            <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_1fr] md:py-32">
+              <div>
+                <span className="font-mono text-48 font-medium text-accent-text/40 md:text-64" aria-hidden="true">
+                  {lane.number}
+                </span>
+                <p className="mt-4 text-12 font-semibold uppercase tracking-widest text-text-tertiary">
+                  {lane.eyebrow}
+                </p>
+                <p className="mt-6 text-18 leading-relaxed text-text-secondary">
+                  {lane.description}
+                </p>
+              </div>
+              <ImagePlaceholder
+                path={lane.imgPath}
+                dimensions="800 &times; 600"
+                format="PNG, optimized"
+                description={lane.imgDesc}
+                aspectRatio="4/3"
+              />
             </div>
-            <ImagePlaceholder
-              path={lane.imgPath}
-              dimensions="800 &times; 600"
-              format="PNG, optimized"
-              description={lane.imgDesc}
-              aspectRatio="4/3"
-            />
-          </div>
+          </Reveal>
         </section>
       ))}
 
       {/* ─── The Rhythm ─── */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <h2 className="text-32 font-semibold tracking-tight md:text-48">
-            The governance cadence
-          </h2>
-          <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
-            Every site-month follows the same rhythm: close-pack audit, variance
-            workup, exception closure to standard and deadline, owner-facing
-            summary delivery, and next-month calibration. The cadence does not
-            bend to the operator&rsquo;s timeline or the technology
-            stack&rsquo;s reporting quirks. It is the fixed frame against which
-            all parties operate, and the reason month-end becomes evidence
-            rather than narrative.
-          </p>
+          <Reveal>
+            <>
+              <h2 className="text-32 font-semibold tracking-tight md:text-48">
+                The governance cadence
+              </h2>
+              <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
+                Every site-month follows the same rhythm: close-pack audit, variance
+                workup, exception closure to standard and deadline, owner-facing
+                summary delivery, and next-month calibration. The cadence does not
+                bend to the operator&rsquo;s timeline or the technology
+                stack&rsquo;s reporting quirks. It is the fixed frame against which
+                all parties operate, and the reason month-end becomes evidence
+                rather than narrative.
+              </p>
+            </>
+          </Reveal>
         </div>
       </section>
 
       {/* ─── Standardization ─── */}
       <section className="border-t border-border bg-bg-raised">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <h2 className="text-32 font-semibold tracking-tight md:text-48">
-            Standardization is the scaling mechanism.
-          </h2>
-          <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
-            Reason codes, approval hierarchies, permission boundaries, exception
-            taxonomy, standard close artifact sets, governance cadences &mdash;
-            these do not change site-to-site. What changes is the data source,
-            the operator&rsquo;s workflow, and the parking stack. The control
-            layer adapts to the stack without bending the standards. That is how
-            a three-principal firm governs a portfolio of any size: not by
-            adding headcount proportionally, but by making the work
-            systematically reproducible.
-          </p>
+          <Reveal>
+            <>
+              <h2 className="text-32 font-semibold tracking-tight md:text-48">
+                Standardization is the scaling mechanism.
+              </h2>
+              <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
+                Reason codes, approval hierarchies, permission boundaries, exception
+                taxonomy, standard close artifact sets, governance cadences &mdash;
+                these do not change site-to-site. What changes is the data source,
+                the operator&rsquo;s workflow, and the parking stack. The control
+                layer adapts to the stack without bending the standards. That is how
+                a three-principal firm governs a portfolio of any size: not by
+                adding headcount proportionally, but by making the work
+                systematically reproducible.
+              </p>
+            </>
+          </Reveal>
         </div>
       </section>
 
       {/* ─── All Verticals ─── */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            Vertical-Agnostic by Design
-          </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            Controllership applies across every parking vertical.
-          </h2>
-          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-            Our discipline applies whether you own, manage, or operate a
-            Class&nbsp;A office, a mixed-use asset, on- and off-street, an
-            airport, a hospital, a hotel, valet, or hybrid operations. We&rsquo;ve
-            done the work inside every type of parking asset &mdash; and the
-            control framework is the same regardless of what sits on top of it.
-          </p>
-          <div className="mt-12">
-            <VerticalsGrid />
-          </div>
+          <Reveal>
+            <>
+              <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
+                Vertical-Agnostic by Design
+              </p>
+              <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
+                Controllership applies across every parking vertical.
+              </h2>
+              <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
+                Our discipline applies whether you own, manage, or operate a
+                Class&nbsp;A office, a mixed-use asset, on- and off-street, an
+                airport, a hospital, a hotel, valet, or hybrid operations. We&rsquo;ve
+                done the work inside every type of parking asset &mdash; and the
+                control framework is the same regardless of what sits on top of it.
+              </p>
+              <div className="mt-12">
+                <VerticalsGrid />
+              </div>
+            </>
+          </Reveal>
         </div>
       </section>
 

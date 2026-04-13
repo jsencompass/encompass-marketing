@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ClosingCTA } from "@/components/ClosingCTA";
+import { Reveal } from "@/components/motion/Reveal";
+import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
 
 export const metadata: Metadata = {
   title: "Who We Are — Encompass Parking",
@@ -72,83 +74,90 @@ export default function WhoWeAre() {
           id={p.id}
           className={`border-t border-border ${i % 2 === 1 ? "bg-bg-raised" : ""}`}
         >
-          <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_2fr] md:py-32">
-            {/* Headshot placeholder */}
-            <div className="flex justify-center md:justify-start">
-              <div className="relative flex h-[120px] w-[120px] items-center justify-center rounded-full border border-accent-dim bg-bg-elevated md:h-[200px] md:w-[200px]">
-                <span className="text-36 font-semibold text-text-primary md:text-48">
-                  {p.initials}
-                </span>
-                <span className="absolute bottom-1 right-1 h-2 w-2 rounded-full bg-accent md:bottom-2 md:right-2 md:h-3 md:w-3" />
+          <Reveal delay={i * 0.2}>
+            <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_2fr] md:py-32">
+              {/* Headshot placeholder */}
+              <div className="flex justify-center md:justify-start">
+                <div className="relative flex h-[120px] w-[120px] items-center justify-center rounded-full border border-accent-dim bg-bg-elevated md:h-[200px] md:w-[200px]">
+                  <span className="text-36 font-semibold text-text-primary md:text-48">
+                    {p.initials}
+                  </span>
+                  <span className="absolute bottom-1 right-1 h-2 w-2 rounded-full bg-accent md:bottom-2 md:right-2 md:h-3 md:w-3" />
+                </div>
+                <ImagePlaceholder path={"/public/team/" + p.id + ".jpg"} dimensions="800 × 800" format="JPG, ~150KB optimized" description={p.name + " — professional headshot, neutral dark background, institutional posture, color-graded for dark site aesthetic."} />
               </div>
-            </div>
 
-            {/* Bio */}
-            <div>
-              <h2 className="text-32 font-semibold tracking-tight md:text-48">
-                {p.name}
-              </h2>
-              <p className="mt-2 text-18 text-text-secondary">{p.role}</p>
-              <div className="mt-8 space-y-6">
-                {p.bio.map((paragraph, j) => (
-                  <p
-                    key={j}
-                    className="text-16 leading-relaxed text-text-secondary"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+              {/* Bio */}
+              <div>
+                <h2 className="text-32 font-semibold tracking-tight md:text-48">
+                  {p.name}
+                </h2>
+                <p className="mt-2 text-18 text-text-secondary">{p.role}</p>
+                <div className="mt-8 space-y-6">
+                  {p.bio.map((paragraph, j) => (
+                    <p
+                      key={j}
+                      className="text-16 leading-relaxed text-text-secondary"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <p className="mt-8 text-16 font-medium text-text-secondary">
+                  {p.closing}
+                </p>
               </div>
-              <p className="mt-8 text-16 font-medium text-text-secondary">
-                {p.closing}
-              </p>
             </div>
-          </div>
+          </Reveal>
         </section>
       ))}
 
       {/* ─── Formation Story ─── */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            How Encompass Was Formed
-          </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            Three firms. One operating philosophy.
-          </h2>
-          <div className="mt-8 max-w-3xl space-y-6">
-            <p className="text-16 leading-relaxed text-text-secondary">
-              Jason and Steven first met as opposing consultants on Westfield
-              Valley Fair in San Jose &mdash; a $1.1B renovation for
-              Unibail-Rodamco-Westfield with 4,200+ new parking spaces and full
-              PARCS deployment, complicated mid-construction by COVID. They
-              crossed paths again on opposing sides at Sacramento International
-              Airport and the Port of Portland before aligning at One Beverly
-              Hills, where JDE brought AMG in as a strategic technology partner.
-            </p>
-            <p className="text-16 leading-relaxed text-text-secondary">
-              Working together at that scale proved what each firm had
-              independently concluded: the parking industry&rsquo;s control
-              gap was structural, not incidental. Each firm was diagnosing the
-              same systemic problems, writing parallel reports, and handing
-              recommendations to owners who lacked the standing team to
-              implement them continuously.
-            </p>
-            <p className="text-16 leading-relaxed text-text-secondary">
-              One Beverly Hills became the catalyst. A $10 billion mixed-use
-              development with institutional governance requirements that no
-              single consulting engagement could satisfy on a recurring basis.
-              The owner didn&rsquo;t need another audit &mdash; they needed a
-              permanent controllership function that could operate across
-              operators, normalize across technology stacks, and deliver
-              closure-grade evidence every month.
-            </p>
-            <p className="text-18 font-medium leading-relaxed text-text-primary">
-              Encompass is what you build when you stop being consultants who
-              diagnose the problem and start being the control layer that
-              prevents it from recurring.
-            </p>
-          </div>
+          <Reveal>
+            <>
+              <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
+                How Encompass Was Formed
+              </p>
+              <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
+                Three firms. One operating philosophy.
+              </h2>
+              <div className="mt-8 max-w-3xl space-y-6">
+                <p className="text-16 leading-relaxed text-text-secondary">
+                  Jason and Steven first met as opposing consultants on Westfield
+                  Valley Fair in San Jose &mdash; a $1.1B renovation for
+                  Unibail-Rodamco-Westfield with 4,200+ new parking spaces and full
+                  PARCS deployment, complicated mid-construction by COVID. They
+                  crossed paths again on opposing sides at Sacramento International
+                  Airport and the Port of Portland before aligning at One Beverly
+                  Hills, where JDE brought AMG in as a strategic technology partner.
+                </p>
+                <p className="text-16 leading-relaxed text-text-secondary">
+                  Working together at that scale proved what each firm had
+                  independently concluded: the parking industry&rsquo;s control
+                  gap was structural, not incidental. Each firm was diagnosing the
+                  same systemic problems, writing parallel reports, and handing
+                  recommendations to owners who lacked the standing team to
+                  implement them continuously.
+                </p>
+                <p className="text-16 leading-relaxed text-text-secondary">
+                  One Beverly Hills became the catalyst. A $10 billion mixed-use
+                  development with institutional governance requirements that no
+                  single consulting engagement could satisfy on a recurring basis.
+                  The owner didn&rsquo;t need another audit &mdash; they needed a
+                  permanent controllership function that could operate across
+                  operators, normalize across technology stacks, and deliver
+                  closure-grade evidence every month.
+                </p>
+                <p className="text-18 font-medium leading-relaxed text-text-primary">
+                  Encompass is what you build when you stop being consultants who
+                  diagnose the problem and start being the control layer that
+                  prevents it from recurring.
+                </p>
+              </div>
+            </>
+          </Reveal>
         </div>
       </section>
 
