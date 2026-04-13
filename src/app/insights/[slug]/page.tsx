@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/insights";
+import { getAdjacentPosts } from "@/lib/insights/navigation";
 import { renderMarkdown } from "@/lib/insights/render";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { ReadingProgress } from "@/components/insights/ReadingProgress";
+import { ShareRow } from "@/components/insights/ShareRow";
+import { PostThumbnail } from "@/components/insights/PostThumbnail";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -43,12 +47,15 @@ export default async function InsightPost({
   if (!post) notFound();
 
   const allPosts = getAllPosts();
-  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
-  const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
-  const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const { next: nextPost, prev: prevPost } = getAdjacentPosts(slug, allPosts);
 
   return (
+    <>
+    <ReadingProgress />
     <article className="mx-auto max-w-[800px] px-6 py-24 md:py-32">
+      {/* Thumbnail */}
+      <PostThumbnail slug={slug} className="mb-8 aspect-[3/1]" />
+
       {/* Breadcrumb */}
       <nav className="text-14 text-text-tertiary" aria-label="Breadcrumb">
         <Link href="/insights" className="hover:text-text-secondary transition-colors">
@@ -108,33 +115,28 @@ export default async function InsightPost({
         </div>
       </div>
 
-      {/* Navigation */}
-      <div className="mt-12 flex justify-between gap-4 border-t border-border pt-8">
-        {prevPost ? (
-          <Link
-            href={`/insights/${prevPost.slug}`}
-            className="group text-14 text-text-secondary transition-colors hover:text-text-primary"
-          >
-            <span className="text-text-tertiary">&larr; Previous</span>
-            <br />
-            {prevPost.title}
-          </Link>
-        ) : (
-          <div />
-        )}
-        {nextPost ? (
-          <Link
-            href={`/insights/${nextPost.slug}`}
-            className="group text-right text-14 text-text-secondary transition-colors hover:text-text-primary"
-          >
-            <span className="text-text-tertiary">Next &rarr;</span>
-            <br />
-            {nextPost.title}
-          </Link>
-        ) : (
-          <div />
-        )}
+      {/* Share */}
+      <div className="mt-12">
+        <ShareRow title={post.title} url={`/insights/${slug}`} />
       </div>
+
+      {/* Navigation — loop-around */}
+      {prevPost && nextPost && (
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
+          <Link href={`/insights/${prevPost.slug}`} className="card-lift rounded-lg border border-border bg-bg-raised p-6">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">&larr; Previous Post</p>
+            <p className="mt-2 text-18 font-semibold text-text-primary">{prevPost.title}</p>
+            <p className="mt-1 text-14 text-text-secondary">{prevPost.excerpt.substring(0, 80)}&hellip;</p>
+            <p className="mt-2 text-[13px] text-text-tertiary">{new Date(prevPost.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</p>
+          </Link>
+          <Link href={`/insights/${nextPost.slug}`} className="card-lift rounded-lg border border-border bg-bg-raised p-6 text-right">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Next Post &rarr;</p>
+            <p className="mt-2 text-18 font-semibold text-text-primary">{nextPost.title}</p>
+            <p className="mt-1 text-14 text-text-secondary">{nextPost.excerpt.substring(0, 80)}&hellip;</p>
+            <p className="mt-2 text-[13px] text-text-tertiary">{new Date(nextPost.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</p>
+          </Link>
+        </div>
+      )}
 
       {/* Newsletter */}
       <div className="mt-16">
@@ -165,5 +167,6 @@ export default async function InsightPost({
         }}
       />
     </article>
+    </>
   );
 }

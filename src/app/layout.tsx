@@ -6,6 +6,7 @@ import { Footer } from "@/components/chrome/Footer";
 import { ConsentBanner } from "@/components/compliance/ConsentBanner";
 import { AnalyticsProvider } from "@/components/compliance/AnalyticsProvider";
 import { RouteProgress } from "@/components/motion/RouteProgress";
+import { JumpToTop } from "@/components/chrome/JumpToTop";
 import "./globals.css";
 
 const inter = Inter({
@@ -58,6 +59,7 @@ export default function RootLayout({
         <Nav />
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
+        <JumpToTop />
         <ConsentBanner />
         <AnalyticsProvider />
       </body>

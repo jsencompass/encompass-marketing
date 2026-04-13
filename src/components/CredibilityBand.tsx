@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { CountUp } from "@/components/motion/CountUp";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -40,6 +41,11 @@ export function CredibilityBand() {
               </div>
             </Reveal>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link href="/who-we-are" className="group inline-flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary">
+            Learn about the principals <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+          </Link>
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/insights";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { Reveal } from "@/components/motion/Reveal";
+import { PostThumbnail } from "@/components/insights/PostThumbnail";
 
 export const metadata: Metadata = {
   title: "Insights — Encompass Parking",
@@ -51,8 +52,10 @@ export default function Insights() {
             <Reveal>
               <Link
                 href={`/insights/${featured.slug}`}
-                className="card-lift mt-16 block rounded-lg border border-border bg-bg-raised p-8 md:p-12"
+                className="card-lift mt-16 block overflow-hidden rounded-lg border border-border bg-bg-raised"
               >
+                <PostThumbnail slug={featured.slug} className="aspect-[4/1]" />
+                <div className="p-8 md:p-12">
                 <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
                   Featured
                 </p>
@@ -69,6 +72,7 @@ export default function Insights() {
                   <span>&middot;</span>
                   <span>{featured.readingTime}</span>
                 </div>
+              </div>
               </Link>
             </Reveal>
           )}
@@ -80,8 +84,10 @@ export default function Insights() {
                 <Reveal key={post.slug} delay={index * 0.1}>
                   <Link
                     href={`/insights/${post.slug}`}
-                    className="card-lift rounded-lg border border-border bg-bg-raised p-8"
+                    className="card-lift h-full overflow-hidden rounded-lg border border-border bg-bg-raised"
                   >
+                    <PostThumbnail slug={post.slug} className="aspect-[16/9]" />
+                    <div className="p-8">
                     <h3 className="text-18 font-semibold text-text-primary">
                       {post.title}
                     </h3>
@@ -94,6 +100,7 @@ export default function Insights() {
                       <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
                       <span>&middot;</span>
                       <span>{post.readingTime}</span>
+                    </div>
                     </div>
                   </Link>
                 </Reveal>
