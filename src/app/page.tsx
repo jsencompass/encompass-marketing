@@ -7,11 +7,13 @@ import { CommandCenterIcon } from "@/components/icons/CommandCenterIcon";
 import { BreakerGrid } from "@/components/breakers/BreakerGrid";
 import { BreakerDiagonal } from "@/components/breakers/BreakerDiagonal";
 import { BreakerDots } from "@/components/breakers/BreakerDots";
-import Image from "next/image";
 import { HeroSpotlight } from "@/components/hero/HeroSpotlight";
+import { HeroBackground } from "@/components/hero/HeroBackground";
 import { HeroEntrance, HeroEyebrow, HeroTitle, HeroSubhead, HeroCTAs } from "@/components/hero/HeroEntrance";
 import { Reveal } from "@/components/motion/Reveal";
 import { CredibilityBand } from "@/components/CredibilityBand";
+import { PactProofVisual } from "@/components/proof/PactProofVisual";
+import { DrawOnReveal } from "@/components/motion/DrawOnReveal";
 
 const capabilities = [
   {
@@ -108,18 +110,9 @@ export default function Home() {
     <>
       {/* ─── Hero ─── */}
       <HeroSpotlight>
-        <section className="relative min-h-[600px] md:min-h-[720px]">
-          <Image
-            src="/imagery/hero-structure.jpg"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-            quality={80}
-          />
-          <div className="absolute inset-0 bg-bg-base/75" />
-          <div className="relative mx-auto max-w-[1200px] px-6 pt-24 pb-24 md:pt-32 md:pb-32">
+        <section className="relative min-h-[70vh] md:min-h-[85vh] bg-bg-base">
+          <HeroBackground />
+          <div className="relative mx-auto max-w-[1100px] px-6 pt-32 pb-24 md:pt-40 md:pb-32">
             <HeroEntrance>
               <HeroEyebrow>Controllership for Parking Revenue</HeroEyebrow>
               <HeroTitle>
@@ -297,11 +290,13 @@ export default function Home() {
             Four proprietary platforms. One recurring operating system.
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {platforms.map((p) => (
+            {platforms.map((p, i) => (
               <div key={p.key} className="card-lift rounded-lg border border-border bg-bg-raised p-8">
-                <div className="flex h-8 w-8 items-center justify-center">
-                  {platformIcons[p.key]}
-                </div>
+                <DrawOnReveal delay={i * 0.18}>
+                  <div className="flex h-8 w-8 items-center justify-center">
+                    {platformIcons[p.key]}
+                  </div>
+                </DrawOnReveal>
                 <h3 className="mt-4 text-16 font-semibold text-text-primary">
                   {p.name}
                 </h3>
@@ -329,19 +324,8 @@ export default function Home() {
           <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
             PACT makes revenue proof continuous.
           </h2>
-          {/* PACT screenshot placeholder: /public/proof/pact-baseline.png
-            Dimensions: 1200x720 desktop, full-width mobile.
-            Ken Burns: scale 1.0 → 1.03 over 8s, ease-in-out, reverses on desktop. Static mobile. */}
-          <div className="mt-12 relative aspect-[5/3] w-full overflow-hidden rounded-lg border border-border">
-            <Image
-              src="/imagery/pact-proof-placeholder.jpg"
-              alt="PACT governance dashboard — baseline dossier view"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              quality={80}
-            />
-            <div className="absolute inset-0" style={{ background: "rgba(108, 92, 231, 0.08)", mixBlendMode: "multiply" }} />
+          <div className="mt-12">
+            <PactProofVisual />
           </div>
           <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
             Session-to-deposit tie-out. Exception governance with reason codes

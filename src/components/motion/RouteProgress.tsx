@@ -27,12 +27,12 @@ export function RouteProgress() {
 
   return (
     <div
-      className="fixed top-0 left-0 z-[100] h-[2px] bg-accent"
+      className="fixed top-0 left-0 z-[100] h-[3px] bg-accent"
       style={{
         width: `${progress}%`,
         opacity: visible ? 1 : 0,
         transition: progress === 0 ? "none" : "width 300ms ease-out, opacity 200ms ease-out",
-        boxShadow: "0 0 8px rgba(108, 92, 231, 0.6)",
+        boxShadow: "0 0 12px rgba(108, 92, 231, 0.7)",
       }}
     />
   );

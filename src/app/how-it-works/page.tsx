@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ClosingCTA } from "@/components/ClosingCTA";
-import { PageHeaderBand } from "@/components/PageHeaderBand";
 
 export const metadata: Metadata = {
   title: "How It Works — Encompass Parking",
@@ -43,8 +42,7 @@ export default function HowItWorks() {
   return (
     <>
       {/* ─── Page Header ─── */}
-      <PageHeaderBand imageSrc="/imagery/how-it-works-contextual.jpg">
-        <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
+      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
           <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
             The Operating Model
           </p>
@@ -58,7 +56,6 @@ export default function HowItWorks() {
             quality at site 200 as it does at site 5.
           </p>
         </section>
-      </PageHeaderBand>
 
       {/* ─── Four Lanes ─── */}
       {lanes.map((lane, i) => (
