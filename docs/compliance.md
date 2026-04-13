@@ -39,6 +39,22 @@ All headers applied via `next.config.ts` to all routes:
 - **GPC support**: If Global Privacy Control is detected, consent is auto-set to "denied"
 - **Data collected (aggregate only)**: Page views, referrer URLs, geography (country/state), device type, browser, Web Vitals
 
+## Transactional Email (Resend)
+
+- **Provider**: Resend (resend.com)
+- **Sending domain**: `send.encompassparking.com` (subdomain — does not affect Proton MX on apex)
+- **Contact form**: Sends to `contact@encompassparking.com` via Resend with Reply-To set to submitter's email
+- **No PII logging**: Server logs record organization name only, not email addresses or phone numbers
+
+## Newsletter (Double Opt-In)
+
+- **Provider**: Resend Audiences
+- **Flow**: Subscribe → confirmation email with signed token → click to confirm → subscribed
+- **Token signing**: HMAC-SHA256 with `NEWSLETTER_CONFIRM_SECRET`, base64url encoded, 7-day expiry
+- **Unsubscribe**: One-click via signed token link in every newsletter email (no expiry on unsubscribe tokens)
+- **Initial state**: Contacts added as `unsubscribed: true` until confirmation is clicked
+- **CAN-SPAM compliant**: Double opt-in, immediate unsubscribe, physical address in Privacy Policy
+
 ## SEO
 
 - **robots.txt**: Allows all crawlers, blocks `/member-portal*`, references sitemap

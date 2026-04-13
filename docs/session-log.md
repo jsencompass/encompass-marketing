@@ -135,3 +135,75 @@ The Vercel project was created via `vercel project add` + `vercel link`, which s
 - axe-core CLI testing (requires system Chrome; Lighthouse a11y covers same checks)
 - How It Works and Services page content
 - Contact form (future session)
+
+## Session 4: How It Works + Services + Contact + Newsletter + Integrations
+
+**Date**: 2026-04-12
+
+### Shipped
+
+**How It Works page** (`/how-it-works`):
+- Four numbered lane sections (01–04) with two-column layout (copy + image placeholder)
+- Governance cadence section (monthly rhythm prose)
+- Standardization section (scaling mechanism prose)
+- Full real copy from investment brief Sections 4 and 9
+
+**Services page** (`/services`):
+- Three detailed tier cards (Foundation $2,250 / Performance $3,500 / Enterprise $6,750) with ~8 included capabilities each
+- Implementation + PPB card ($4,500 per site, required)
+- Optional modules: Remote Command Center ($500–$15,000+), Remote Call Center ($450/$900 + $1,500 setup)
+- Parking PI mystery shop program ($80–$250 per shop)
+- Margin protection note (>25% overage clause)
+
+**Contact page** (`/contact`):
+- Two-column layout: form left, scheduling right
+- Form: name, email, organization, portfolio size, phone, message
+- Hidden honeypot field for bot detection
+- Turnstile widget placeholder (renders when key is set)
+- Client-side validation with field-level errors
+- Success/error states
+- Cal.com scheduling link (renders when URL is set, placeholder when not)
+- mailto fallback to contact@encompassparking.com
+
+**Contact API** (`/api/contact`):
+- Turnstile token server-side verification
+- Honeypot check (silent success for bots)
+- Server-side field validation + email format check
+- In-memory rate limiting: 3 submissions per IP per hour
+- Resend email sending with HTML + plain text fallback
+- No PII in production logs
+
+**Newsletter system**:
+- `src/components/NewsletterSignup.tsx` — reusable component (footer + inline variants)
+- `/api/newsletter` — adds contact to Resend Audience (unsubscribed), sends confirmation email with signed token
+- `/newsletter/confirm` — verifies HMAC-signed token, updates Resend contact to subscribed
+- `/newsletter/unsubscribe` — one-click unsubscribe via signed token
+- Token signing: crypto.createHmac SHA-256, base64url encoded, 7-day expiry for confirm (no expiry for unsubscribe)
+- Rate limiting: 5 signups per IP per hour
+
+**Insights page** (`/insights`):
+- Newsletter teaser with inline signup component
+- "First edition coming soon" messaging
+
+**Footer update**:
+- Added newsletter signup row above column grid
+- Full-width with email input + subscribe button
+
+**Infrastructure**:
+- `.env.example` with all 8 env vars and REPLACE comments
+- CSP updated: added Cloudflare Turnstile + Cal.com frame-src
+- Sitemap updated: 12 URLs
+- Resend SDK installed (v6.10.0)
+
+**Documentation**:
+- NEW: `docs/integrations.md` — full runbook for Resend, Turnstile, Cal.com setup
+- Updated site-ia.md, backlog.md, session-log.md, compliance.md
+
+### Deferred
+
+- End-to-end contact form test (requires Resend API key — scaffolded with graceful fallback)
+- End-to-end newsletter test (requires Resend Audience ID — scaffolded with graceful fallback)
+- Cal.com inline embed (using external link for now; @calcom/embed-react requires Cal.com Pro)
+- Rate limiting persistence (in-memory Map → Vercel KV, logged to backlog)
+- Turnstile script tag injection (widget auto-renders when NEXT_PUBLIC_TURNSTILE_SITE_KEY is set)
+- MDX blog system (Session 5)
