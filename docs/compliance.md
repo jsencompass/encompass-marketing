@@ -24,7 +24,7 @@ All headers applied via `next.config.ts` to all routes:
 
 | Header | Value | Notes |
 |---|---|---|
-| Content-Security-Policy | Report-Only mode | Allows self + Vercel Analytics + inline styles. To be moved to enforced after monitoring. |
+| Content-Security-Policy | **Enforced** (Session 8, 2026-04-13) | `default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com https://cal.com; frame-ancestors 'none'`. Note: `'unsafe-inline'` for scripts required by Next.js 16 RSC payload; for styles required by Tailwind v4. |
 | Strict-Transport-Security | max-age=63072000; includeSubDomains; preload | 2-year HSTS with preload |
 | X-Frame-Options | DENY | Prevents framing |
 | X-Content-Type-Options | nosniff | Prevents MIME sniffing |

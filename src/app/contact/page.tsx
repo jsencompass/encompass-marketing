@@ -251,6 +251,11 @@ export default function Contact() {
               >
                 Schedule on Cal.com &rarr;
               </a>
+              <p className="mt-3 text-14 italic text-text-tertiary">
+                Note: Cal.com confirmation emails occasionally land in spam. If
+                you don&rsquo;t see it within a few minutes of booking, check
+                your junk folder.
+              </p>
             </div>
           ) : (
             <div className="mt-6 rounded-lg border border-border bg-bg-raised p-8">

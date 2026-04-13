@@ -6,8 +6,16 @@
 - Smooth scroll for anchor links
 - Mobile nav animation (slide instead of instant show/hide)
 - Footer responsive refinement at small breakpoints
-- CSP enforcement — move Content-Security-Policy from report-only to enforced after monitoring for violations
+- ~~CSP enforcement~~ — SHIPPED Session 8: enforced with 'unsafe-inline' for scripts (Next.js 16 RSC requirement) + styles (Tailwind v4)
 - Contact form — add Turnstile widget script tag (currently scaffolded, widget renders when NEXT_PUBLIC_TURNSTILE_SITE_KEY is set)
+
+## Cal.com Deliverability Upgrade
+
+- Upgrade to Cal.com Pro ($15/mo) OR implement webhook-driven Resend confirmation to eliminate Cal.com's sender-reputation issue. Current state: user-facing disclosure on /contact (Session 8).
+
+## Team Presence
+
+- Add LinkedIn URLs for Joe Dudek, Jason Scott, Steven Grant once company LinkedIn page is created and personal profiles linked. Rewire "Connect on LinkedIn" links on /who-we-are and insights author cards.
 
 ## Imagery
 
@@ -19,9 +27,9 @@
 
 ## Infrastructure
 
-- Rate limiting — upgrade from in-memory Map to Vercel KV for persistence across function instances
+- ~~Rate limiting~~ — SHIPPED Session 8: @upstash/redis with graceful degradation
 - Cal.com embed — consider @calcom/embed-react inline widget instead of external link (requires Cal.com Pro)
-- Blog / insights CMS integration (Session 5 — MDX or headless CMS)
+- Blog / insights CMS integration (consider headless CMS when post volume grows)
 
 ## Features
 
@@ -32,11 +40,13 @@
 
 - LinkedIn URLs for Joe Dudek, Jason Scott, Steven Grant (currently placeholder `#`)
 - ~~Capability icons~~ — SHIPPED Session 6 as SVG components (PactIcon, ParkingPiIcon, ProTrackIcon, CommandCenterIcon)
+- ~~LinkedIn dead links~~ — REMOVED Session 8: placeholder `#` links removed from /who-we-are bios
+- ~~Favicon/OG polish~~ — SHIPPED Session 8: three-bar monogram mark, branded OG card
 
 ## Accessibility Polish
 
-- 4 decorative lane numbers on /how-it-works flagged by axe (intentionally low-contrast, aria-hidden applied — consider raising opacity or removing from DOM)
-- MDX syntax highlighting for code blocks in blog posts
+- ~~4 decorative lane numbers~~ — FIXED Session 7: text-accent-text/40, aria-hidden
+- MDX syntax highlighting for code blocks in blog posts (logged, not blocking)
 
 ## Motion & Animation (Polish Session)
 

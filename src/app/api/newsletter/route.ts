@@ -1,20 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import crypto from "crypto";
-
-const rateLimit = new Map<string, { count: number; resetAt: number }>();
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const entry = rateLimit.get(ip);
-  if (!entry || now > entry.resetAt) {
-    rateLimit.set(ip, { count: 1, resetAt: now + 3600_000 });
-    return true;
-  }
-  if (entry.count >= 5) return false;
-  entry.count++;
-  return true;
-}
+import { rateLimit } from "@/lib/rateLimit";
 
 function signToken(email: string): string {
   const secret = process.env.NEWSLETTER_CONFIRM_SECRET;
@@ -28,9 +15,10 @@ function signToken(email: string): string {
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
 
-  if (!checkRateLimit(ip)) {
+  const { allowed, resetAt: rlResetAt } = await rateLimit({ key: `newsletter:${ip}`, limit: 5, windowSeconds: 3600 });
+  if (!allowed) {
     return NextResponse.json(
-      { ok: false, error: "Too many requests. Please try again later." },
+      { ok: false, error: "Too many requests. Please try again later.", resetAt: rlResetAt.toISOString() },
       { status: 429 }
     );
   }
