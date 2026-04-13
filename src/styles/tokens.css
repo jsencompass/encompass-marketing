@@ -1,0 +1,24 @@
+:root {
+  /* Background scale */
+  --bg-base: #0A0A0B;
+  --bg-raised: #111113;
+  --bg-elevated: #18181B;
+
+  /* Border */
+  --border: #27272A;
+
+  /* Text scale */
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --text-tertiary: #71717A;
+
+  /* Accent */
+  --accent: #6C5CE7;
+  --accent-dim: #4C3FB8;
+
+  /* Financial taxonomy */
+  --status-revenue: #10B981;
+  --status-loss: #EF4444;
+  --status-cost: #F59E0B;
+  --status-fines: #EAB308;
+}
