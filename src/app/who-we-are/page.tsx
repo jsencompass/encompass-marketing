@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ClosingCTA } from "@/components/ClosingCTA";
-import { PageHeaderBand } from "@/components/PageHeaderBand";
 
 export const metadata: Metadata = {
   title: "Who We Are — Encompass Parking",
@@ -52,8 +51,7 @@ export default function WhoWeAre() {
   return (
     <>
       {/* ─── Page Header ─── */}
-      <PageHeaderBand imageSrc="/imagery/team-contextual.jpg">
-        <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
+      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
           <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
             The Team
           </p>
@@ -66,7 +64,6 @@ export default function WhoWeAre() {
             it from recurring.
           </p>
         </section>
-      </PageHeaderBand>
 
       {/* ─── Principal Bios ─── */}
       {principals.map((p, i) => (

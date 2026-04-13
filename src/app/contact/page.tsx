@@ -2,7 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
 
 const portfolioSizes = [
   "Select one",
@@ -74,17 +73,8 @@ export default function Contact() {
   }
 
   return (
-    <section className="relative mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-      <Image
-        src="/imagery/contact-contextual.jpg"
-        alt=""
-        fill
-        className="object-cover"
-        sizes="100vw"
-        quality={80}
-      />
-      <div className="absolute inset-0 bg-bg-base/80" />
-      <div className="relative grid gap-16 lg:grid-cols-[1fr_1fr]">
+    <section className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+      <div className="grid gap-16 lg:grid-cols-[1fr_1fr]">
         {/* ─── Left: Form ─── */}
         <div>
           <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
