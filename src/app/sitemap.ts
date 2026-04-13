@@ -13,6 +13,8 @@ const routes = [
   "/terms",
   "/accessibility",
   "/cookies",
+  "/newsletter/confirm",
+  "/newsletter/unsubscribe",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
