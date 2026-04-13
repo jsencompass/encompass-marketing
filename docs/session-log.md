@@ -37,13 +37,38 @@ The Vercel project was created via `vercel project add` + `vercel link`, which s
 - Disabled Deployment Protection (Vercel Authentication) so the site is publicly accessible
 - Triggered production redeploy with correct framework settings
 
+## Session 2: Homepage Rewrite + Who We Are + Workflow Cleanup
+
+**Date**: 2026-04-12
+
+### Workflow Change
+
+- Deleted "Protect main" branch protection ruleset (ID 14983479) via GitHub API
+- New workflow: feature branch → verify preview → merge to main locally → push main directly
+- No PRs until the site is live with real customers
+
+### Shipped
+
+- **Favicon**: Purple `#6C5CE7` square with white "E" — 32x32 (icon.png), 180x180 (apple-icon.png), SVG (icon.svg)
+- **OG image**: 1200x630 dark card with wordmark, headline, JetBrains Mono subtitle, purple accent bar (`public/og-default.png`)
+- **Metadata**: Full OpenGraph + Twitter card metadata wired in layout.tsx
+- **Nav reorder**: How It Works → Services → Who We Are → Insights → Contact
+- **Homepage rewrite**: 8 sections with stronger marketing copy
+  - Hero with arrow CTA link
+  - Control Gap with prose lead + 3 stat cards
+  - PACT capability cards (2x2 grid with Base/Optional tags)
+  - Services & Pricing — 3-tier pricing table (Foundation $2,250 / Performance $3,500 / Enterprise $6,750)
+  - Team credibility band (5 stats with vertical dividers)
+  - Proof visual placeholder (PACT dashboard screenshot pending)
+  - Who We Are teaser with initial placeholders and "Meet the team →" link
+  - Closing CTA band (shared component)
+- **Who We Are page**: Full bios for Joe Dudek, Jason Scott, Steven Grant + formation story
+- **Shared component**: `src/components/ClosingCTA.tsx` reused on homepage and who-we-are
+- **Docs**: Updated site-ia.md, backlog.md, session-log.md
+
 ### Deferred
 
-- See `backlog.md` for full deferred list
-- Light mode toggle (v1 is dark-only by design)
-- Contact form (Session 4)
-- Detailed page content for How It Works, Services (Session 2), Insights, Who We Are (Session 3)
-- Social icons in footer
-- Animations / motion
-- SEO metadata per page (only global metadata set)
-- Favicon / OG image
+- See `backlog.md` — headshots, LinkedIn URLs, PACT screenshot, hero background animation
+- Light mode toggle (v1 dark-only by design)
+- Contact form (future session)
+- How It Works and Services page content
