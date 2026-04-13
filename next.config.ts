@@ -2,10 +2,13 @@ import type { NextConfig } from "next";
 
 const securityHeaders = [
   {
-    key: "Content-Security-Policy-Report-Only",
+    // CSP enforced since Session 8 (2026-04-13) after report-only observation
+    // 'unsafe-inline' required for scripts: Next.js 16 RSC payload uses inline <script> tags
+    // 'unsafe-inline' required for styles: Tailwind v4 runtime injection
+    key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' https://va.vercel-scripts.com https://challenges.cloudflare.com",
+      "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://challenges.cloudflare.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self' https://fonts.gstatic.com",

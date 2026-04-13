@@ -102,15 +102,6 @@ export default function WhoWeAre() {
               <p className="mt-8 text-16 font-medium text-text-secondary">
                 {p.closing}
               </p>
-              <a
-                href="#"
-                className="group mt-6 inline-flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary"
-              >
-                Connect on LinkedIn
-                <span className="transition-transform group-hover:translate-x-0.5">
-                  &rarr;
-                </span>
-              </a>
             </div>
           </div>
         </section>

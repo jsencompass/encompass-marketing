@@ -379,3 +379,52 @@ NEW: `docs/assets-needed.md` — definitive list of every real asset the site is
 - LLC mailing address (Jason to provide)
 - Real photography assets (see docs/assets-needed.md)
 - Full legal review by qualified attorney
+
+## Session 8: Auto-Ack Email + CSP Enforcement + Upstash Rate Limiting + LinkedIn Cleanup + Brand Polish
+
+**Date**: 2026-04-13
+
+### Shipped
+
+**Auto-acknowledgement email (Step 1)**:
+- Contact form now sends two emails per submission: internal notification + submitter acknowledgement
+- Email templates extracted to `src/lib/email/templates/` (contactInternal.ts, contactAcknowledgement.ts)
+- Ack email: warm tone, mentions PPB → PACT flow, commits to 1-business-day reply, branded HTML with accent bar header
+- Graceful error handling: if ack fails but internal succeeds, user sees success, failure logged with redacted email
+- Internal notification updated with inbox-preview summary line
+
+**Cal.com spam disclosure (Step 2)**:
+- Added italic footnote on /contact#schedule: "Cal.com confirmation emails occasionally land in spam..."
+- Logged Cal.com deliverability upgrade to backlog
+
+**CSP enforcement (Step 3)**:
+- Flipped from `Content-Security-Policy-Report-Only` to `Content-Security-Policy` (enforced)
+- `'unsafe-inline'` required for scripts (Next.js 16 RSC payload) and styles (Tailwind v4)
+- All third-party origins explicitly allowlisted: Vercel Analytics, Cloudflare Turnstile, Google Fonts, Cal.com frame
+
+**Upstash Redis rate limiting (Step 4)**:
+- Replaced in-memory Map with `@upstash/redis` (via Vercel Marketplace)
+- Single reusable `src/lib/rateLimit.ts` with INCR + EXPIRE pattern
+- Contact: 3/hour/IP, Newsletter: 5/hour/IP
+- Graceful degradation: if Redis unavailable, allows request + logs warning
+- Jason to provision: Vercel dashboard → Storage → Create Redis → link to project
+
+**LinkedIn cleanup (Step 5)**:
+- Removed all "Connect on LinkedIn →" dead links from /who-we-are bios
+- LinkedIn field set to null in author metadata; rendering conditional
+
+**Favicon/OG polish (Step 7)**:
+- New three-bar monogram mark (stylized "E" as stacked horizontal bars)
+- icon.png (32x32), apple-icon.png (180x180), icon.svg — dark background + accent bars
+- OG image: mark + wordmark + subhead + centered headline + accent bar + URL
+
+**Documentation**:
+- NEW: `docs/email-templates.md` — template content, tone guidance, editing instructions
+- Updated: compliance.md (enforced CSP policy), backlog.md (closed items), integrations.md
+
+### Deferred
+
+- MDX syntax highlighting (rehype-pretty-code) — logged to backlog, not blocking for v1
+- Auto-ack email end-to-end test (requires production env vars; Jason tests manually post-merge)
+- KV provisioning (Jason executes in Vercel dashboard post-merge)
+- LLC mailing address, real photography assets, full legal review (unchanged)
