@@ -43,7 +43,7 @@ export default function HowItWorks() {
     <>
       {/* ─── Page Header ─── */}
       <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-        <p className="text-12 font-semibold uppercase tracking-widest text-accent">
+        <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
           The Operating Model
         </p>
         <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
@@ -65,7 +65,7 @@ export default function HowItWorks() {
         >
           <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_1fr] md:py-32">
             <div>
-              <span className="font-mono text-48 font-medium text-accent/30 md:text-64">
+              <span className="font-mono text-48 font-medium text-accent/30 md:text-64" aria-hidden="true">
                 {lane.number}
               </span>
               <p className="mt-4 text-12 font-semibold uppercase tracking-widest text-text-tertiary">

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function Terms() {
   return (
     <article className="mx-auto max-w-[800px] px-6 py-24 md:py-32">
-      <p className="text-12 font-semibold uppercase tracking-widest text-accent">
+      <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
         Legal
       </p>
       <h1 className="mt-4 text-48 font-semibold tracking-tight">
@@ -167,7 +167,7 @@ export default function Terms() {
             <p>
               <a
                 href="mailto:legal@encompassparking.com"
-                className="text-accent underline underline-offset-4"
+                className="text-accent-text underline underline-offset-4"
               >
                 legal@encompassparking.com
               </a>

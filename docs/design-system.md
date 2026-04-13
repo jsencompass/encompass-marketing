@@ -15,7 +15,8 @@ Dark-mode-forward, data-dense, Stripe/Linear sophistication. Continuous with the
 | `--text-primary` | `#FAFAFA` | Headings, body |
 | `--text-secondary` | `#A1A1AA` | Descriptions, subtext |
 | `--text-tertiary` | `#8B8B93` | Labels, metadata (bumped from #71717A for WCAG AA 5.85:1 contrast) |
-| `--accent` | `#6C5CE7` | Purple accent (CTAs, links, highlights) |
+| `--accent` | `#6C5CE7` | Purple accent (backgrounds, borders, icons) |
+| `--accent-text` | `#9B8FFF` | Accent color for foreground text (WCAG AA on dark backgrounds) |
 | `--accent-dim` | `#4C3FB8` | Hover/active state for accent |
 
 ### Financial Taxonomy (PACT)

@@ -8,7 +8,8 @@
 | `/how-it-works` | Shipped | 4 | Four-lane operating model + governance cadence |
 | `/services` | Shipped | 5 | Comparison matrix + optional modules + Parking PI |
 | `/who-we-are` | Shipped | 2 | Three principal bios + formation story |
-| `/insights` | Shipped | 4 | Newsletter signup + first-edition teaser |
+| `/insights` | Shipped | 6 | Blog index with featured post + newsletter |
+| `/insights/[slug]` | Shipped | 6 | Individual MDX blog post renderer |
 | `/contact` | Shipped | 4 | Contact form + Cal.com scheduling + Turnstile |
 | `/privacy` | Shipped | 3 | Privacy Policy (CCPA/CPRA compliant) |
 | `/terms` | Shipped | 3 | Terms of Use |

@@ -85,7 +85,7 @@ export default async function NewsletterConfirm({
 
   return (
     <section className="mx-auto max-w-[800px] px-6 py-24 md:py-32 text-center">
-      <h1 className="text-48 font-semibold tracking-tight text-accent">You&rsquo;re subscribed.</h1>
+      <h1 className="text-48 font-semibold tracking-tight text-accent-text">You&rsquo;re subscribed.</h1>
       <p className="mt-4 text-18 text-text-secondary">
         Look for the first edition in your inbox. Quarterly notes on parking
         controllership, operator dynamics, and revenue governance.

@@ -48,7 +48,7 @@ export function Nav() {
             href="https://encompass-ppb-web.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-accent bg-accent/10 px-4 py-1.5 text-14 font-medium text-accent transition-colors hover:bg-accent/20"
+            className="rounded-full border border-accent bg-accent/10 px-4 py-1.5 text-14 font-medium text-accent-text transition-colors hover:bg-accent/20"
           >
             Member Portal
           </a>
@@ -85,7 +85,7 @@ export function Nav() {
               href="https://encompass-ppb-web.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 w-fit rounded-full border border-accent bg-accent/10 px-4 py-1.5 text-14 font-medium text-accent transition-colors hover:bg-accent/20"
+              className="mt-2 w-fit rounded-full border border-accent bg-accent/10 px-4 py-1.5 text-14 font-medium text-accent-text transition-colors hover:bg-accent/20"
             >
               Member Portal
             </a>

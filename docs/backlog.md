@@ -12,9 +12,7 @@
 ## Imagery
 
 - **Hero background**: `/public/hero/hero-bg.jpg` — 2400x1400 source, srcset 1x/2x. Institutional parking structure at dusk, wide aspect, downtown LA preferred. Overlay: `--bg-base` at 0.75 opacity. Motion: parallax 0.3x scroll speed desktop, static mobile. Min-height: 720px desktop / 600px mobile. Currently using CSS gradient placeholder.
-- **Section breaker 01**: `/public/breakers/breaker-01.svg` — full-width, 240px tall. Abstract data motif.
-- **Section breaker 02**: `/public/breakers/breaker-02.svg` — diagonal grid variation.
-- **Section breaker 03**: `/public/breakers/breaker-03.svg` — horizontal/vertical grid variation.
+- ~~Section breakers~~ — SHIPPED Session 6 as SVG `<pattern>` components (BreakerGrid, BreakerDiagonal, BreakerDots)
 - **PACT screenshot**: `/public/proof/pact-baseline.png` — 1200x720 desktop, full-width mobile.
 - **Team headshots**: `/public/team/joe.jpg`, `jason.jpg`, `steven.jpg` — 400x400 source, 120px circle.
 - **How It Works lane visuals**: `/public/how-it-works/01-ppb.png`, `02-oversight.png`, `03-command.png`, `04-call.png` — 800x600 each. Dossier screenshots or abstract workflow diagrams.
@@ -33,7 +31,12 @@
 ## Assets Pending
 
 - LinkedIn URLs for Joe Dudek, Jason Scott, Steven Grant (currently placeholder `#`)
-- Capability icons for PACT, Parking PI, ProTrack, Command Center (currently using abstract accent dots)
+- ~~Capability icons~~ — SHIPPED Session 6 as SVG components (PactIcon, ParkingPiIcon, ProTrackIcon, CommandCenterIcon)
+
+## Accessibility Polish
+
+- 4 decorative lane numbers on /how-it-works flagged by axe (intentionally low-contrast, aria-hidden applied — consider raising opacity or removing from DOM)
+- MDX syntax highlighting for code blocks in blog posts
 
 ## Motion & Animation (Polish Session)
 
