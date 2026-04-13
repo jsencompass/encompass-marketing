@@ -250,6 +250,9 @@ export default function Privacy() {
           </p>
           <address className="mt-4 not-italic">
             <p>Encompass Parking, LLC</p>
+            <p>Attn: Privacy Officer</p>
+            {/* <!-- JASON-TODO: Replace with real LLC registered mailing address --> */}
+            <p className="text-text-tertiary">[Mailing address TBD]</p>
             <p>Los Angeles, California</p>
             <p>
               <a
@@ -260,7 +263,6 @@ export default function Privacy() {
               </a>
             </p>
           </address>
-          {/* <!-- ATTORNEY-REVIEW: Add physical mailing address if required by CCPA (currently using city only). California AG may require a specific street address for privacy requests. --> */}
         </section>
       </div>
     </article>

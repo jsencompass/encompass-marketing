@@ -55,5 +55,10 @@ ATTORNEY-REVIEW flags in compliance pages requiring legal counsel review:
 7. **Terms → Liability Cap**: Consider adding a liability cap
 8. **Accessibility → Known Limitations**: Update as audits complete
 
+## Jason to Provide
+
+- LLC registered mailing address for Privacy Policy (currently `[Mailing address TBD]` with JASON-TODO in `/privacy`)
+- parking-guru SKILL.md — authoritative bio narratives for Dudek/Scott/Grant (path: `/mnt/skills/user/parking-guru/SKILL.md`)
+
 ## Deferred-from-session
 

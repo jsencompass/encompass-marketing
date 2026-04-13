@@ -207,3 +207,65 @@ The Vercel project was created via `vercel project add` + `vercel link`, which s
 - Rate limiting persistence (in-memory Map → Vercel KV, logged to backlog)
 - Turnstile script tag injection (widget auto-renders when NEXT_PUBLIC_TURNSTILE_SITE_KEY is set)
 - MDX blog system (Session 5)
+
+## Session 5: Interaction Polish + Motion + Services Matrix + Attorney Cleanup
+
+**Date**: 2026-04-12
+
+### Blocker: parking-guru Skill Not Found
+
+`/mnt/skills/user/parking-guru/SKILL.md` does not exist on this system. Bio rewrite (Step 1) is **blocked** pending access to the authoritative parking-guru skill file. No bio changes made. Homepage credibility band stats unchanged. This is the only blocked item.
+
+### Shipped
+
+**Interaction states** (`src/styles/interactions.css`):
+- Four states on all interactive elements: default, hover, focus-visible, active
+- `.btn-primary`: brightness filter on hover, scale(0.98) on active
+- `.card-hover`: translateY(-2px) + accent border + shadow on hover
+- `.input-field`: accent border on hover, accent glow on focus
+- Global `:focus-visible` outline (2px accent, 2px offset)
+- `:focus:not(:focus-visible)` removes outline on mouse click
+
+**Motion system** (`src/styles/motion.css`):
+- Timing tokens: --motion-fast (150ms), --motion-base (250ms), --motion-slow (400ms)
+- Easing tokens: --ease-out, --ease-in-out
+- Hero stagger animation: fade-up 600ms, 80ms stagger between elements
+- Section reveal on scroll: `src/components/motion/Reveal.tsx` using IntersectionObserver
+- `@media (prefers-reduced-motion: reduce)` disables all motion globally
+
+**Accessibility hardening**:
+- Skip-to-main-content link (`src/components/chrome/SkipLink.tsx`)
+- `<main id="main-content">` wrapper in layout
+- Hamburger button: dynamic `aria-label` ("Open menu" / "Close menu") + `aria-expanded`
+- InfoTooltip: `role="tooltip"` + `aria-describedby`
+
+**Services comparison matrix** (`/services`):
+- Desktop: full feature-by-feature comparison table with 9 categories, ~30 features
+- Sticky tier header row with prices + "Request this tier" CTAs linking to /contact?tier=X
+- Green checkmark / dash / "Add-on" indicators per feature per tier
+- InfoTooltip on every feature row with 1-sentence capability explanation
+- Performance tier highlighted with accent border
+- Mobile: accordion view — each tier expandable with grouped feature lists
+- Implementation + PPB, optional modules, Parking PI, margin protection sections below matrix
+
+**Attorney-review cleanup** (2 of 8):
+- Privacy Policy: Added "Attn: Privacy Officer" + `[Mailing address TBD]` placeholder with JASON-TODO. Removed ATTORNEY-REVIEW flag #5.
+- Terms of Use: Changed trademark language from implying registration to "trademarks used in commerce. Federal trademark applications are pending." Removed ATTORNEY-REVIEW flag #6.
+
+**New components**:
+- `src/components/motion/Reveal.tsx` — scroll-triggered fade-in
+- `src/components/chrome/SkipLink.tsx` — keyboard-only skip link
+- `src/components/ui/InfoTooltip.tsx` — hover/focus/tap tooltip with ARIA
+- `src/app/services/ComparisonMatrix.tsx` — desktop table + mobile accordion
+
+**Documentation**:
+- NEW: `docs/accessibility.md` — conformance posture, tools, known limitations
+- Updated: design-system.md (interaction states, motion tokens, reduced-motion policy)
+- Updated: site-ia.md (services matrix shipped in Session 5)
+
+### Deferred
+
+- **Bio rewrite** — blocked on parking-guru skill file access. No changes made to /who-we-are or homepage credibility band.
+- Best Practices Lighthouse diagnostic (Step 7) — deferred pending production deploy verification
+- axe-core CLI testing — system Chrome not installed; Lighthouse a11y (96) used as proxy
+- Remaining 6 ATTORNEY-REVIEW flags (items #1–4, #7, #8)
