@@ -132,10 +132,11 @@ export default function Services() {
       <section className="border-t border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-12">
           <p className="text-14 text-text-tertiary">
-            If manual artifacts or exception register items exceed the included
-            allowance by &gt;25% for two consecutive months, pricing adjusts via
-            overage or tier change at the next invoice cycle. This protects
-            engagement quality for every client.
+            <strong className="text-text-secondary">Every engagement includes defined scope allowances.</strong>{" "}
+            If operational workload materially exceeds included capacity, we
+            discuss an adjusted tier or overage openly &mdash; no surprise
+            invoices, no quietly absorbed scope creep. This keeps quality and
+            economics aligned for both sides.
           </p>
         </div>
       </section>

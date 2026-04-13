@@ -3,10 +3,10 @@
 import { useReducedMotion } from "@/lib/motion/useReducedMotion";
 
 const taxonomyCards = [
-  { label: "Potential Revenue", value: "$—", color: "var(--status-revenue)" },
-  { label: "Potential Loss", value: "$—", color: "var(--status-loss)" },
-  { label: "Current Cost", value: "$—", color: "var(--status-cost)" },
-  { label: "Potential Fines", value: "$—", color: "var(--status-fines)" },
+  { label: "Potential Revenue", value: "$106K", color: "var(--status-revenue)" },
+  { label: "Potential Loss", value: "$77K", color: "var(--status-loss)" },
+  { label: "Current Cost", value: "$25K", color: "var(--status-cost)" },
+  { label: "Potential Exposure", value: "$25K", color: "var(--status-fines)" },
 ];
 
 const dataBars = [

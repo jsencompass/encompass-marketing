@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ClosingCTA } from "@/components/ClosingCTA";
+import { VerticalsGrid } from "@/components/verticals/VerticalsGrid";
+import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
 
 export const metadata: Metadata = {
   title: "How It Works — Encompass Parking",
@@ -11,30 +13,30 @@ const lanes = [
   {
     number: "01",
     eyebrow: "Controls-Onboarding + PPB",
-    description:
-      "Every engagement starts with a paid Parking Performance Baseline. We ingest and normalize your data sources, map sessions to transactions to settlements to deposits, document permissions posture, establish exception taxonomy, and issue the baseline truth set. This is the deliverable that makes a site controls-ready.",
-    // Image: dossier screenshot or abstract workflow diagram, 800x600, /public/how-it-works/01-ppb.png
+    description: "Every engagement starts with a paid Parking Performance Baseline. We ingest and normalize your data sources, map sessions to transactions to settlements to deposits, document permissions posture, establish exception taxonomy, and issue the baseline truth set. This is the deliverable that makes a site controls-ready.",
+    imgPath: "/public/how-it-works/01-ppb.png",
+    imgDesc: "Abstract workflow diagram or dossier screenshot showing onboarding process.",
   },
   {
     number: "02",
     eyebrow: "PACT Oversight (Run-State)",
-    description:
-      "Every site-month we audit the operator\u2019s close pack, validate session-to-deposit tie-out, drive exceptions to closure with reason codes and tiered approvals, and govern rate, product, and validation integrity as operating levers. Month-end produces an owner-facing summary \u2014 not an inbox dump.",
-    // Image: /public/how-it-works/02-oversight.png
+    description: "Every site-month we audit the operator\u2019s close pack, validate session-to-deposit tie-out, drive exceptions to closure with reason codes and tiered approvals, and govern rate, product, and validation integrity as operating levers. Month-end produces an owner-facing summary \u2014 not an inbox dump.",
+    imgPath: "/public/how-it-works/02-oversight.png",
+    imgDesc: "Abstract monthly close flow or variance workup visualization.",
   },
   {
     number: "03",
     eyebrow: "Remote Command Center (Optional)",
-    description:
-      "Contracted where coverage economics justify it. 24/7 remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. Permissioned operational actions with time-stamped evidence. Attached to 10\u201322% of sites.",
-    // Image: /public/how-it-works/03-command.png
+    description: "Contracted where coverage economics justify it. 24/7 remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. Permissioned operational actions with time-stamped evidence. Attached to 10\u201322% of sites.",
+    imgPath: "/public/how-it-works/03-command.png",
+    imgDesc: "Command center monitoring dashboard or alert triage interface.",
   },
   {
     number: "04",
     eyebrow: "Remote Call Center (Optional)",
-    description:
-      "Branded customer support via Umojo\u2019s NexPark platform, operated under Encompass scripts and authority limits. Reduces refund-first habits and keeps customer-support issues feeding back into governance.",
-    // Image: /public/how-it-works/04-call.png
+    description: "Branded customer support via Umojo\u2019s NexPark platform, operated under Encompass scripts and authority limits. Reduces refund-first habits and keeps customer-support issues feeding back into governance.",
+    imgPath: "/public/how-it-works/04-call.png",
+    imgDesc: "Call center interface or customer support flow diagram.",
   },
 ];
 
@@ -75,14 +77,13 @@ export default function HowItWorks() {
                 {lane.description}
               </p>
             </div>
-            {/* Placeholder image: /public/how-it-works/{number}-*.png, 800x600 */}
-            <div className="flex items-center justify-center rounded-lg border border-border bg-bg-raised">
-              <div className="flex h-[300px] w-full items-center justify-center">
-                <p className="text-14 text-text-tertiary">
-                  Lane {lane.number} visual (placeholder)
-                </p>
-              </div>
-            </div>
+            <ImagePlaceholder
+              path={lane.imgPath}
+              dimensions="800 &times; 600"
+              format="PNG, optimized"
+              description={lane.imgDesc}
+              aspectRatio="4/3"
+            />
           </div>
         </section>
       ))}
@@ -121,6 +122,28 @@ export default function HowItWorks() {
             adding headcount proportionally, but by making the work
             systematically reproducible.
           </p>
+        </div>
+      </section>
+
+      {/* ─── All Verticals ─── */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
+            Vertical-Agnostic by Design
+          </p>
+          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
+            Controllership applies across every parking vertical.
+          </h2>
+          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
+            Our discipline applies whether you own, manage, or operate a
+            Class&nbsp;A office, a mixed-use asset, on- and off-street, an
+            airport, a hospital, a hotel, valet, or hybrid operations. We&rsquo;ve
+            done the work inside every type of parking asset &mdash; and the
+            control framework is the same regardless of what sits on top of it.
+          </p>
+          <div className="mt-12">
+            <VerticalsGrid />
+          </div>
         </div>
       </section>
 

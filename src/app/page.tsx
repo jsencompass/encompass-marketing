@@ -4,9 +4,7 @@ import { PactIcon } from "@/components/icons/PactIcon";
 import { ParkingPiIcon } from "@/components/icons/ParkingPiIcon";
 import { ProTrackIcon } from "@/components/icons/ProTrackIcon";
 import { CommandCenterIcon } from "@/components/icons/CommandCenterIcon";
-import { BreakerGrid } from "@/components/breakers/BreakerGrid";
-import { BreakerDiagonal } from "@/components/breakers/BreakerDiagonal";
-import { BreakerDots } from "@/components/breakers/BreakerDots";
+
 import { HeroSpotlight } from "@/components/hero/HeroSpotlight";
 import { HeroBackground } from "@/components/hero/HeroBackground";
 import { HeroEntrance, HeroEyebrow, HeroTitle, HeroSubhead, HeroCTAs } from "@/components/hero/HeroEntrance";
@@ -193,7 +191,6 @@ export default function Home() {
         </div>
       </section>
 
-      <BreakerGrid />
 
       {/* ─── What We Do — PACT ─── */}
       <section className="border-b border-border">
@@ -310,7 +307,6 @@ export default function Home() {
         </div>
       </section>
 
-      <BreakerDiagonal />
 
       {/* ─── Team Credibility Band ─── */}
       <CredibilityBand />
@@ -335,7 +331,6 @@ export default function Home() {
         </div>
       </section>
 
-      <BreakerDots />
 
       {/* ─── Closing CTA ─── */}
       <ClosingCTA />
