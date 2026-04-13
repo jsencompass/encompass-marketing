@@ -428,3 +428,91 @@ NEW: `docs/assets-needed.md` — definitive list of every real asset the site is
 - Auto-ack email end-to-end test (requires production env vars; Jason tests manually post-merge)
 - KV provisioning (Jason executes in Vercel dashboard post-merge)
 - LLC mailing address, real photography assets, full legal review (unchanged)
+
+## Session 9: Calibrated Motion + Cursor-Aware Hero + Unsplash Imagery + MDX Code Highlighting
+
+**Date**: 2026-04-13
+
+### Motion System Overhaul
+
+**Foundation**: Installed `motion` v12 (standalone, 18kb gzipped). Created token system in `src/lib/motion/tokens.ts`:
+- Duration: instant (0.1s) → cinematic (0.9s)
+- Easing: standard (cinematic out), gentle, spring (back-out), sharp
+- Stagger: tight (50ms), base (100ms), loose (150ms)
+- `useReducedMotion` hook respects OS preference
+
+**Hero transformation** (`src/components/hero/`):
+- `HeroSpotlight.tsx`: cursor-aware ambient radial glow tracking mouse position via CSS custom properties. Mobile: centered static glow.
+- `HeroEntrance.tsx`: orchestrated entrance — eyebrow fade → H1 translate-up (600ms) → subhead fade (delay 600ms) → CTAs spring bounce (delay 800ms)
+- Hero background: Unsplash parking structure at dusk with 75% --bg-base overlay
+
+**CountUp** (`src/components/motion/CountUp.tsx`):
+- Animated number counters on credibility band (70+, $10B, 800+, 3,000+)
+- IntersectionObserver at 30% threshold, ease-out-cubic, 1.5s duration, fires once
+- Drop shadow glow on completion
+
+**Card interactions upgraded** (`.card-lift` in globals.css):
+- translateY(-4px), accent-dim border, composite shadow (12px blur + 24px accent glow)
+- `.card-lift-accent` for highlighted cards: -6px lift, full accent border
+- Applied across homepage, services, insights
+
+**Button sheen** (`.cta-primary`):
+- Gradient sweep left-to-right on hover, 800ms single pass, via CSS pseudo-element
+
+**Section reveals recalibrated** (`Reveal.tsx` rewrite):
+- translateY 32px (was 16px), 600ms duration, standard easing
+- 15% intersection threshold, fires once per element
+- Supports delay prop for stagger
+
+**Route progress bar** (`RouteProgress.tsx`):
+- 2px accent bar at viewport top, fires on pathname change
+- 0→80% in 300ms, 80→100% in 200ms, fade out
+
+### Unsplash Imagery (7 images, all unique)
+
+| Slot | File | Dimensions | Usage |
+|---|---|---|---|
+| Hero | `hero-structure.jpg` | 2400x1400 | Homepage hero background (75% overlay) |
+| Who We Are | `team-contextual.jpg` | 1600x800 | Page header band (70% overlay) |
+| Services | `services-contextual.jpg` | 1600x800 | Page header band |
+| Insights | `insights-contextual.jpg` | 1600x800 | Page header band |
+| How It Works | `how-it-works-contextual.jpg` | 1600x800 | Page header band |
+| Contact | `contact-contextual.jpg` | 1600x800 | Page header band (80% overlay) |
+| Proof | `pact-proof-placeholder.jpg` | 1200x720 | PACT proof section (purple tint overlay) |
+
+All served via `next/image` with explicit dimensions, quality 80, hero marked `priority`. Attribution manifest at `public/imagery/MANIFEST.json`.
+
+Shared `PageHeaderBand` component (`src/components/PageHeaderBand.tsx`) for consistent overlay treatment across pages.
+
+### MDX Code Syntax Highlighting (shipped after Session 8 deferral)
+
+- Shiki v4 integrated into custom `renderMarkdown` function (`src/lib/insights/render.ts`)
+- Theme: `github-dark-dimmed`
+- Styled via globals.css: `--bg-elevated` container, `--border` border, 8px radius, language label pill
+- Code block added to launch post: PACT exception taxonomy TypeScript example
+- Blockquote styling: accent left border, 18px italic
+
+### Shipped Components
+
+- `src/components/hero/HeroSpotlight.tsx` — cursor-aware glow
+- `src/components/hero/HeroEntrance.tsx` — orchestrated hero entrance (5 sub-components)
+- `src/components/motion/CountUp.tsx` — animated number counter
+- `src/components/motion/Reveal.tsx` — recalibrated scroll reveal (32px, 600ms)
+- `src/components/motion/RouteProgress.tsx` — page transition progress bar
+- `src/components/CredibilityBand.tsx` — extracted as client component with CountUp
+- `src/components/PageHeaderBand.tsx` — reusable image header band
+- `src/lib/motion/tokens.ts` — motion design tokens
+- `src/lib/motion/useReducedMotion.ts` — OS preference hook
+- `src/lib/insights/render.ts` — Shiki-powered markdown renderer
+
+### Documentation
+
+- NEW: `docs/motion.md` — motion system reference
+- NEW: `public/imagery/MANIFEST.json` — Unsplash attribution
+
+### Deferred
+
+- SVG line-draw icon reveals (capability icons stroke animation) — logged to backlog
+- Nav scroll transformation (height compression 80→56px) — logged to backlog
+- Real PACT screenshot, team headshots (unchanged — see docs/assets-needed.md)
+- LLC mailing address, full legal review (unchanged)

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ClosingCTA } from "@/components/ClosingCTA";
+import { PageHeaderBand } from "@/components/PageHeaderBand";
 
 export const metadata: Metadata = {
   title: "Who We Are — Encompass Parking",
@@ -51,19 +52,21 @@ export default function WhoWeAre() {
   return (
     <>
       {/* ─── Page Header ─── */}
-      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-        <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-          The Team
-        </p>
-        <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
-          Built by operators who&rsquo;ve owned the problem.
-        </h1>
-        <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-          Encompass is what you build when you stop being consultants who
-          diagnose the problem and start being the control layer that prevents
-          it from recurring.
-        </p>
-      </section>
+      <PageHeaderBand imageSrc="/imagery/team-contextual.jpg">
+        <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
+          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
+            The Team
+          </p>
+          <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
+            Built by operators who&rsquo;ve owned the problem.
+          </h1>
+          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
+            Encompass is what you build when you stop being consultants who
+            diagnose the problem and start being the control layer that prevents
+            it from recurring.
+          </p>
+        </section>
+      </PageHeaderBand>
 
       {/* ─── Principal Bios ─── */}
       {principals.map((p, i) => (

@@ -7,6 +7,11 @@ import { CommandCenterIcon } from "@/components/icons/CommandCenterIcon";
 import { BreakerGrid } from "@/components/breakers/BreakerGrid";
 import { BreakerDiagonal } from "@/components/breakers/BreakerDiagonal";
 import { BreakerDots } from "@/components/breakers/BreakerDots";
+import Image from "next/image";
+import { HeroSpotlight } from "@/components/hero/HeroSpotlight";
+import { HeroEntrance, HeroEyebrow, HeroTitle, HeroSubhead, HeroCTAs } from "@/components/hero/HeroEntrance";
+import { Reveal } from "@/components/motion/Reveal";
+import { CredibilityBand } from "@/components/CredibilityBand";
 
 const capabilities = [
   {
@@ -97,65 +102,57 @@ const platforms = [
   },
 ];
 
-const stats = [
-  { value: "70+", label: "years combined in parking operations" },
-  { value: "LAX", label: "$85M revenue, 800+ employees managed" },
-  { value: "$10B", label: "One Beverly Hills \u2014 active engagement" },
-  { value: "800+", label: "PARCS and technology projects delivered" },
-  { value: "3,000+", label: "Parking PI mystery shops completed" },
-];
 
 export default function Home() {
   return (
     <>
-      {/* ─── Hero ───
-        Hero bg: full-bleed, min-height 720px desktop / 600px mobile.
-        Overlay: --bg-base at 0.75 opacity.
-        Source: institutional parking structure at dusk, wide aspect, downtown LA preferred.
-        Path: /public/hero/hero-bg.jpg (2400x1400 source, srcset 1x/2x).
-        Motion: parallax 0.3x scroll speed desktop, static mobile.
-        Placeholder: gradient until real asset is supplied.
-      */}
-      <section
-        className="relative min-h-[600px] md:min-h-[720px]"
-        style={{
-          background:
-            "linear-gradient(135deg, #0A0A0B 0%, #18181B 50%, #0A0A0B 100%)",
-        }}
-      >
-        <div className="mx-auto max-w-[1200px] px-6 pt-24 pb-24 md:pt-32 md:pb-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-            Controllership for Parking Revenue
-          </p>
-          <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
-            Operators run the garage.{" "}
-            <span className="text-accent-text">We own the proof.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-            Encompass is the controllership layer for parking assets. We sit
-            above any operator and any technology stack &mdash; reconciling
-            revenue, governing exceptions, and continuously improving NOI
-            across every site in the portfolio.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link
-              href="/contact"
-              className="rounded-full bg-accent px-6 py-3 text-14 font-semibold text-white transition-colors hover:bg-accent-dim"
-            >
-              Request an engagement
-            </Link>
-            <Link
-              href="/contact#schedule"
-              className="group flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary"
-            >
-              Book an intro call
-              <span className="transition-transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
-            </Link>
+      {/* ─── Hero ─── */}
+      <HeroSpotlight>
+        <section className="relative min-h-[600px] md:min-h-[720px]">
+          <Image
+            src="/imagery/hero-structure.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+            quality={80}
+          />
+          <div className="absolute inset-0 bg-bg-base/75" />
+          <div className="relative mx-auto max-w-[1200px] px-6 pt-24 pb-24 md:pt-32 md:pb-32">
+            <HeroEntrance>
+              <HeroEyebrow>Controllership for Parking Revenue</HeroEyebrow>
+              <HeroTitle>
+                Operators run the garage.{" "}
+                <span className="text-accent-text">We own the proof.</span>
+              </HeroTitle>
+              <HeroSubhead>
+                Encompass is the controllership layer for parking assets. We sit
+                above any operator and any technology stack &mdash; reconciling
+                revenue, governing exceptions, and continuously improving NOI
+                across every site in the portfolio.
+              </HeroSubhead>
+              <HeroCTAs>
+                <Link
+                  href="/contact"
+                  className="cta-primary rounded-full bg-accent px-6 py-3 text-14 font-semibold text-white transition-colors hover:bg-accent-dim"
+                >
+                  Request an engagement
+                </Link>
+                <Link
+                  href="/contact#schedule"
+                  className="group flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary"
+                >
+                  Book an intro call
+                  <span className="transition-transform group-hover:translate-x-0.5">
+                    &rarr;
+                  </span>
+                </Link>
+              </HeroCTAs>
+            </HeroEntrance>
           </div>
-        </div>
-      </section>
+        </section>
+      </HeroSpotlight>
 
       {/* ─── Why Encompass Exists (The Control Gap) ─── */}
       <section className="border-t border-border">
@@ -301,7 +298,7 @@ export default function Home() {
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {platforms.map((p) => (
-              <div key={p.key} className="card-hover rounded-lg border border-border bg-bg-raised p-8">
+              <div key={p.key} className="card-lift rounded-lg border border-border bg-bg-raised p-8">
                 <div className="flex h-8 w-8 items-center justify-center">
                   {platformIcons[p.key]}
                 </div>
@@ -321,28 +318,7 @@ export default function Home() {
       <BreakerDiagonal />
 
       {/* ─── Team Credibility Band ─── */}
-      <section className="border-b border-border bg-bg-raised">
-        <div className="mx-auto max-w-[1200px] px-6 py-16">
-          <p className="mb-10 text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            Built by operators who&rsquo;ve owned the problem
-          </p>
-          <div className="flex flex-wrap items-baseline justify-between gap-8">
-            {stats.map((s, i) => (
-              <div key={i} className="flex items-baseline gap-3">
-                <span className="font-mono text-32 font-medium text-text-primary md:text-48">
-                  {s.value}
-                </span>
-                <span className="max-w-[160px] text-14 leading-snug text-text-tertiary">
-                  {s.label}
-                </span>
-                {i < stats.length - 1 && (
-                  <span className="ml-4 hidden h-10 w-px bg-border md:block" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CredibilityBand />
 
       {/* ─── Proof Visual ─── */}
       <section className="border-b border-border">
@@ -356,11 +332,16 @@ export default function Home() {
           {/* PACT screenshot placeholder: /public/proof/pact-baseline.png
             Dimensions: 1200x720 desktop, full-width mobile.
             Ken Burns: scale 1.0 → 1.03 over 8s, ease-in-out, reverses on desktop. Static mobile. */}
-          <div className="mt-12 aspect-[5/3] w-full overflow-hidden rounded-lg border border-border bg-bg-raised flex items-center justify-center">
-            <p className="text-14 text-text-tertiary">
-              PACT dashboard screenshot &mdash; baseline dossier view
-              (placeholder)
-            </p>
+          <div className="mt-12 relative aspect-[5/3] w-full overflow-hidden rounded-lg border border-border">
+            <Image
+              src="/imagery/pact-proof-placeholder.jpg"
+              alt="PACT governance dashboard — baseline dossier view"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              quality={80}
+            />
+            <div className="absolute inset-0" style={{ background: "rgba(108, 92, 231, 0.08)", mixBlendMode: "multiply" }} />
           </div>
           <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
             Session-to-deposit tie-out. Exception governance with reason codes

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ClosingCTA } from "@/components/ClosingCTA";
+import { PageHeaderBand } from "@/components/PageHeaderBand";
 
 export const metadata: Metadata = {
   title: "How It Works — Encompass Parking",
@@ -42,20 +43,22 @@ export default function HowItWorks() {
   return (
     <>
       {/* ─── Page Header ─── */}
-      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-        <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-          The Operating Model
-        </p>
-        <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
-          Four lanes. One standard of rigor.
-        </h1>
-        <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-          Encompass scales by turning parking expertise into standard work. The
-          objective is not founder-driven heroics across more garages &mdash; it
-          is a repeatable production system that delivers the same governance
-          quality at site 200 as it does at site 5.
-        </p>
-      </section>
+      <PageHeaderBand imageSrc="/imagery/how-it-works-contextual.jpg">
+        <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
+          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
+            The Operating Model
+          </p>
+          <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
+            Four lanes. One standard of rigor.
+          </h1>
+          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
+            Encompass scales by turning parking expertise into standard work. The
+            objective is not founder-driven heroics across more garages &mdash; it
+            is a repeatable production system that delivers the same governance
+            quality at site 200 as it does at site 5.
+          </p>
+        </section>
+      </PageHeaderBand>
 
       {/* ─── Four Lanes ─── */}
       {lanes.map((lane, i) => (

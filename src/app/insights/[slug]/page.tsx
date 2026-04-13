@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/insights";
+import { renderMarkdown } from "@/lib/insights/render";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 
 export async function generateStaticParams() {
@@ -86,7 +87,7 @@ export default async function InsightPost({
 
       {/* Article body */}
       <div className="prose-encompass mt-12">
-        <div dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }} />
+        <div dangerouslySetInnerHTML={{ __html: await renderMarkdown(post.content) }} />
       </div>
 
       {/* Author card */}
@@ -164,15 +165,4 @@ export default async function InsightPost({
       />
     </article>
   );
-}
-
-// Simple markdown-to-HTML renderer for MDX content served via gray-matter
-function renderMarkdown(content: string): string {
-  return content
-    .replace(/^## (.+)$/gm, '<h2 class="mt-12 mb-4 text-24 font-semibold text-text-primary">$1</h2>')
-    .replace(/^### (.+)$/gm, '<h3 class="mt-8 mb-3 text-18 font-semibold text-text-primary">$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong class="text-text-primary">$1</strong>')
-    .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    .replace(/^(?!<[huo])((?!^$).+)$/gm, '<p class="mb-6 text-16 leading-relaxed text-text-secondary">$1</p>')
-    .replace(/\n{2,}/g, "\n");
 }

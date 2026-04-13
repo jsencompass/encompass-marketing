@@ -23,6 +23,18 @@ A controllership layer is a standing discipline — continuous, owner-aligned, a
 
 This is not a software product. It is not outsourcing operations. It is the missing governance function that makes a parking asset behave like the revenue business it actually is.
 
+The discipline is codifiable. A simple shape for how we classify an exception might look like:
+
+```typescript
+// Example: a PACT exception taxonomy sketch
+type Exception = {
+  id: string;
+  reasonCode: 'GATE_VEND' | 'REFUND' | 'VOID' | 'MANUAL_OVERRIDE';
+  impact: number;   // USD
+  status: 'open' | 'under-review' | 'closed';
+};
+```
+
 ## Why now
 
 Automation was supposed to make parking simpler. In practice, it often turned the garage into a set-it-and-forget-it transaction stream. When an operation becomes a dashboard, attention shifts to uptime and throughput. What gets lost is the standing discipline that makes revenue provable and continuously improvable.

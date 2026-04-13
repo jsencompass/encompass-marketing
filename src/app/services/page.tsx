@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { ComparisonMatrix } from "./ComparisonMatrix";
+import { PageHeaderBand } from "@/components/PageHeaderBand";
 
 export const metadata: Metadata = {
   title: "Services & Pricing — Encompass Parking",
@@ -13,20 +14,22 @@ export default function Services() {
   return (
     <>
       {/* ─── Page Header ─── */}
-      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-        <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-          Services &amp; Pricing
-        </p>
-        <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
-          Three tiers. Modular add-ons. No hidden scope.
-        </h1>
-        <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-          Every engagement is priced per site-month against a published tier.
-          Scope expansion happens through paid module attach, not absorption.
-          Implementation plus Parking Performance Baseline is required for
-          every new site.
-        </p>
-      </section>
+      <PageHeaderBand imageSrc="/imagery/services-contextual.jpg">
+        <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
+          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
+            Services &amp; Pricing
+          </p>
+          <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
+            Three tiers. Modular add-ons. No hidden scope.
+          </h1>
+          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
+            Every engagement is priced per site-month against a published tier.
+            Scope expansion happens through paid module attach, not absorption.
+            Implementation plus Parking Performance Baseline is required for
+            every new site.
+          </p>
+        </section>
+      </PageHeaderBand>
 
       {/* ─── Comparison Matrix ─── */}
       <ComparisonMatrix />
@@ -69,7 +72,7 @@ export default function Services() {
             Attach where coverage economics justify it.
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <div className="card-hover rounded-lg border border-border bg-bg-raised p-8">
+            <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
               <h3 className="text-18 font-semibold text-text-primary">
                 Remote Command Center
               </h3>
@@ -83,7 +86,7 @@ export default function Services() {
                 time-stamped evidence.
               </p>
             </div>
-            <div className="card-hover rounded-lg border border-border bg-bg-raised p-8">
+            <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
               <h3 className="text-18 font-semibold text-text-primary">
                 Remote Call Center
               </h3>
