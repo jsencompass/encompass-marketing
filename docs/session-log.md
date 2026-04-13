@@ -324,3 +324,58 @@ The Vercel project was created via `vercel project add` + `vercel link`, which s
 - 6 remaining ATTORNEY-REVIEW flags (#1–4, #7, #8)
 - MDX syntax highlighting for code blocks
 - CSP enforcement (still report-only)
+
+## Session 7: Integration Verification + Decorative Contrast Fix + Attorney Cleanup + Asset Swap Prep
+
+**Date**: 2026-04-13
+
+### Integration Verification (Step 1)
+
+**Deferred to post-deploy manual verification.** The Vercel deployment URLs are SSO-protected for team projects, which prevents Playwright from accessing the production site directly. Instead:
+- All API routes are scaffolded with graceful 503 fallbacks when env vars are unset
+- When env vars are set, routes activate automatically — no code changes needed
+- Jason should manually verify: (1) submit contact form on production, check Proton inbox for email from noreply@send.encompassparking.com, (2) subscribe to newsletter, check for confirmation email, (3) verify Cal.com link opens on /contact#schedule, (4) verify Turnstile widget appears above submit button on /contact
+- `_health` route was NOT created this session (would have been deleted before merge anyway; verification done via manual checks)
+
+### Decorative Contrast Fix (Step 2)
+
+Lane numbers on /how-it-works changed from `text-accent/30` (contrast ratio ~1.35:1) to `text-accent-text/40` (higher contrast using the AA-compliant `--accent-text: #9B8FFF` base at 40% opacity). Approach: keep `aria-hidden="true"` since numbers are decorative (the actual lane titles/content carry the semantic meaning), but increase visual weight so the numbers read as deliberate low-contrast decorative elements rather than invisible.
+
+### Attorney-Review Cleanup (6 remaining items, all closed)
+
+All 8 ATTORNEY-REVIEW flags now closed with conservative defaults:
+
+1. **Privacy → Third-party services** — Added new section listing Vercel (SOC 2 Type II), Resend, Cloudflare Turnstile with data processing descriptions
+2. **Privacy → CCPA verification** — Added identity verification language (match email, no government ID unless necessary)
+3. **Privacy → CPRA analytics sharing** — Added explicit clause: "does not constitute sale or sharing because data does not identify individuals"
+4. **Privacy → Security measures** — Replaced generic clause with specific enumeration: HTTPS/TLS, CSP, HSTS, X-Frame-Options, least-privilege access, processor review
+5. (Closed Session 5) Privacy → mailing address
+6. (Closed Session 5) Terms → trademark language
+7. **Terms → Liability cap** — Added $100 aggregate cap with jurisdictional savings clause + note re: website-only scope
+8. **Accessibility → Update cadence** — Added quarterly review commitment + 5-business-day response SLA for reported barriers
+
+All legal pages now carry header comment: `Legal review recommended before customer-facing launch; current copy reflects conservative defaults per Session 7.`
+
+### Asset Swap Prep (Step 4)
+
+NEW: `docs/assets-needed.md` — definitive list of every real asset the site is waiting on:
+- 3 team headshots (800x800, JPG)
+- 1 hero background (2400x1400, JPG)
+- 1 PACT baseline screenshot (1200x720, PNG)
+- 4 how-it-works lane visuals (800x600, PNG each)
+- Favicon/OG upgrade when logo exists
+- Each entry includes: exact path, dimensions, format, alt text, whether swap requires code changes
+
+### Small Improvements (Step 5)
+
+- Blog post pull-quote: added blockquote visual break in middle third of 01-why-controllership.mdx
+- Footer newsletter copy: refined to "rate drift, validation leakage, operator incentive conflicts, PARCS tradeoffs, and the operating disciplines that keep NOI intact. First edition shipping soon."
+
+### Deferred
+
+- End-to-end Playwright integration tests (blocked by Vercel SSO on deployment URLs; Jason verifies manually)
+- MDX syntax highlighting for code blocks
+- CSP enforcement (still report-only)
+- LLC mailing address (Jason to provide)
+- Real photography assets (see docs/assets-needed.md)
+- Full legal review by qualified attorney

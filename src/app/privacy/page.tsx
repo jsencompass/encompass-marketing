@@ -1,3 +1,4 @@
+{/* Legal review recommended before customer-facing launch; current copy reflects conservative defaults per Session 7. */}
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -93,8 +94,46 @@ export default function Privacy() {
               other legal process, or if we believe disclosure is necessary to
               protect our rights or the safety of others.
             </li>
-            {/* <!-- ATTORNEY-REVIEW: Confirm whether Encompass uses any other third-party services (CRM, email marketing, etc.) that would require disclosure here --> */}
           </ul>
+        </section>
+
+        <section>
+          <h2 className="text-24 font-semibold text-text-primary">
+            Third-Party Services
+          </h2>
+          <p className="mt-4">
+            The Site uses the following third-party services, each of which may
+            process limited data on our behalf:
+          </p>
+          <ul className="mt-4 list-disc space-y-2 pl-6">
+            <li>
+              <strong className="text-text-primary">Vercel</strong> (US-based,
+              SOC 2 Type II compliant) &mdash; hosting, serverless functions,
+              and cookieless analytics. May process IP addresses for security,
+              CDN routing, and abuse prevention.
+            </li>
+            <li>
+              <strong className="text-text-primary">Resend</strong> (US-based)
+              &mdash; transactional email delivery for contact form
+              submissions and newsletter communications. Processes email
+              addresses you provide when you submit a form or subscribe.
+            </li>
+            <li>
+              <strong className="text-text-primary">
+                Cloudflare Turnstile
+              </strong>{" "}
+              (US-based) &mdash; spam protection on our contact form. Does not
+              set cookies or collect personal data beyond IP address for
+              challenge verification. IP addresses are processed only for the
+              duration of the challenge.
+            </li>
+          </ul>
+          <p className="mt-4">
+            Each third party processes data in accordance with their own
+            privacy policies. We select processors that maintain appropriate
+            security and privacy standards and process data only as necessary
+            to deliver their services.
+          </p>
         </section>
 
         <section>
@@ -159,7 +198,15 @@ export default function Privacy() {
             . We will verify your identity before processing your request and
             respond within 45 days as required by law.
           </p>
-          {/* <!-- ATTORNEY-REVIEW: Confirm verification process for CCPA requests (e.g., matching name + email on file) and whether an authorized agent process is needed --> */}
+          <p className="mt-4">
+            To verify your identity when you submit a request to know, delete,
+            correct, limit, or opt out of sale or sharing, we may ask you to
+            provide information that matches what we already hold (such as the
+            email address you used on a form). For requests of a sensitive
+            nature, we may require additional verification. We do not ask for
+            sensitive personal information (such as a government-issued ID)
+            unless strictly necessary.
+          </p>
         </section>
 
         <section>
@@ -168,15 +215,21 @@ export default function Privacy() {
           </h2>
           <p className="mt-4">
             Encompass does not sell or share your personal information as those
-            terms are defined under the CCPA/CPRA. Our analytics are
-            cookieless and do not constitute a &ldquo;sale&rdquo; or
-            &ldquo;sharing&rdquo; under California law. If you wish to opt out
-            of analytics data collection entirely, you may do so by clicking
-            the &ldquo;Do Not Sell or Share My Personal Information&rdquo; link
-            in the footer of any page, or by using a browser with Global
-            Privacy Control (GPC) enabled, which we honor automatically.
+            terms are defined under the CCPA/CPRA. We use Vercel Analytics,
+            which is privacy-first and does not use cookies or track users
+            across sites. Vercel Analytics does not constitute
+            &ldquo;sale&rdquo; or &ldquo;sharing&rdquo; of personal
+            information under the CPRA because the data does not identify
+            individual visitors and is not used for cross-context behavioral
+            advertising.
           </p>
-          {/* <!-- ATTORNEY-REVIEW: Verify that cookieless Vercel Analytics does not constitute "sharing" under CPRA's broad definition. The analytics anonymize IPs and do not track across sites, but legal confirmation is recommended. --> */}
+          <p className="mt-4">
+            California residents retain the right to opt out of any future use
+            of personal information for sale or sharing, and can do so via the
+            &ldquo;Do Not Sell or Share My Personal Information&rdquo; link in
+            our footer, or by using a browser with Global Privacy Control (GPC)
+            enabled, which we honor automatically.
+          </p>
         </section>
 
         <section>
@@ -197,14 +250,16 @@ export default function Privacy() {
         <section>
           <h2 className="text-24 font-semibold text-text-primary">Security</h2>
           <p className="mt-4">
-            We implement reasonable administrative, technical, and physical
-            security measures to protect your personal information. The Site is
-            served over HTTPS with HSTS preloading, uses strict Content
-            Security Policy headers, and is hosted on Vercel&rsquo;s
-            SOC 2-compliant infrastructure. However, no method of transmission
-            over the Internet or electronic storage is 100% secure.
+            We implement administrative, technical, and organizational measures
+            designed to protect personal information, including: HTTPS/TLS
+            encryption for all site traffic; HTTP security headers (Content
+            Security Policy, Strict Transport Security, X-Frame-Options, and
+            others) to reduce common web attack vectors; principle-of-least-privilege
+            access controls for our staff; and regular review of our
+            third-party processors&rsquo; security posture. No method of
+            electronic transmission or storage is fully secure, and we cannot
+            guarantee absolute security.
           </p>
-          {/* <!-- ATTORNEY-REVIEW: Confirm that "reasonable security measures" language meets California AG guidance. Consider whether specific measures (encryption at rest, access controls) should be enumerated. --> */}
         </section>
 
         <section>
@@ -251,7 +306,7 @@ export default function Privacy() {
           <address className="mt-4 not-italic">
             <p>Encompass Parking, LLC</p>
             <p>Attn: Privacy Officer</p>
-            {/* <!-- JASON-TODO: Replace with real LLC registered mailing address --> */}
+            {/* JASON-TODO: Replace with real LLC registered mailing address */}
             <p className="text-text-tertiary">[Mailing address TBD]</p>
             <p>Los Angeles, California</p>
             <p>

@@ -1,3 +1,4 @@
+{/* Legal review recommended before customer-facing launch; current copy reflects conservative defaults per Session 7. */}
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -126,7 +127,21 @@ export default function Terms() {
             THE SITE; OR (C) UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR
             TRANSMISSIONS OR CONTENT.
           </p>
-          {/* <!-- ATTORNEY-REVIEW: Consider adding a liability cap (e.g., damages not to exceed $100 or the amount paid to Encompass in the preceding 12 months). California courts may require some floor of liability. --> */}
+          <p className="mt-4">
+            TO THE FULLEST EXTENT PERMITTED BY LAW, ENCOMPASS PARKING,
+            LLC&rsquo;S AGGREGATE LIABILITY ARISING OUT OF OR RELATING TO YOUR
+            USE OF THIS WEBSITE SHALL NOT EXCEED ONE HUNDRED U.S. DOLLARS
+            ($100.00). THIS LIMITATION APPLIES REGARDLESS OF THE THEORY OF
+            LIABILITY, INCLUDING CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY,
+            OR ANY OTHER BASIS. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION
+            OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE
+            LIMITATION MAY NOT APPLY TO YOU.
+          </p>
+          <p className="mt-4 text-14 text-text-tertiary">
+            Note: This limitation of liability covers use of the website only,
+            not the underlying PACT service which is governed by its own
+            contractual agreements.
+          </p>
         </section>
 
         <section>
