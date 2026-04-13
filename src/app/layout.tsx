@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Nav } from "@/components/chrome/Nav";
 import { Footer } from "@/components/chrome/Footer";
+import { ConsentBanner } from "@/components/compliance/ConsentBanner";
+import { AnalyticsProvider } from "@/components/compliance/AnalyticsProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -52,6 +54,8 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ConsentBanner />
+        <AnalyticsProvider />
       </body>
     </html>
   );

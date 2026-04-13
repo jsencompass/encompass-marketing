@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useConsent } from "@/components/compliance/ConsentBanner";
 
 const columns = [
   {
@@ -24,12 +27,23 @@ const columns = [
       { label: "Book an Intro Call", href: "/contact#schedule" },
     ],
   },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Use", href: "/terms" },
+      { label: "Accessibility", href: "/accessibility" },
+      { label: "Cookie & Tracking Notice", href: "/cookies" },
+    ],
+  },
 ];
 
 export function Footer() {
+  const { reopen } = useConsent();
+
   return (
     <footer className="border-t border-border bg-bg-base">
-      <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-16 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4">
         {columns.map((col) => (
           <div key={col.title}>
             <h3 className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
@@ -65,13 +79,26 @@ export function Footer() {
         ))}
       </div>
       <div className="border-t border-border">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-6">
+        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-6 py-6">
           <p className="text-12 text-text-tertiary">
-            &copy; {new Date().getFullYear()} Encompass Parking, LLC. All rights reserved.
+            &copy; {new Date().getFullYear()} Encompass Parking, LLC. All
+            rights reserved.
           </p>
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            Encompass Parking, LLC &middot; Los Angeles
-          </p>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => {
+                reopen();
+                window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+              }}
+              className="text-12 text-text-tertiary underline underline-offset-4 transition-colors hover:text-text-secondary"
+            >
+              Do Not Sell or Share My Personal Information
+            </button>
+            <span className="text-12 text-text-tertiary">·</span>
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
+              Encompass Parking, LLC &middot; Los Angeles
+            </p>
+          </div>
         </div>
       </div>
     </footer>

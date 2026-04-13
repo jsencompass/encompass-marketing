@@ -52,46 +52,59 @@ const tiers = [
   },
 ];
 
+const platforms = [
+  {
+    name: "PACT\u2122",
+    title: "Parking Asset Control Tower",
+    description:
+      "The vendor-agnostic controllership layer. Reconciles revenue, governs exceptions, enforces policy across any operator and any stack.",
+  },
+  {
+    name: "Parking PI\u2122",
+    title: "Mystery Shop Platform",
+    description:
+      "The industry\u2019s only mystery shop platform purpose-built for parking. 3,000+ shops completed. Shopper portal, weighted scoring, client dashboard.",
+  },
+  {
+    name: "ProTrack\u2122",
+    title: "Project Management",
+    description:
+      "Project management platform for PARCS installations and technology upgrades. 800+ projects. Backbone of institutional-grade delivery.",
+  },
+  {
+    name: "Command Center",
+    title: "Remote Operations",
+    description:
+      "Remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. 24/7 coverage with permissioned operational response.",
+  },
+];
+
 const stats = [
   { value: "70+", label: "years combined in parking operations" },
   { value: "LAX", label: "$85M revenue, 800+ employees managed" },
-  { value: "$10B", label: "One Beverly Hills — active engagement" },
+  { value: "$10B", label: "One Beverly Hills \u2014 active engagement" },
   { value: "800+", label: "PARCS and technology projects delivered" },
   { value: "3,000+", label: "Parking PI mystery shops completed" },
-];
-
-const team = [
-  {
-    name: "Joe Dudek",
-    initials: "JD",
-    role: "Operations & Governance",
-    detail:
-      "Ran LAX parking — $85M revenue, 800+ employees, 40% net revenue increase.",
-    anchor: "#joe",
-  },
-  {
-    name: "Jason Scott",
-    initials: "JS",
-    role: "Delivery & Assurance",
-    detail:
-      "800+ projects, $150M+ installation value, built the Parking PI platform from concept to 3,000+ shops.",
-    anchor: "#jason",
-  },
-  {
-    name: "Steven Grant",
-    initials: "SG",
-    role: "Technology & Architecture",
-    detail:
-      "Oracle, Booz Allen, LTK Engineering. Five major airport deployments.",
-    anchor: "#steven",
-  },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* ─── Hero ─── */}
-      <section className="min-h-[520px] md:min-h-[640px]">
+      {/* ─── Hero ───
+        Hero bg: full-bleed, min-height 720px desktop / 600px mobile.
+        Overlay: --bg-base at 0.75 opacity.
+        Source: institutional parking structure at dusk, wide aspect, downtown LA preferred.
+        Path: /public/hero/hero-bg.jpg (2400x1400 source, srcset 1x/2x).
+        Motion: parallax 0.3x scroll speed desktop, static mobile.
+        Placeholder: gradient until real asset is supplied.
+      */}
+      <section
+        className="relative min-h-[600px] md:min-h-[720px]"
+        style={{
+          background:
+            "linear-gradient(135deg, #0A0A0B 0%, #18181B 50%, #0A0A0B 100%)",
+        }}
+      >
         <div className="mx-auto max-w-[1200px] px-6 pt-24 pb-24 md:pt-32 md:pb-32">
           <p className="text-12 font-semibold uppercase tracking-widest text-accent">
             Controllership for Parking Revenue
@@ -102,9 +115,9 @@ export default function Home() {
           </h1>
           <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
             Encompass is the controllership layer for parking assets. We sit
-            above any operator and any technology stack — reconciling revenue,
-            governing exceptions, and continuously improving NOI across every
-            site in the portfolio.
+            above any operator and any technology stack &mdash; reconciling
+            revenue, governing exceptions, and continuously improving NOI
+            across every site in the portfolio.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
@@ -126,22 +139,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── The Control Gap ─── */}
+      {/* ─── Why Encompass Exists (The Control Gap) ─── */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
           <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            The Structural Problem
+            Why Encompass Exists
           </p>
           <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            Nobody owns proof.
+            Until Encompass, nobody did.
           </h2>
           <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
             Parking is a $30B industry managed by capable parties across
             fractured seams. Operators run throughput. PARCS vendors run
             devices. Finance teams receive month-end packets. Everyone is doing
-            a real job — and the full chain of proof, closure, and policy
-            discipline belongs to no one. That gap is where NOI erodes quietly,
-            through drift, exceptions, and controls that go unverified.
+            a real job &mdash; and until Encompass, the full chain of proof,
+            closure, and policy discipline belonged to no one. That gap is
+            where NOI erodes quietly, through drift, exceptions, and controls
+            that go unverified. We built the controllership layer to close it.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
@@ -171,8 +185,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Section breaker: decorative data motif
+        Spec: abstract data motif — subtle grid pattern or low-opacity dashboard fragment in --accent-dim.
+        Path: /public/breakers/breaker-01.svg. Static. Decorative (no alt text).
+        Placeholder: CSS repeating-linear-gradient at 2% opacity. */}
+      <div
+        className="h-[240px] w-full border-y border-border"
+        style={{
+          background: `repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 59px,
+            rgba(108, 92, 231, 0.02) 59px,
+            rgba(108, 92, 231, 0.02) 60px
+          ), repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 59px,
+            rgba(108, 92, 231, 0.02) 59px,
+            rgba(108, 92, 231, 0.02) 60px
+          )`,
+        }}
+        role="presentation"
+      />
+
       {/* ─── What We Do — PACT ─── */}
-      <section className="border-t border-border">
+      <section className="border-b border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
           <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
             Parking Asset Control Tower
@@ -210,7 +248,7 @@ export default function Home() {
       </section>
 
       {/* ─── Services & Pricing ─── */}
-      <section className="border-t border-border">
+      <section className="border-b border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
           <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
             Services &amp; Pricing
@@ -256,8 +294,58 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── Capabilities Band ─── */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
+            What We Bring to the Asset
+          </p>
+          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
+            Four proprietary platforms. One recurring operating system.
+          </h2>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {platforms.map((p) => (
+              <div key={p.name} className="rounded-lg border border-border bg-bg-raised p-8">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-bg-elevated">
+                  <div className="h-3 w-3 rounded-full bg-accent" />
+                </div>
+                <h3 className="mt-4 text-16 font-semibold text-text-primary">
+                  {p.name}
+                </h3>
+                <p className="mt-1 text-12 text-text-tertiary">{p.title}</p>
+                <p className="mt-3 text-14 leading-relaxed text-text-secondary">
+                  {p.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section breaker 02: decorative
+        Path: /public/breakers/breaker-02.svg. Different motif from breaker-01. */}
+      <div
+        className="h-[240px] w-full border-b border-border"
+        style={{
+          background: `repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 79px,
+            rgba(108, 92, 231, 0.02) 79px,
+            rgba(108, 92, 231, 0.02) 80px
+          ), repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 79px,
+            rgba(108, 92, 231, 0.02) 79px,
+            rgba(108, 92, 231, 0.02) 80px
+          )`,
+        }}
+        role="presentation"
+      />
+
       {/* ─── Team Credibility Band ─── */}
-      <section className="border-t border-border bg-bg-raised">
+      <section className="border-b border-border bg-bg-raised">
         <div className="mx-auto max-w-[1200px] px-6 py-16">
           <p className="mb-10 text-12 font-semibold uppercase tracking-widest text-text-tertiary">
             Built by operators who&rsquo;ve owned the problem
@@ -281,7 +369,7 @@ export default function Home() {
       </section>
 
       {/* ─── Proof Visual ─── */}
-      <section className="border-t border-border">
+      <section className="border-b border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
           <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
             What Governance Looks Like
@@ -289,9 +377,13 @@ export default function Home() {
           <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
             PACT makes revenue proof continuous.
           </h2>
-          <div className="mt-12 aspect-[5/3] w-full rounded-lg border border-border bg-bg-raised flex items-center justify-center">
+          {/* PACT screenshot placeholder: /public/proof/pact-baseline.png
+            Dimensions: 1200x720 desktop, full-width mobile.
+            Ken Burns: scale 1.0 → 1.03 over 8s, ease-in-out, reverses on desktop. Static mobile. */}
+          <div className="mt-12 aspect-[5/3] w-full overflow-hidden rounded-lg border border-border bg-bg-raised flex items-center justify-center">
             <p className="text-14 text-text-tertiary">
-              PACT dashboard screenshot — baseline dossier view (placeholder)
+              PACT dashboard screenshot &mdash; baseline dossier view
+              (placeholder)
             </p>
           </div>
           <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
@@ -302,52 +394,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Who We Are Teaser ─── */}
-      <section className="border-t border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            The Team
-          </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-            Three principals. Seventy years of parking.
-          </h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {team.map((t) => (
-              <Link
-                key={t.name}
-                href={`/who-we-are${t.anchor}`}
-                className="group rounded-lg border border-border bg-bg-raised p-8 transition-colors hover:border-accent/40"
-              >
-                <div className="mx-auto flex h-[120px] w-[120px] items-center justify-center rounded-full bg-bg-elevated">
-                  <span className="text-36 font-semibold text-text-secondary">
-                    {t.initials}
-                  </span>
-                </div>
-                <h3 className="mt-6 text-center text-18 font-semibold text-text-primary group-hover:text-accent">
-                  {t.name}
-                </h3>
-                <p className="mt-1 text-center text-14 text-text-secondary">
-                  {t.role}
-                </p>
-                <p className="mt-3 text-center text-14 leading-relaxed text-text-secondary">
-                  {t.detail}
-                </p>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/who-we-are"
-              className="group inline-flex items-center gap-1 text-14 font-medium text-text-secondary transition-colors hover:text-text-primary"
-            >
-              Meet the team
-              <span className="transition-transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Section breaker 03: decorative
+        Path: /public/breakers/breaker-03.svg. */}
+      <div
+        className="h-[240px] w-full border-b border-border"
+        style={{
+          background: `repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            rgba(108, 92, 231, 0.02) 39px,
+            rgba(108, 92, 231, 0.02) 40px
+          ), repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 119px,
+            rgba(108, 92, 231, 0.02) 119px,
+            rgba(108, 92, 231, 0.02) 120px
+          )`,
+        }}
+        role="presentation"
+      />
 
       {/* ─── Closing CTA ─── */}
       <ClosingCTA />
