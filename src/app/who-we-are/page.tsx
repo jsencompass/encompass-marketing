@@ -80,16 +80,15 @@ export default function WhoWeAre() {
           <Reveal delay={i * 0.2}>
             <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-24 md:grid-cols-[1fr_2fr] md:py-32">
               {/* Headshot */}
-              <div className="flex justify-center md:justify-start">
-                <div className="relative h-[120px] w-[120px] overflow-hidden rounded-full border border-accent-dim md:h-[200px] md:w-[200px]">
+              <div className="flex justify-center md:justify-start md:items-start">
+                <div className="relative h-[180px] w-[180px] overflow-hidden rounded-full border border-accent-dim/40 md:h-[320px] md:w-[320px]">
                   <Image
                     src={p.image}
                     alt={`${p.name}, ${p.role}`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 120px, 200px"
+                    sizes="(max-width: 768px) 180px, 320px"
                   />
-                  <span className="absolute bottom-1 right-1 h-2 w-2 rounded-full bg-accent md:bottom-2 md:right-2 md:h-3 md:w-3" />
                 </div>
               </div>
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { PactIcon } from "@/components/icons/PactIcon";
 import { ParkingPiIcon } from "@/components/icons/ParkingPiIcon";
@@ -189,6 +190,39 @@ export default function Home() {
 
       {/* ─── Team Credibility Band ─── */}
       <CredibilityBand />
+
+      {/* ─── Team Teaser ─── */}
+      <Reveal>
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">The Principals</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Three operators. Seventy years in parking.</h2>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                { name: "Joe Dudek", role: "Co-Founder and Managing Principal", credential: "Ran LAX parking — $85M revenue, 800+ employees.", image: "/team/joe-dudek.jpg", anchor: "#joe" },
+                { name: "Jason Scott", role: "Co-Founder and Managing Partner", credential: "800+ projects, $150M+ installation value managed.", image: "/team/jason-scott.jpg", anchor: "#jason" },
+                { name: "Steven Grant", role: "Co-Founder and Managing Partner", credential: "Oracle, Booz Allen, LTK. Five airport deployments.", image: "/team/steven-grant.jpg", anchor: "#steven" },
+              ].map((t, i) => (
+                <Reveal key={t.name} delay={i * 0.12}>
+                  <Link href={`/who-we-are${t.anchor}`} className="card-lift h-full block rounded-xl border border-border bg-bg-raised p-8 text-center">
+                    <div className="relative mx-auto h-[140px] w-[140px] overflow-hidden rounded-full border border-accent-dim">
+                      <Image src={t.image} alt={`${t.name}, ${t.role}`} fill className="object-cover" sizes="140px" />
+                    </div>
+                    <h3 className="mt-6 text-18 font-semibold text-text-primary">{t.name}</h3>
+                    <p className="mt-1 text-14 text-text-secondary">{t.role}</p>
+                    <p className="mt-3 text-[13px] text-text-tertiary">{t.credential}</p>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link href="/who-we-are" className="group inline-flex items-center gap-1 text-14 font-medium text-accent-text transition-colors hover:text-text-primary">
+                Meet the team <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </Reveal>
 
       {/* ─── Proof Visual ─── */}
       <Reveal>

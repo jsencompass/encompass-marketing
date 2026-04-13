@@ -41,3 +41,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 _2026-04-12_20-29-34.report.html
+test-results/
