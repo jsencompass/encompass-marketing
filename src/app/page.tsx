@@ -9,7 +9,7 @@ import { HeroBackground } from "@/components/hero/HeroBackground";
 import { HeroEntrance, HeroEyebrow, HeroTitle, HeroSubhead, HeroCTAs } from "@/components/hero/HeroEntrance";
 import { Reveal } from "@/components/motion/Reveal";
 import { CredibilityBand } from "@/components/CredibilityBand";
-import { PactProofVisual } from "@/components/proof/PactProofVisual";
+import { PactPortfolioMap } from "@/components/proof/PactPortfolioMap";
 import { DrawOnReveal } from "@/components/motion/DrawOnReveal";
 import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
 
@@ -105,7 +105,7 @@ export default function Home() {
                 { eyebrow: "Your Asset", text: "Has no standing controllership" },
               ].map((card, i) => (
                 <Reveal key={card.eyebrow} delay={i * 0.1}>
-                  <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
+                  <div className="card-lift h-full rounded-lg border border-border bg-bg-raised p-8">
                     <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">{card.eyebrow}</p>
                     <p className="mt-3 text-18 font-medium text-text-primary">{card.text}</p>
                   </div>
@@ -125,7 +125,7 @@ export default function Home() {
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {capabilities.map((cap, i) => (
                 <Reveal key={cap.name} delay={i * 0.12}>
-                  <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
+                  <div className="card-lift h-full rounded-lg border border-border bg-bg-raised p-8">
                     <div className="flex items-center justify-between">
                       <h3 className="text-18 font-semibold text-text-primary">{cap.name}</h3>
                       <span className={`rounded-full px-3 py-0.5 text-12 font-medium ${cap.tag === "Base" ? "bg-accent/10 text-accent-text" : "bg-bg-elevated text-text-tertiary"}`}>{cap.tag}</span>
@@ -148,7 +148,7 @@ export default function Home() {
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {tiers.map((tier, i) => (
                 <Reveal key={tier.name} delay={i * 0.1}>
-                  <div className={`card-lift rounded-lg border p-8 ${tier.highlight ? "card-lift-accent border-accent bg-bg-raised" : "border-border bg-bg-raised"}`}>
+                  <div className={`card-lift h-full rounded-lg border p-8 ${tier.highlight ? "card-lift-accent border-accent bg-bg-raised" : "border-border bg-bg-raised"}`}>
                     <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">{tier.name}</p>
                     <p className="mt-3 font-mono text-32 font-medium text-text-primary">{tier.price}</p>
                     <p className="mt-1 text-14 text-text-tertiary">per site-month</p>
@@ -173,7 +173,7 @@ export default function Home() {
             <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Four proprietary platforms. One recurring operating system.</h2>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {platforms.map((p, i) => (
-                <div key={p.key} className="card-lift rounded-lg border border-border bg-bg-raised p-8">
+                <div key={p.key} className="card-lift h-full rounded-lg border border-border bg-bg-raised p-8">
                   <DrawOnReveal delay={i * 0.18}>
                     <div className="flex h-8 w-8 items-center justify-center">{platformIcons[p.key]}</div>
                   </DrawOnReveal>
@@ -196,7 +196,7 @@ export default function Home() {
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
             <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">What Governance Looks Like</p>
             <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">PACT makes revenue proof continuous.</h2>
-            <div className="mt-12"><PactProofVisual /></div>
+            <div className="mt-12"><PactPortfolioMap /></div>
             <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
               Session-to-deposit tie-out. Exception governance with reason codes and closure standards. Rate, product, and validation integrity tracked as operating levers. Every site, every month.
             </p>

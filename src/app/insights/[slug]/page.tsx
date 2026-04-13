@@ -22,6 +22,7 @@ export async function generateMetadata({
   return {
     title: `${post.title} — Encompass Parking`,
     description: post.excerpt,
+    ...(post.canonicalUrl && { alternates: { canonical: post.canonicalUrl } }),
     openGraph: {
       title: post.title,
       description: post.excerpt,
