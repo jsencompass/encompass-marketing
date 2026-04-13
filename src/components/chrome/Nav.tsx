@@ -46,12 +46,11 @@ export function Nav() {
     >
       <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-6">
         {/* Wordmark */}
-        <Link
-          href="/"
-          className="font-semibold tracking-tight text-text-primary"
-          style={{ fontSize: `${wordmarkSize}px` }}
-        >
-          encompass
+        <Link href="/" className="flex items-center gap-2">
+          <span className="block h-6 w-[3px] rounded-sm bg-accent" aria-hidden="true" />
+          <span className="font-semibold tracking-tight text-text-primary" style={{ fontSize: `${wordmarkSize}px` }}>
+            encompass
+          </span>
         </Link>
 
         {/* Desktop nav */}

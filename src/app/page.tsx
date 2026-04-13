@@ -1,7 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { PactIcon } from "@/components/icons/PactIcon";
+import { OperatorsIcon } from "@/components/icons/problem/OperatorsIcon";
+import { VendorsIcon } from "@/components/icons/problem/VendorsIcon";
+import { YourAssetIcon } from "@/components/icons/problem/YourAssetIcon";
 import { ParkingPiIcon } from "@/components/icons/ParkingPiIcon";
 import { ProTrackIcon } from "@/components/icons/ProTrackIcon";
 import { CommandCenterIcon } from "@/components/icons/CommandCenterIcon";
@@ -13,6 +15,8 @@ import { CredibilityBand } from "@/components/CredibilityBand";
 import { PactPortfolioMap } from "@/components/proof/PactPortfolioMap";
 import { DrawOnReveal } from "@/components/motion/DrawOnReveal";
 import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
+import { getAllPosts } from "@/lib/insights";
+import { PostThumbnail } from "@/components/insights/PostThumbnail";
 
 const capabilities = [
   { name: "Implementation + PPB", description: "Paid onboarding that establishes the starting truth set. Maps sessions, transactions, validations, and credentials into one reconcilable view.", tag: "Base" },
@@ -101,14 +105,16 @@ export default function Home() {
             </p>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {[
-                { eyebrow: "Operators", text: "Manage throughput and staffing" },
-                { eyebrow: "Vendors", text: "Manage devices and settlement" },
-                { eyebrow: "Your Asset", text: "Has no standing controllership" },
+                { eyebrow: "Operators", primary: "Manage throughput and staffing.", secondary: "Keep the garage running day-to-day.", icon: <OperatorsIcon />, accent: "var(--status-revenue)" },
+                { eyebrow: "Vendors", primary: "Manage devices and settlement.", secondary: "Keep the tech functional.", icon: <VendorsIcon />, accent: "var(--status-cost)" },
+                { eyebrow: "Your Asset", primary: "Has no standing controllership.", secondary: "Nobody owns the proof.", icon: <YourAssetIcon />, accent: "var(--status-loss)" },
               ].map((card, i) => (
                 <Reveal key={card.eyebrow} delay={i * 0.1}>
-                  <div className="card-lift h-full rounded-lg border border-border bg-bg-raised p-8">
-                    <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">{card.eyebrow}</p>
-                    <p className="mt-3 text-18 font-medium text-text-primary">{card.text}</p>
+                  <div className="card-lift h-full rounded-lg border border-border bg-bg-raised p-8" style={{ borderLeft: `3px solid ${card.accent}` }}>
+                    <div className="mb-4 text-text-tertiary">{card.icon}</div>
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-text-tertiary">{card.eyebrow}</p>
+                    <p className="mt-2 text-[20px] font-semibold text-text-primary">{card.primary}</p>
+                    <p className="mt-1 text-14 text-text-secondary">{card.secondary}</p>
                   </div>
                 </Reveal>
               ))}
@@ -191,33 +197,33 @@ export default function Home() {
       {/* ─── Team Credibility Band ─── */}
       <CredibilityBand />
 
-      {/* ─── Team Teaser ─── */}
+      {/* ─── Latest from Insights ─── */}
       <Reveal>
         <section className="border-b border-border">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">The Principals</p>
-            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Three operators. Seventy years in parking.</h2>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {[
-                { name: "Joe Dudek", role: "Co-Founder and Managing Principal", credential: "Ran LAX parking — $85M revenue, 800+ employees.", image: "/team/joe-dudek.jpg", anchor: "#joe" },
-                { name: "Jason Scott", role: "Co-Founder and Managing Partner", credential: "800+ projects, $150M+ installation value managed.", image: "/team/jason-scott.jpg", anchor: "#jason" },
-                { name: "Steven Grant", role: "Co-Founder and Managing Partner", credential: "Oracle, Booz Allen, LTK. Five airport deployments.", image: "/team/steven-grant.jpg", anchor: "#steven" },
-              ].map((t, i) => (
-                <Reveal key={t.name} delay={i * 0.12}>
-                  <Link href={`/who-we-are${t.anchor}`} className="card-lift h-full block rounded-xl border border-border bg-bg-raised p-8 text-center">
-                    <div className="relative mx-auto h-[140px] w-[140px] overflow-hidden rounded-full border border-accent-dim">
-                      <Image src={t.image} alt={`${t.name}, ${t.role}`} fill className="object-cover" sizes="140px" />
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Latest from Insights</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Notes from the field.</h2>
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {getAllPosts().slice(0, 2).map((post, i) => (
+                <Reveal key={post.slug} delay={i * 0.12}>
+                  <Link href={`/insights/${post.slug}`} className="card-lift h-full overflow-hidden rounded-lg border border-border bg-bg-raised">
+                    <PostThumbnail slug={post.slug} className="aspect-[16/9]" />
+                    <div className="p-6">
+                      <h3 className="text-18 font-semibold text-text-primary">{post.title}</h3>
+                      <p className="mt-2 text-14 leading-relaxed text-text-secondary">{post.excerpt.substring(0, 120)}&hellip;</p>
+                      <div className="mt-3 flex items-center gap-3 text-12 text-text-tertiary">
+                        <span>{post.author.name}</span>
+                        <span>&middot;</span>
+                        <span>{post.readingTime}</span>
+                      </div>
                     </div>
-                    <h3 className="mt-6 text-18 font-semibold text-text-primary">{t.name}</h3>
-                    <p className="mt-1 text-14 text-text-secondary">{t.role}</p>
-                    <p className="mt-3 text-[13px] text-text-tertiary">{t.credential}</p>
                   </Link>
                 </Reveal>
               ))}
             </div>
-            <div className="mt-10 text-center">
-              <Link href="/who-we-are" className="group inline-flex items-center gap-1 text-14 font-medium text-accent-text transition-colors hover:text-text-primary">
-                Meet the team <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+            <div className="mt-8 text-center">
+              <Link href="/insights" className="group inline-flex items-center gap-1 text-14 font-medium text-accent-text transition-colors hover:text-text-primary">
+                Read all insights <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
               </Link>
             </div>
           </div>
