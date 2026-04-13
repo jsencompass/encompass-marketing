@@ -4,16 +4,16 @@
 
 | Route | Status | Session | Notes |
 |---|---|---|---|
-| `/` | Shipped | 1 | Homepage shell with real copy |
-| `/how-it-works` | Stub | 2 | Placeholder heading |
-| `/services` | Stub | 2 | Placeholder heading |
-| `/insights` | Stub | 3 | Blog/insights landing |
-| `/who-we-are` | Stub | 3 | Team bios with anchors |
-| `/contact` | Stub | 4 | Contact form + scheduling |
+| `/` | Shipped | 2 | Full homepage with pricing, team, proof sections |
+| `/how-it-works` | Stub | — | Placeholder heading |
+| `/services` | Stub | — | Placeholder heading |
+| `/who-we-are` | Shipped | 2 | Three principal bios + formation story |
+| `/insights` | Stub | — | Blog/insights landing |
+| `/contact` | Stub | — | Contact form + scheduling |
 
 ## Navigation
 
-- **Nav**: Sticky 64px header. Links: How It Works, Services, Insights, Who We Are, Contact. Pill CTA: Member Portal (external).
+- **Nav**: Sticky 64px header. Links: How It Works, Services, Who We Are, Insights, Contact. Pill CTA: Member Portal (external).
 - **Footer**: Three columns (Company / Services / Connect). Copyright. Location line.
 
 ## Global Chrome
@@ -21,3 +21,4 @@
 - Layout: `src/app/layout.tsx` — Inter + JetBrains Mono fonts, Nav + Footer wrapping all pages.
 - Tokens: `src/styles/tokens.css`
 - Components: `src/components/chrome/Nav.tsx`, `src/components/chrome/Footer.tsx`
+- Shared: `src/components/ClosingCTA.tsx` — reusable CTA band
