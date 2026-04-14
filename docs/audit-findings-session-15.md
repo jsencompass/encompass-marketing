@@ -3,6 +3,7 @@
 **Audit date:** 2026-04-14
 **Site URL:** https://encompassparking.com
 **Auditor:** CC under Session 15 prompt
+**Production verification:** 2026-04-14 — all fixes confirmed live. CSP hardening directives present. SRI integrity hashes on scripts. Turnstile bypass fixed (HTTP 400). Input length validation active (HTTP 400). Honeypot functional (silent 200).
 
 ## Summary
 
