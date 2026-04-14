@@ -21,22 +21,36 @@ export default function Insights() {
   return (
     <>
       {/* ─── Page Header ─── */}
-      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-            Insights
+      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-12 md:pt-32">
+        <Reveal>
+          <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+            INSIGHTS
           </p>
-          <h1 className="mt-4 text-48 font-semibold tracking-tight">
-            Notes on parking controllership.
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h1 className="mt-4 mb-4 text-4xl font-semibold tracking-tight text-text-primary md:text-5xl lg:text-6xl">
+            Notes from the field.
           </h1>
-          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-            Quarterly perspective from the Encompass principals on what
-            we&rsquo;re seeing across portfolios &mdash; operator incentive
-            conflicts, validation drift, PARCS tradeoffs, and the operating
-            disciplines that keep NOI intact.
+        </Reveal>
+        <Reveal delay={0.2}>
+          <p className="max-w-[640px] text-[20px] leading-relaxed text-text-secondary">
+            Controllership patterns, audit findings, and operator-honest
+            analysis from the people building the layer above the stack.
           </p>
-        </section>
+          <a
+            href="/insights/feed.xml"
+            className="mt-4 inline-block text-sm text-text-tertiary transition-colors hover:text-accent-text"
+          >
+            RSS &rarr;
+          </a>
+        </Reveal>
+      </section>
 
-      <section className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <hr className="border-t border-[--border]" />
+      </div>
+
+      <section className="mx-auto max-w-[1200px] px-6 py-16 md:py-24">
 
       {allPosts.length === 0 ? (
         <div className="mt-16 max-w-xl">
@@ -52,36 +66,40 @@ export default function Insights() {
           {/* Featured post */}
           {featured && (
             <Reveal>
-              <Link
-                href={`/insights/${featured.slug}`}
-                className="card-lift mt-16 block overflow-hidden rounded-lg border border-border bg-bg-raised"
-              >
-                <PostThumbnail slug={featured.slug} className="aspect-[4/1]" />
-                <div className="p-8 md:p-12">
-                <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-                  Featured
-                </p>
-                <h2 className="mt-4 text-32 font-semibold tracking-tight text-text-primary md:text-48">
-                  {featured.title}
-                </h2>
-                <p className="mt-4 max-w-2xl text-18 leading-relaxed text-text-secondary">
-                  {featured.excerpt}
-                </p>
-                <div className="mt-6 flex items-center gap-4 text-14 text-text-tertiary">
-                  <span>{featured.author.name}</span>
-                  <span>&middot;</span>
-                  <span>{new Date(featured.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
-                  <span>&middot;</span>
-                  <span>{featured.readingTime}</span>
-                </div>
+              <div className="mb-12 md:mb-16">
+                <span className="mb-4 inline-block rounded-full bg-accent/12 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-accent-text">
+                  FEATURED
+                </span>
+                <Link
+                  href={`/insights/${featured.slug}`}
+                  className="card-lift block overflow-hidden rounded-lg border border-border bg-bg-raised md:grid md:grid-cols-5 md:gap-8"
+                >
+                  <PostThumbnail slug={featured.slug} className="aspect-[16/9] md:col-span-2" />
+                  <div className="p-8 md:col-span-3 md:py-8 md:pr-8 md:pl-0">
+                    <h2 className="text-3xl font-semibold tracking-tight text-text-primary">
+                      {featured.title}
+                    </h2>
+                    <p className="mt-4 text-lg leading-relaxed text-text-secondary">
+                      {featured.excerpt}
+                    </p>
+                    <div className="mt-6 flex items-center gap-4 text-sm text-text-tertiary">
+                      <span>{featured.author.name}</span>
+                      <span>&middot;</span>
+                      <span>{new Date(featured.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+                      <span>&middot;</span>
+                      <span>{featured.readingTime}</span>
+                    </div>
+                  </div>
+                </Link>
               </div>
-              </Link>
             </Reveal>
           )}
 
           {/* Remaining posts */}
           {remaining.length > 0 && (
-            <div className="mt-12 grid gap-8 md:grid-cols-2">
+            <>
+            <h2 className="mb-8 text-2xl font-semibold text-text-primary">Recent</h2>
+            <div className="grid gap-8 md:grid-cols-2">
               {remaining.map((post, index) => (
                 <Reveal key={post.slug} delay={index * 0.1}>
                   <Link
@@ -108,6 +126,7 @@ export default function Insights() {
                 </Reveal>
               ))}
             </div>
+            </>
           )}
 
           {/* Newsletter */}
