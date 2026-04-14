@@ -91,6 +91,7 @@ export function Footer() {
           <p className="text-12 text-text-tertiary">
             &copy; {new Date().getFullYear()} Encompass Parking, LLC. All
             rights reserved.
+            <span className="ml-4 hidden lg:inline">Press <kbd className="rounded bg-bg-elevated px-1.5 py-0.5 font-mono text-[11px] border border-border">?</kbd> for keyboard shortcuts.</span>
           </p>
           <div className="flex items-center gap-4">
             <button
