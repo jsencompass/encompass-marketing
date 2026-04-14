@@ -4,12 +4,12 @@
 
 | Route | Status | Session | Notes |
 |---|---|---|---|
-| `/` | Shipped | 3 | Full homepage with pricing, capabilities, proof sections |
+| `/` | Shipped | 3 | Full homepage with pricing, capabilities, proof sections. Hero has logo overlay (S15.1). PACT section uses real LA map imagery (S15.1). |
 | `/how-it-works` | Shipped | 4 | Four-lane operating model + governance cadence |
 | `/services` | Shipped | 5 | Comparison matrix + optional modules + Parking PI |
 | `/who-we-are` | Shipped | 2 | Three principal bios + formation story |
 | `/insights` | Shipped | 6 | Blog index with featured post + newsletter |
-| `/insights/[slug]` | Shipped | 6 | Individual MDX blog post renderer |
+| `/insights/[slug]` | Shipped | 6 | Individual MDX blog post renderer. OG images as cover images above H1 (S15.1). |
 | `/contact` | Shipped | 4 | Contact form + Cal.com scheduling + Turnstile |
 | `/privacy` | Shipped | 3 | Privacy Policy (CCPA/CPRA compliant) |
 | `/terms` | Shipped | 3 | Terms of Use |

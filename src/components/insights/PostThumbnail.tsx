@@ -116,7 +116,7 @@ export function PostThumbnail({ slug, className = "" }: { slug: string; classNam
   const Thumb = thumbnails[slug];
   if (!Thumb) {
     return (
-      <div className={`overflow-hidden rounded-lg border border-border bg-bg-elevated ${className}`}>
+      <div className={`overflow-hidden bg-bg-elevated ${className}`}>
         <svg viewBox="0 0 320 180" className="h-full w-full">
           <rect width="320" height="180" fill="var(--bg-elevated)" />
           <circle cx="160" cy="90" r="20" fill="none" stroke="var(--accent)" strokeWidth="1" opacity="0.3" />
@@ -125,7 +125,7 @@ export function PostThumbnail({ slug, className = "" }: { slug: string; classNam
     );
   }
   return (
-    <div className={`overflow-hidden rounded-lg border border-border ${className}`}>
+    <div className={`overflow-hidden ${className}`}>
       <Thumb />
     </div>
   );

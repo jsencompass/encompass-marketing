@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/insights";
 import { getAdjacentPosts } from "@/lib/insights/navigation";
@@ -7,7 +8,6 @@ import { renderMarkdown } from "@/lib/insights/render";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { ReadingProgress } from "@/components/insights/ReadingProgress";
 import { ShareRow } from "@/components/insights/ShareRow";
-import { PostThumbnail } from "@/components/insights/PostThumbnail";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -54,8 +54,17 @@ export default async function InsightPost({
     <>
     <ReadingProgress />
     <article className="mx-auto max-w-[800px] px-6 py-24 md:py-32">
-      {/* Thumbnail */}
-      <PostThumbnail slug={slug} className="mb-8 aspect-[3/1]" />
+      {/* Cover image */}
+      <div className="mx-auto mb-12 max-w-[960px]">
+        <Image
+          src={`/og/insights/${slug}.png`}
+          alt={`Cover image for ${post.title}`}
+          width={1200}
+          height={630}
+          className="w-full h-auto rounded-lg"
+          priority
+        />
+      </div>
 
       {/* Breadcrumb */}
       <nav className="text-14 text-text-tertiary" aria-label="Breadcrumb">

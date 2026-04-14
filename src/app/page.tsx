@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { PactIcon } from "@/components/icons/PactIcon";
 import { OperatorsIcon } from "@/components/icons/problem/OperatorsIcon";
@@ -76,6 +77,14 @@ export default function Home() {
               </HeroCTAs>
             </HeroEntrance>
           </div>
+          <Image
+            src="/logo.png"
+            alt=""
+            width={144}
+            height={45}
+            className="absolute bottom-8 right-8 z-10 opacity-60"
+            aria-hidden="true"
+          />
         </section>
       </HeroSpotlight>
 

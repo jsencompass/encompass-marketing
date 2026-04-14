@@ -1,20 +1,14 @@
 "use client";
 
-import { useReducedMotion } from "@/lib/motion/useReducedMotion";
+import Image from "next/image";
 
 const pins = [
-  { x: 38, y: 36, delay: 0 },    // DTLA 1
-  { x: 42, y: 40, delay: 0.4 },  // DTLA 2
-  { x: 36, y: 42, delay: 0.8 },  // DTLA 3
-  { x: 44, y: 38, delay: 1.2 },  // DTLA 4
-  { x: 28, y: 30, delay: 0.3 },  // Hollywood 1
-  { x: 24, y: 34, delay: 1.1 },  // WeHo
-  { x: 55, y: 42, delay: 0.7 },  // Century City
-  { x: 58, y: 38, delay: 1.5 },  // Westwood
-  { x: 68, y: 28, delay: 0.5 },  // Pasadena
-  { x: 40, y: 55, delay: 0.9 },  // Mid-city 1
-  { x: 46, y: 58, delay: 1.3 },  // South-central
-  { x: 18, y: 62, delay: 1.6 },  // LAX/coastal
+  { top: 55, left: 50, label: "DTLA" },
+  { top: 50, left: 40, label: "Koreatown" },
+  { top: 25, left: 45, label: "Hollywood" },
+  { top: 65, left: 20, label: "Culver City" },
+  { top: 25, left: 85, label: "Pasadena" },
+  { top: 75, left: 48, label: "South LA" },
 ];
 
 const stats = [
@@ -32,48 +26,43 @@ const dataBars = [
 ];
 
 export function PactPortfolioMap() {
-  const reduced = useReducedMotion();
-
   return (
     <div>
       {/* Desktop: map with overlaid cards */}
       <div className="relative hidden w-full overflow-hidden rounded-xl border border-border bg-bg-raised md:block" style={{ aspectRatio: "5/3" }}>
-        {/* Map backdrop — abstracted coastline/mountain hints */}
-        <svg viewBox="0 0 100 80" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
-          <rect width="100" height="80" fill="var(--bg-raised)" />
-          {/* Soft gradient: mountains top-right, coast bottom-left */}
-          <defs>
-            <radialGradient id="geo-grad" cx="75%" cy="25%" r="60%">
-              <stop offset="0%" stopColor="var(--bg-elevated)" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="var(--bg-raised)" stopOpacity="0" />
-            </radialGradient>
-            <pattern id="map-grid2" width="6" height="6" patternUnits="userSpaceOnUse">
-              <path d="M 6 0 L 0 0 0 6" fill="none" stroke="var(--accent-dim)" strokeWidth="0.1" opacity="0.03" />
-            </pattern>
-          </defs>
-          <rect width="100" height="80" fill="url(#geo-grad)" />
-          <rect width="100" height="80" fill="url(#map-grid2)" />
-          {/* Coastline arc hint */}
-          <path d="M2,50 Q12,65 30,72 Q50,78 70,75" fill="none" stroke="var(--border)" strokeWidth="0.3" opacity="0.3" />
-          {/* Mountain contour hints */}
-          <path d="M55,8 Q65,12 80,10 Q90,15 98,18" fill="none" stroke="var(--border)" strokeWidth="0.2" opacity="0.2" />
-          <path d="M60,12 Q72,16 85,14" fill="none" stroke="var(--border)" strokeWidth="0.15" opacity="0.15" />
-          {/* Pins */}
-          {pins.map((pin, i) => (
-            <circle
-              key={i}
-              cx={pin.x}
-              cy={pin.y}
-              r="1.2"
-              fill="var(--accent)"
-              className={reduced ? "" : "map-pin-pulse"}
-              style={reduced ? {} : { animationDelay: `${pin.delay}s` }}
-            />
-          ))}
-        </svg>
+        {/* Map backdrop */}
+        <Image
+          src="/imagery/LA-map.png"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 1200px"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[--bg-base]/40 via-transparent to-[--bg-base]/60" aria-hidden="true" />
 
-        {/* Portfolio Potential — top-right, dominant */}
-        <div className="absolute top-8 right-8 w-[460px] rounded-2xl border border-border bg-bg-raised/95 p-8 backdrop-blur-2xl">
+        {/* Logo */}
+        <Image
+          src="/logo.png"
+          alt=""
+          width={128}
+          height={40}
+          className="absolute top-6 left-6 z-10 opacity-80"
+          aria-hidden="true"
+        />
+
+        {/* Pins */}
+        {pins.map((pin, i) => (
+          <div
+            key={i}
+            className="absolute z-10"
+            style={{ top: `${pin.top}%`, left: `${pin.left}%` }}
+          >
+            <span className="block h-3 w-3 rounded-full bg-accent shadow-[0_0_8px_2px_rgba(108,92,231,0.4)]" />
+          </div>
+        ))}
+
+        {/* Portfolio Potential — top-right */}
+        <div className="absolute top-8 right-8 z-20 w-[460px] rounded-2xl border border-border bg-bg-raised/95 p-8 backdrop-blur-2xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-text-tertiary">Portfolio Potential</p>
           <p className="mt-1 text-14 text-text-secondary">12 sites under active oversight</p>
           <div className="my-4 h-px bg-border" />
@@ -90,11 +79,10 @@ export function PactPortfolioMap() {
           </div>
         </div>
 
-        {/* Portfolio Confidence — bottom-left, dominant */}
-        <div className="absolute bottom-8 left-8 w-[520px] rounded-2xl border border-border bg-bg-raised/95 p-8 backdrop-blur-2xl">
+        {/* Portfolio Confidence — bottom-left */}
+        <div className="absolute bottom-8 left-8 z-20 w-[520px] rounded-2xl border border-border bg-bg-raised/95 p-8 backdrop-blur-2xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-text-tertiary">Portfolio Confidence</p>
           <div className="mt-4 flex gap-8">
-            {/* Confidence ring */}
             <svg width="140" height="140" viewBox="0 0 140 140" className="flex-shrink-0">
               <circle cx="70" cy="70" r="56" fill="none" stroke="var(--border)" strokeWidth="6" />
               <circle
@@ -106,7 +94,6 @@ export function PactPortfolioMap() {
               <text x="70" y="66" textAnchor="middle" fill="var(--text-primary)" fontSize="32" fontWeight="600" fontFamily="var(--font-jetbrains-mono)">78%</text>
               <text x="70" y="88" textAnchor="middle" fill="var(--text-tertiary)" fontSize="9" letterSpacing="1.5" style={{ textTransform: "uppercase" }}>confidence</text>
             </svg>
-            {/* Data bars */}
             <div className="flex-1 space-y-3 pt-2">
               {dataBars.map((bar) => (
                 <div key={bar.label}>
@@ -124,9 +111,8 @@ export function PactPortfolioMap() {
         </div>
       </div>
 
-      {/* Mobile: stacked cards with small map between */}
+      {/* Mobile: stacked cards with map between */}
       <div className="space-y-4 md:hidden">
-        {/* Stats card */}
         <div className="rounded-xl border border-border bg-bg-raised p-6">
           <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-text-tertiary">Portfolio Potential</p>
           <p className="mt-1 text-14 text-text-secondary">12 sites under active oversight</p>
@@ -141,18 +127,21 @@ export function PactPortfolioMap() {
             ))}
           </div>
         </div>
-        {/* Mini map */}
-        <div className="relative h-[200px] overflow-hidden rounded-xl border border-border bg-bg-raised">
-          <svg viewBox="0 0 100 80" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
-            <rect width="100" height="80" fill="var(--bg-raised)" />
-            <defs><pattern id="map-grid-m" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M 8 0 L 0 0 0 8" fill="none" stroke="var(--accent-dim)" strokeWidth="0.15" opacity="0.03" /></pattern></defs>
-            <rect width="100" height="80" fill="url(#map-grid-m)" />
-            {pins.map((pin, i) => (
-              <circle key={i} cx={pin.x} cy={pin.y} r="1.5" fill="var(--accent)" className={reduced ? "" : "map-pin-pulse"} style={reduced ? {} : { animationDelay: `${pin.delay}s` }} />
-            ))}
-          </svg>
+        <div className="relative h-[200px] overflow-hidden rounded-xl border border-border">
+          <Image
+            src="/imagery/LA-map.png"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[--bg-base]/40 via-transparent to-[--bg-base]/60" aria-hidden="true" />
+          {pins.map((pin, i) => (
+            <div key={i} className="absolute" style={{ top: `${pin.top}%`, left: `${pin.left}%` }}>
+              <span className="block h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_6px_2px_rgba(108,92,231,0.4)]" />
+            </div>
+          ))}
         </div>
-        {/* Confidence card */}
         <div className="rounded-xl border border-border bg-bg-raised p-6">
           <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-text-tertiary">Portfolio Confidence</p>
           <div className="mt-4 flex gap-6">

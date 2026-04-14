@@ -4,8 +4,8 @@ let redis: Redis | null = null;
 
 function getRedis(): Redis | null {
   if (redis) return redis;
-  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+  const url = process.env.KV_REST_API_URL;
+  const token = process.env.KV_REST_API_TOKEN;
   if (!url || !token) return null;
   redis = new Redis({ url, token });
   return redis;
@@ -24,7 +24,11 @@ export async function rateLimit({
   const resetAt = new Date(Date.now() + windowSeconds * 1000);
 
   if (!store) {
-    console.warn("[rateLimit] Redis not configured — allowing request without rate limiting");
+    if (process.env.NODE_ENV === "production") {
+      console.error("[rateLimit] Missing Redis credentials in production — failing closed");
+      return { allowed: false, remaining: 0, resetAt };
+    }
+    console.warn("[rateLimit] Redis not configured — rate limiting disabled in dev");
     return { allowed: true, remaining: limit, resetAt };
   }
 
