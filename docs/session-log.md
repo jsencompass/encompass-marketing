@@ -516,3 +516,41 @@ Shared `PageHeaderBand` component (`src/components/PageHeaderBand.tsx`) for cons
 - Nav scroll transformation (height compression 80→56px) — logged to backlog
 - Real PACT screenshot, team headshots (unchanged — see docs/assets-needed.md)
 - LLC mailing address, full legal review (unchanged)
+
+## Session 14.1: Insights Index Header + Featured Treatment
+
+**Date**: 2026-04-14
+
+### Context
+
+Session 14 deferred Steps 6 (Insights index header treatment) and 7 (featured post treatment upgrade). This corrective session ships both.
+
+### Shipped
+
+**Insights page editorial header** (`/insights`):
+- Eyebrow: "INSIGHTS" in `font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text` (JetBrains Mono)
+- H1: "Notes from the field." — responsive sizing via `text-4xl md:text-5xl lg:text-6xl`, Inter SemiBold, `--text-primary`
+- Sub-deck: "Controllership patterns, audit findings, and operator-honest analysis from the people building the layer above the stack." — `text-[20px]`, `--text-secondary`, `max-w-[640px]`
+- RSS link: `RSS →` in `--text-tertiary`, links to `/insights/feed.xml`
+- Section spacing: `pt-24 md:pt-32` top, `pb-12` bottom
+- Horizontal rule: `border-t border-[--border]`, full content-column width
+- Sequential Reveal animation: eyebrow → H1 (100ms delay) → sub-deck + RSS (200ms delay)
+
+**Featured post treatment upgrade** (`/insights`):
+- FEATURED pill: `rounded-full bg-accent/12 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-accent-text`, positioned above the featured card
+- Desktop layout: `grid grid-cols-5 gap-8` — thumbnail `col-span-2` (40%), copy `col-span-3` (60%)
+- Mobile layout: stacked (thumbnail above copy, full-width)
+- Thumbnail: existing `PostThumbnail` at `aspect-[16/9]`
+- Copy block: H2 title (`text-3xl font-semibold`), excerpt (`text-lg text-text-secondary`), meta row (author, date, reading time in `text-sm text-text-tertiary`)
+- Card hover: existing `card-lift` preserved
+- Margin: `mb-12 md:mb-16` before grid
+- "Recent" sub-heading: `text-2xl font-semibold text-text-primary mb-8`, between featured card and post grid
+
+**Documentation**:
+- Updated: `docs/design-system.md` — added Editorial header pattern and Featured pill to Component Vocabulary
+- Updated: `docs/backlog.md` — closed "Insights index editorial header + featured treatment upgrade" deferred item
+- Updated: `docs/session-log.md` — this entry
+
+### Deferred
+
+None. Both deliverables shipped.

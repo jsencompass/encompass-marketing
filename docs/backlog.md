@@ -83,3 +83,5 @@ All 8 ATTORNEY-REVIEW flags closed with conservative defaults (Sessions 5 + 7):
 
 ## Deferred-from-session
 
+- ~~Insights index editorial header + featured treatment upgrade~~ — SHIPPED Session 14.1: editorial header (eyebrow + H1 + sub-deck + Reveal stagger + HR), FEATURED pill, 2-col featured card layout, "Recent" sub-heading
+

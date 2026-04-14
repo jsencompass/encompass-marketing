@@ -56,6 +56,8 @@ Standard Tailwind spacing scale (4px base unit). Section padding: 96–128px ver
 - **Eyebrow labels**: `text-12 font-semibold uppercase tracking-widest text-text-tertiary`
 - **Tags**: Pill-shaped, small — `rounded-full px-3 py-0.5 text-12 font-medium`
 - **CTA buttons**: `rounded-full bg-accent px-6 py-3 text-14 font-semibold text-white`
+- **Editorial header**: Eyebrow (`font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text`) + H1 (`text-4xl md:text-5xl lg:text-6xl font-semibold text-text-primary`) + sub-deck (`text-[20px] text-text-secondary max-w-[640px]`), each wrapped in sequential `Reveal` components at 100ms stagger. Horizontal rule (`border-t border-[--border]`) below.
+- **Featured pill**: `rounded-full bg-accent/12 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-accent-text inline-block`. Used above featured content cards.
 
 ## Interaction States
 
