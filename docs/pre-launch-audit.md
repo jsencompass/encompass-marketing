@@ -1,6 +1,8 @@
 # Pre-Launch Audit: Scope, Methodology, Deliverables
 
-**Status:** Draft. Committed before Session 15 begins; updated by Session 15 and Session 16 with findings.
+**Status:** Session 15 complete: 2026-04-14. Session 16 pending.
+
+**Session 15 summary:** 1 critical fixed (Turnstile bypass), 1 serious fixed (input length), 1 serious open (Upstash Redis not provisioned — Jason action), 4 moderate (1 fixed, 1 accepted, 2 backlog), 5 low. CSP hardened with 4 new directives + experimental SRI. Nonce migration deferred (Next.js requires dynamic rendering). External graders blocked by infrastructure — manual verification required. Full findings: `docs/audit-findings-session-15.md`.
 
 This document defines the pre-launch audit scope for encompassparking.com. It is the canonical reference for Sessions 15 (security + infrastructure) and 16 (accessibility + content + code quality). Every audit prompt opens with `Read docs/pre-launch-audit.md before doing anything else.`
 
