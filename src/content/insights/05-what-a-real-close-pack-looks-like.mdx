@@ -1,0 +1,58 @@
+---
+title: "What a real close pack looks like"
+excerpt: "Most parking close packs are summary statements with no audit trail. A real close pack is reproducible. Here is what should be inside it, and what a tie-out actually proves."
+author: "Jason Scott"
+publishedAt: "2026-03-17"
+tags: ["close pack", "reconciliation", "controllership", "audit"]
+featured: false
+draft: false
+---
+
+The phrase "monthly close pack" gets used in parking the way "deliverable" gets used in consulting. It means whatever the sender wants it to mean. In most operating relationships I have walked into, the close pack is a one-page revenue summary with category subtotals, an expense roll-up, and a signature block. That is a status report. It is not a close pack.
+
+A close pack is the artifact that proves the reported revenue is the actual revenue, with every variance investigated and signed off. It is reproducible by an independent party with access to the source systems. If two people pull the same source data and run the same procedure, they should land on the same number. If they cannot, the pack is decoration.
+
+## What belongs inside
+
+A real close pack has six sections, in this order, every month, for every site.
+
+**1. Cover memo (one page).** Period covered, sites included, headline KPIs against the prior period and against the trailing twelve, exception count, finding count, and the sign-off block. The cover memo is what the asset owner reads first and may be all they read. Everything below it is the evidence.
+
+**2. Revenue tie-out spine.** This is the central document. It walks the chain from the source-of-truth system to the owner's books, link by link, with the variance at every step. The chain is:
+
+- PARCS gross transactions (system export, raw, no aggregation)
+- Operator-reported gross (the number the operator is attesting to)
+- Payment processor gross (the merchant settlement file)
+- Bank deposits (the actual money in the account)
+- GL booking (what the accounting team posted)
+- Owner statement (what the asset owner sees)
+
+Every link should match within a defined tolerance. Where it does not match, the variance is itemized, categorized, and either cleared with documentation or escalated to the next section.
+
+**3. Exception register.** Every variance above the materiality threshold gets a row. We typically run a `$100` per-variance threshold and a `0.5%` per-day variance threshold, with anything above either escalating. Each row carries a category (timing, classification, source data, suspected leakage, equipment), a disposition (cleared with explanation, escalated to finding, deferred with reason), and an owner. The exception register is the working document; the cover memo summarizes it.
+
+**4. Findings memo.** Anything in the exception register that did not clear by the close date moves into findings. Each finding is specific, quantified, time-bounded, and owned. "Validation usage exceeded contract" is not a finding. "Tenant X used 387 validations in March against a contracted allotment of 200, representing approximately `$2,710` of unfunded validation cost; remediation owner is the property manager; due date is the next lease amendment cycle" is a finding.
+
+**5. Operator scorecard.** A standing one-page panel with the operator KPIs that matter month over month: equipment uptime weighted by revenue density, intercom response SLA, cash variance percentage, validation usage versus contracted allotment, monthly parker AR aging, missing-ticket count and trend. The scorecard is comparative across periods, not a snapshot.
+
+**6. Source-of-truth exhibits.** The raw materials. PARCS exports for the period (transaction-level, not summary), bank statements with reconciliation tickmarks, payroll register, vendor invoices for any pass-through items, signed cash counts. The exhibits are what an independent auditor would request to reproduce the work. If they are not in the pack, the pack is not auditable.
+
+## The spine is the tell
+
+Of those six sections, the revenue tie-out spine is what separates a close pack from a report. The spine is not analysis. It is the documented chain of custody from the system that recorded the transaction to the books that paid out to the owner. Every operator I have worked with claims they reconcile. The question is whether they can produce the spine on demand. If they cannot, they are not reconciling; they are summarizing.
+
+Three failure modes show up most often when the spine is requested for the first time.
+
+The first is that "PARCS gross" is sourced from the operator's spreadsheet rather than the system export. The number on the spreadsheet may have been transcribed correctly, or it may not. The spreadsheet is not the source of truth. The system export is.
+
+The second is that bank deposits are reconciled to operator-reported gross rather than to PARCS gross. This skips the link in the chain where most leakage actually lives. PARCS gross to operator-reported gross is the link where missing tickets, voided transactions, and unreported categories disappear. If the spine starts at operator-reported gross, that link was never tested.
+
+The third is that variances are noted but not investigated. The exception register has rows. The disposition column has the word "investigated" without a memo, a name, or a date. That is not investigation; that is annotation.
+
+## What this is for
+
+The close pack is not paperwork. It is the artifact that lets an asset owner answer a single question with evidence: did we earn what we were told we earned. Without the pack, the answer is "we trust the operator." With the pack, the answer is "yes, here is the chain, and here is what did not match and what we did about it."
+
+For owners who have never seen one, the first close pack is uncomfortable. It makes visible the things the monthly report has been quietly papering over. That discomfort is the product. Every variance the pack surfaces in the first three months is a variance that has been recurring silently. Once the pack is running, the variances either disappear (because the operator now knows the work is being checked) or they get investigated to root cause (because the controllership layer is structured to do that). Either outcome is better than the prior state.
+
+The close pack is what reconciliation looks like when it is treated as a deliverable instead of a posture. It is not exotic. It is not novel. It is what the rest of the asset-class economy considers a standing requirement. Parking is one of the few asset classes where it has not been standard. That is the gap the controllership layer exists to close.

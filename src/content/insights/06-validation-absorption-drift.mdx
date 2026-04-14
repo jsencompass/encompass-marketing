@@ -1,0 +1,59 @@
+---
+title: "Validation absorption: the slow drift nobody flags"
+excerpt: "Validation programs almost never blow up at once. They drift, month after month, in the spread between what tenants are entitled to and what they actually use."
+author: "Joe Dudek"
+publishedAt: "2026-03-24"
+tags: ["validation", "tenant management", "audit findings", "revenue leakage"]
+featured: false
+draft: false
+---
+
+Validation is the quietest revenue drain in parking. It does not announce itself. There is no broken gate, no missing cash bag, no equipment alert. There is just a steady arithmetic gap between what tenants were contracted to consume and what they actually consumed, and the gap is paid for, every month, by the asset owner.
+
+I have run more validation reviews than any other category of audit, and the pattern is so consistent that I now bring it up in the first conversation with a new owner. If a property has a validation program and nobody on the owner's side can produce a monthly tenant-by-tenant usage report, there is drift. The drift is not the operator's fault, exactly. It is a structural absence.
+
+## Why drift goes unflagged
+
+The contracted entitlement and the actual usage live in two different places. The contract sits in a leasing folder, possibly negotiated several years ago, possibly with the original tenant who has since assigned the lease to someone else. The usage runs through the PARCS, often without a tenant attribution code attached to the transaction. The two never meet.
+
+Most operating contracts do not require the operator to reconcile validation usage against contracted allotments. So the operator does not. The PARCS is configured to count and price the validation, not to attribute it to a specific tenant against a specific entitlement. The monthly report shows total validation cost as a category, sometimes broken out by stamp type. The owner sees the number, decides it looks roughly right, and moves on.
+
+In the meantime the program drifts. A tenant whose lease entitled them to 20 validations per day is using 47. A tenant whose validation is supposed to be a 1-hour stamp is issuing 2.5-hour stamps because the staff at the front desk thinks 2.5 hours is more customer-friendly. A tenant whose lease has expired and is now month-to-month is still issuing the validation that was tied to the original term. None of this is malicious. It is the natural drift of an unmonitored process.
+
+## What absorption looks like in dollars
+
+A few examples from the audit work my partners and I have done, anonymized to facility type and market.
+
+At a mixed-use property in the greater Los Angeles market, a coffee tenant requested a validation package as part of a lease renewal. We ran the cost analysis on the proposed terms. The result came in between `$82,800` and `$104,130` per month for that one tenant, depending on assumed redemption rates. Annualized, that is roughly `$1,000,000` of validation cost the owner was being asked to absorb on behalf of a single ground-floor coffee shop. The lease did not contemplate it. The request was withdrawn after the analysis was put in writing.
+
+At a healthcare-adjacent property, a fitness tenant offered a 2.5-hour validation to its members. The building standard, agreed across all tenants, was 1 hour. Nearby residents discovered the loophole and began using the fitness validation without being members. Estimated monthly leakage was approximately `$8,000`, growing as the workaround spread.
+
+At a university-adjacent garage, the largest single validation consumer was driving roughly `$20,000` per month of validation cost, annualized to about `$240,000`. More importantly, that one tenant accounted for more than `80%` of all validations issued at the facility. The owner had no idea about the concentration. If that single tenant had renegotiated or vacated, the validation program economics would have collapsed in either direction without warning.
+
+At a medical office complex, the tenant validation usage exceeded the contracted allotment by a documented `$2,240` for a single month. Multiplied across twelve months and several tenants with similar patterns, the property was absorbing roughly `$35,000` annually that the leases had not authorized.
+
+None of these were sophisticated frauds. None of them required exotic detection methods. All of them were visible the moment somebody pulled the validation export and joined it to the lease abstracts. None of the operators flagged any of them.
+
+## Why operators do not raise it
+
+The operator's incentive structure makes them indifferent to validation drift. The validation cost is not on their P&L; it is reimbursed by the property, billed back to tenants where the lease allows, and absorbed by the owner where it does not. The operator is paid a management fee and, in many cases, an incentive on net operating performance that does not penalize validation absorption. If anything, generous validation issuance is a customer-service positive that improves operator satisfaction scores from tenants who are happy to receive more parking than they paid for.
+
+The PARCS reports do not categorize validations by tenant unless someone configured the system to require a tenant code at issuance. Many do not. Manual stamping has no audit trail at all; the stamp is on a piece of paper that gets fed into the validator at exit, and the count of stamps used is whatever the operator says it is.
+
+The combination of indifferent incentives and absent attribution means that the drift is invisible until somebody from outside the operating relationship asks for the report. That is what controllership is for.
+
+## What good looks like
+
+The fix is operationally simple and contractually difficult.
+
+Operationally, validation should be digital and tenant-attributed at the point of issuance. A QR code or barcode tied to a tenant identifier, scanned at exit, with a single source of truth for the count. Most modern PARCS platforms support this natively; the older ones support it through an integration that the operator has typically declined to configure because it adds work without benefit to them.
+
+Reconciliation should run daily, not monthly. Validation count by tenant, compared to the contracted allotment, with overage flagged and rolled into the monthly tenant scorecard. Tenants who consistently overrun their allotment should receive an invoice for the overage if their lease allows, or a renegotiation notice if it does not.
+
+Contractually, validation programs need terms that match the operational reality. Specific allotment per month or per day, defined stamp duration, defined reimbursement rate, defined overage billing mechanism, and a renewal or true-up cycle that catches drift before it compounds.
+
+## Why it persists
+
+Validation absorption is the easiest finding to produce in any audit and the hardest finding to ship into a permanent fix. Easy to produce because the data is right there once someone joins the validation export to the lease abstracts. Hard to fix because the operator does not benefit from fixing it, the tenant does not want it fixed, and the property manager often does not know about it. The owner is the only party with the standing and the incentive to drive the change, and the owner is usually the party furthest from the operational detail.
+
+That is the structural problem owner-aligned controllership exists to address. Somebody outside the operating relationship has to be responsible for surfacing the drift, quantifying it, and turning it into a finding the owner can act on. The validation program is not the only place where that pattern repeats, but it is one of the most reliable, and it is almost always where the first material recoveries come from.

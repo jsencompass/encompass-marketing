@@ -1,0 +1,63 @@
+---
+title: "PARCS uptime as quantified revenue-at-risk"
+excerpt: "A PARCS that runs at 99.5% uptime sounds healthy. Until you ask which 0.5% it was, and what the lane was earning during the window that went dark."
+author: "Steven Grant"
+publishedAt: "2026-03-31"
+tags: ["PARCS", "uptime", "revenue control", "operations"]
+featured: false
+draft: false
+---
+
+The uptime number every PARCS vendor cites in a quarterly business review is annual or rolling-thirty. It is computed by dividing equipment-available-minutes by total-minutes across the reporting window. The number is almost always above 99 percent, often 99.5 or higher, and the conversation moves on.
+
+It is the wrong metric. Annual uptime is a denominator that treats every minute as equivalent. A parking facility's revenue does not.
+
+## The structural mismatch
+
+Revenue density at any parking facility is uneven by design. A municipal garage adjacent to an arena might generate `35%` of monthly gate revenue across six event nights. An off-airport remote lot does most of its weekly revenue across three Friday-through-Sunday windows. A medical campus does `70%` of its volume between 7am and 5pm on weekdays. A central business district garage does most of its monthly revenue between Tuesday and Thursday.
+
+A two-hour barrier failure on a Tuesday afternoon at a low-density site costs almost nothing. The same failure at the same site on a Saturday pre-game costs the lane. From a vendor reporting standpoint, both events look identical. From an asset performance standpoint, they are entirely different financial events.
+
+Annual uptime smooths this out by averaging. The vendor reports a number the owner cannot dispute and the operator cannot disprove, because the underlying weighting question never enters the calculation.
+
+## Revenue-at-risk uptime
+
+The correct metric is equipment availability weighted by the revenue density of the time window in which the equipment was unavailable. Call it revenue-at-risk uptime, or weighted uptime, or whatever your finance team prefers; the name matters less than the procedure.
+
+The procedure is straightforward and does not require buying anything new.
+
+First, build a revenue density map. Pull historical revenue at the transaction level from the PARCS export across a rolling twelve-month window. Aggregate by hour-of-week, so each bucket represents the average revenue earned in that hour across the year. Express each bucket as a percentage of the weekly total. The output is a 168-cell heatmap that tells you which hours of the week your facility actually earns money in.
+
+Second, pull the equipment downtime register. Every modern PARCS exposes lane-level event logs with downtime start and stop timestamps. Across vendors the report names differ but the underlying data is consistent. SKIDATA's Power.Gate event logs flow through MSaaS and pair with sweb.Control transaction logs. Amano ONE exposes downtime through the cloud admin; legacy iParcProfessional and Pro+ deployments require pulling lane status from the on-premise server. Scheidt and Bachmann's entervo events live in the entervo V3 admin or, for entervo infinite deployments, expose through the entervo.connect API. HUB's JMS exposes Jupiter lane status with timestamps. Flash, IP Parking, and Metropolis are all natively cloud and expose this through their respective admin portals with varying SLA reporting maturity.
+
+Third, for each downtime event, compute the dollar exposure: duration multiplied by the revenue density of the affected hours. Sum across the period. That is your dollar-weighted uptime exposure for the month, expressed in revenue-at-risk dollars rather than minutes-down.
+
+The math is not complicated. The reason it is rarely done is that the operator has no incentive to do it and the vendor has no incentive to report it.
+
+## What this surfaces
+
+Two patterns show up immediately when revenue-at-risk uptime is computed for the first time.
+
+The 99.5-percent-uptime PARCS that happens to fail every event night reads as 99.5 percent from the vendor and somewhere between `82%` and `90%` from the owner's economics. The vendor is technically correct. The owner is technically losing money. Both numbers are real, and only one of them is being reported.
+
+Conversely, the 97-percent-uptime PARCS that took its hits at 3am on Tuesdays is operationally fine. It looks worse on the vendor scorecard than it actually is. The conversation about replacing equipment that scores 97 might be the wrong conversation entirely if the underlying revenue exposure is negligible.
+
+Once weighted uptime is on the table, the remediation conversation gets more focused. Preventive maintenance windows can be scheduled into low-density hours. Service-level agreements can specify response times that are tighter for revenue-dense windows than for low-density ones. Spare parts inventory can be sized to recover from a Friday afternoon failure faster than a Tuesday morning failure. Vendor SLAs can be priced against weighted exposure rather than flat-rate response.
+
+## A note on vendor reporting maturity
+
+Not every vendor exposes the downtime register cleanly. Among the platforms in current US deployment, the cloud-native systems generally do better than the on-premise legacy. SKIDATA's MSaaS surface is mature. Amano ONE is improving but still lags the legacy iParcProfessional installations in some areas of historical data depth. Scheidt and Bachmann's entervo infinite is the cleanest of their stack. HUB's JMS exposes the data but not always in a directly queryable form. Flash and Metropolis treat this as a first-class metric in their dashboards because their architecture is built for it.
+
+For sites with older deployments, the data is usually retrievable but requires more work. The operator may need to be asked specifically. A controllership layer that knows what to ask for, and what good looks like for each vendor, makes the difference between getting a usable export and getting an aggregated PDF.
+
+## What to require contractually
+
+Operating agreements that specify uptime as a performance metric should specify revenue-at-risk uptime, with a monthly report broken out by lane and by event window. The operator should be required to produce the underlying calculation, not just the number. The contract should define the revenue density methodology in an addendum so it is not negotiable per period. The reporting cadence should match the close pack cadence so the two reconcile against the same source data.
+
+If the operator cannot produce revenue-at-risk uptime against a defined methodology, the controllership layer can. The work is not difficult. The discipline of doing it monthly is what makes it valuable.
+
+## The closing point
+
+99.5 percent is not a number; it is a sentence with a missing subject. The subject is "during which 0.5 percent." Until that question is answered, equipment uptime is a vendor-favorable abstraction. Once it is answered, it becomes a contract term that aligns the vendor and the operator with the actual economics of the asset.
+
+That alignment is what good infrastructure governance looks like in every other equipment-intensive asset class. Parking has been late to it. The right metric exists; the data exists; the procedure is mechanical. The only thing missing has been the layer responsible for producing it.
