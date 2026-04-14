@@ -83,7 +83,7 @@ All 8 ATTORNEY-REVIEW flags closed with conservative defaults (Sessions 5 + 7):
 
 ## Security (from Session 15 audit)
 
-- **Upstash Redis provisioning** — rate limiting is non-functional until Redis is provisioned. Jason: Vercel dashboard > Storage > Create Redis > link to project. No code changes needed.
+- ~~Upstash Redis provisioning~~ — RESOLVED S15.1: Jason provisioned via Vercel Marketplace. Code updated to KV_REST_API_* env vars. Production fail-closed.
 - Origin/Referer check on API routes — defense-in-depth header validation on POST endpoints
 - Rate limit threshold review — consider raising contact from 3/hour to 5/hour
 - Shared NAT mitigation — consider per-email secondary key for rate limiting

@@ -79,7 +79,7 @@ After creating the domain in Resend dashboard, Resend will provide the exact rec
 - [ ] Turnstile keys added to Vercel
 - [ ] Cal.com account created, calendar connected
 - [ ] Event type created, URL added to Vercel
-- [ ] Upstash Redis provisioned via Vercel Marketplace (rate limiting)
+- [x] Upstash Redis provisioned via Vercel Marketplace (rate limiting) — provisioned by Jason, S15.1
 - [ ] Test contact form submission
 - [ ] Test newsletter double opt-in flow
 - [ ] Verify email arrives at `contact@encompassparking.com`
@@ -103,3 +103,19 @@ Configured in `next.config.ts`. Enforced (not report-only) since Session 8.
 - `upgrade-insecure-requests` — added Session 15
 
 **Subresource Integrity:** `experimental.sri` enabled with SHA-256 (Session 15). Framework scripts carry `integrity` attributes at build time.
+
+## Upstash for Redis (Rate Limiting)
+
+Provisioned via Vercel Marketplace "Upstash for Redis" integration (S15.1). The integration writes five env vars to Production, Preview, and Development environments:
+
+| Variable | Used by code | Notes |
+|---|---|---|
+| `KV_REST_API_URL` | Yes | REST API endpoint for `@upstash/redis` |
+| `KV_REST_API_TOKEN` | Yes | Authentication token for `@upstash/redis` |
+| `KV_REST_API_READ_ONLY_TOKEN` | No | Read-only token, not consumed |
+| `KV_URL` | No | Redis protocol URL, not consumed |
+| `REDIS_URL` | No | Redis protocol URL, not consumed |
+
+Code reads `KV_REST_API_URL` and `KV_REST_API_TOKEN` directly in `src/lib/rateLimit.ts`. In production, missing credentials fail-closed (requests rejected with 503). In development, missing credentials fail-open (rate limiting disabled with console warning).
+
+Rate limits: contact form 3/hour per IP, newsletter 5/hour per IP. Key pattern: `contact:${ip}`, `newsletter:${ip}`.

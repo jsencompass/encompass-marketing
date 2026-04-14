@@ -624,3 +624,70 @@ Feature-complete after S14.1. This session is the pre-launch security audit gate
 - Upstash Redis provisioning — requires Jason action in Vercel dashboard
 - Origin/Referer check on API routes — logged to backlog
 - Dev dependency major version upgrades — logged to backlog
+
+## Session 15.1: Production Bug Fixes + Rate Limit Wire-Up + Asset Integration
+
+**Date**: 2026-04-14
+
+### Context
+
+Jason walked the live production site post-S15 and flagged four bugs plus requested two asset integrations. Jason also provisioned Upstash Redis via Vercel Marketplace to close the S15 Serious finding.
+
+### Critical bugs fixed
+
+**Homepage hero invisible** (root cause: `motion/react` library `initial` prop):
+- The `motion/react` library applies `initial={{ opacity: 0 }}` as `style="opacity:0"` inline in SSR HTML
+- Client-side animation to `opacity: 1` was unreliable across browsers/conditions
+- Fix: replaced `motion/react` components in HeroEntrance with plain HTML elements, animation handled by CSS keyframes (`hero-stagger` class in `motion.css`). SSR now renders elements visible by default; CSS `@keyframes fade-up` provides the entrance animation. `@media (prefers-reduced-motion)` disables animation, elements render immediately visible.
+
+**Consent banner non-functional** (root cause: same as hero):
+- The consent banner is a standard React client component with `onClick` handlers
+- If client hydration was unreliable (due to the motion library SSR mismatch), click handlers would not attach
+- Fix: resolves as a side-effect of the hero fix — removing the motion library SSR mismatch eliminates the hydration interference
+
+**Insights grid horizontal line artifacts** (root cause: PostThumbnail double borders):
+- PostThumbnail rendered with `overflow-hidden rounded-lg border border-border` inside grid cards that also had `border border-border`
+- This created a double border (card border + thumbnail border) visible as horizontal lines between cards
+- Fix: removed `rounded-lg border border-border` from PostThumbnail; containing cards provide the visual container
+
+### Shipped
+
+**Rate limiter wired to Vercel-Upstash env vars** (`src/lib/rateLimit.ts`):
+- Changed from `UPSTASH_REDIS_REST_URL`/`TOKEN` to `KV_REST_API_URL`/`TOKEN` (Vercel Marketplace canonical names)
+- Production fail-closed: if Redis credentials are missing in production, requests are rejected
+- Development fail-open: rate limiting disabled with console warning
+- `.env.example` updated with new canonical names
+
+**PACT portfolio map replaced** (`src/components/proof/PactPortfolioMap.tsx`):
+- Removed SVG backdrop (coastline arc, contour lines, grid, radial vignette)
+- Added real LA map image (`/imagery/LA-map.png`) via `next/image` with gradient overlay
+- 6 pins repositioned as percentage-based absolute positions calibrated to LA neighborhoods
+- Overlay cards (Portfolio Potential, Portfolio Confidence) preserved with `z-20`
+- Logo overlay added top-left (`/logo.png`, 128px wide, 80% opacity, `z-10`)
+- Mobile: stacked layout with map image between cards
+- Attribution caption preserved
+
+**Logo overlays** (2 placements):
+- PACT map: top-left, `w-32 opacity-80 z-10`, decorative (`aria-hidden`)
+- Hero: bottom-right, `w-36 opacity-60 z-10`, decorative (`aria-hidden`)
+
+**OG images as post-page cover images** (`src/app/insights/[slug]/page.tsx`):
+- Added `<Image>` component at top of post page, above breadcrumb
+- Source: `/og/insights/${slug}.png` (all 11 images present)
+- `max-w-[960px] rounded-lg priority` for above-fold rendering
+- Insights grid PostThumbnails unchanged (explicit per prompt)
+
+**Dependency update**: `resend` 6.10.0 → 6.11.0 (from S15)
+
+### Documentation
+
+- Updated: `docs/session-log.md` — this entry
+- Updated: `docs/audit-findings-session-15.md` — S15 Serious finding resolved, two new Critical findings added
+- Updated: `docs/backlog.md` — closed items
+- Updated: `docs/integrations.md` — Upstash integration details, checklist item checked
+- Updated: `docs/site-ia.md` — hero logo overlay, PACT real map imagery, post cover images
+- Updated: `.env.example` — KV_REST_API_* canonical names
+
+### Deferred
+
+None. All 8 deliverables shipped.
