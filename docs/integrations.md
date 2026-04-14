@@ -79,6 +79,27 @@ After creating the domain in Resend dashboard, Resend will provide the exact rec
 - [ ] Turnstile keys added to Vercel
 - [ ] Cal.com account created, calendar connected
 - [ ] Event type created, URL added to Vercel
+- [ ] Upstash Redis provisioned via Vercel Marketplace (rate limiting)
 - [ ] Test contact form submission
 - [ ] Test newsletter double opt-in flow
 - [ ] Verify email arrives at `contact@encompassparking.com`
+
+## Content Security Policy
+
+Configured in `next.config.ts`. Enforced (not report-only) since Session 8.
+
+**Current directives (updated Session 15):**
+- `default-src 'self'`
+- `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://challenges.cloudflare.com` — `'unsafe-inline'` required by Next.js 16 for RSC payload on static pages
+- `style-src 'self' 'unsafe-inline'` — required by Tailwind v4 runtime
+- `img-src 'self' data: https:`
+- `font-src 'self' https://fonts.gstatic.com`
+- `connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://challenges.cloudflare.com`
+- `frame-src https://challenges.cloudflare.com https://cal.com`
+- `frame-ancestors 'none'`
+- `object-src 'none'` — added Session 15
+- `base-uri 'self'` — added Session 15
+- `form-action 'self'` — added Session 15
+- `upgrade-insecure-requests` — added Session 15
+
+**Subresource Integrity:** `experimental.sri` enabled with SHA-256 (Session 15). Framework scripts carry `integrity` attributes at build time.

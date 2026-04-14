@@ -15,6 +15,10 @@ const securityHeaders = [
       "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://challenges.cloudflare.com",
       "frame-src https://challenges.cloudflare.com https://cal.com",
       "frame-ancestors 'none'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "upgrade-insecure-requests",
     ].join("; "),
   },
   {
@@ -40,6 +44,11 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  experimental: {
+    sri: {
+      algorithm: "sha256",
+    },
+  },
   headers: async () => [
     {
       source: "/(.*)",

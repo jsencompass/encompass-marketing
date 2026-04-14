@@ -554,3 +554,73 @@ Session 14 deferred Steps 6 (Insights index header treatment) and 7 (featured po
 ### Deferred
 
 None. Both deliverables shipped.
+
+## Session 15: Pre-Launch Security + Infrastructure Audit
+
+**Date**: 2026-04-14
+
+### Context
+
+Feature-complete after S14.1. This session is the pre-launch security audit gate — security grades, defensive controls tested empirically, dependency vulnerabilities cleared, every control tested not just deployed.
+
+### Findings Summary
+
+- **Critical:** 1 found, 1 fixed (Turnstile bypass when token omitted)
+- **Serious:** 2 found, 1 fixed in-session (input length validation), 1 requires Jason action (Upstash Redis provisioning)
+- **Moderate:** 4 found, 1 fixed (CSP hardening), 1 accepted with mitigation (CSP `'unsafe-inline'`), 2 logged to backlog
+- **Low/Informational:** 5 (TLS 1.0/1.1 platform-level, ACAO on static pages, external graders blocked, dev deps outdated, KV fallback names)
+
+### Shipped
+
+**Critical fix — Turnstile bypass** (`src/app/api/contact/route.ts`):
+- Before: `if (body.turnstileToken)` — verification skipped when token omitted
+- After: Turnstile mandatory when `TURNSTILE_SECRET_KEY` is configured; missing token rejected with 400
+
+**Input length validation** (`src/app/api/contact/route.ts`):
+- Added max length checks: name (200), email (254), message (5000), organization (200), phone (50)
+
+**CSP hardening** (`next.config.ts`):
+- Added directives: `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `upgrade-insecure-requests`
+- Enabled `experimental.sri` with SHA-256 — framework scripts carry `integrity` attributes
+
+**Dependency update**:
+- `resend` 6.10.0 → 6.11.0
+- `pnpm audit`: 0 vulnerabilities
+
+**Defensive control live tests** (Phase A):
+- 1A (honest submission): manual by Jason required (Turnstile needs browser)
+- 1B (honeypot): PASS — silent success, no email sent
+- 1C (rate limit): FAIL — Upstash Redis not provisioned, fail-open
+- 1D (Turnstile bypass): FAIL → FIXED — invalid token rejected; omitted token now also rejected
+- 1E-1G (security headers): ALL PASS — CSP enforced, HSTS 2yr+preload, all 6 headers present
+
+**CSP nonce migration** (Phase D):
+- Path 3 — deferred with evidence. Next.js 16 docs confirm nonce requires dynamic rendering for all pages, incompatible with static generation. Experimental SRI enabled as mitigation.
+
+**API route hardening review** (Phase C):
+- All routes: rate limit at entrypoint, generic error responses, no stack traces leaked, CORS same-origin only, no non-public env vars in client bundle
+- Newsletter confirm/unsubscribe: HMAC token-gated, no enumeration vector
+
+**Environment variable audit**: 13 env vars audited, zero non-public vars exposed to client bundle, `.env.example` current
+
+**SRI review**: No external `<script>` or `<link>` tags in source. Turnstile/Cal.com scripts rotate (SRI not feasible). Experimental SRI covers framework bundles.
+
+### External Grader Scores
+
+- Mozilla Observatory: manual verification required (API unavailable)
+- SecurityHeaders: estimated A (all 6 headers present; Cloudflare blocks automated scan)
+- SSL Labs: scan failed (infrastructure block). Direct: TLS 1.3 + post-quantum key exchange, Let's Encrypt cert
+
+### Documentation
+
+- NEW: `docs/audit-findings-session-15.md` — full audit record with evidence
+- Updated: `docs/session-log.md` — this entry
+- Updated: `docs/backlog.md` — new items from audit findings
+- Updated: `docs/integrations.md` — CSP details
+
+### Deferred
+
+- CSP nonce migration — blocked by Next.js static rendering requirement (documented with paste-able evidence)
+- Upstash Redis provisioning — requires Jason action in Vercel dashboard
+- Origin/Referer check on API routes — logged to backlog
+- Dev dependency major version upgrades — logged to backlog
