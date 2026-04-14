@@ -11,7 +11,7 @@ export function CountUp({
   value,
   prefix = "",
   suffix = "",
-  duration = 1.5,
+  duration = 1.9,
   formatThousands = true,
 }: {
   value: number;
@@ -21,9 +21,11 @@ export function CountUp({
   formatThousands?: boolean;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
+  // SSR-truthful: initial state is the final value so crawlers see the real number
+  const [display, setDisplay] = useState(value);
   const [started, setStarted] = useState(false);
   const [done, setDone] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const reduced = useReducedMotion();
 
   const format = useCallback(
@@ -35,9 +37,16 @@ export function CountUp({
     [formatThousands]
   );
 
+  // On mount, reset to 0 for animation (only in browser)
   useEffect(() => {
-    if (reduced) {
-      setDisplay(value);
+    setMounted(true);
+    if (!reduced) {
+      setDisplay(0);
+    }
+  }, [reduced]);
+
+  useEffect(() => {
+    if (!mounted || reduced) {
       setDone(true);
       return;
     }
@@ -56,7 +65,7 @@ export function CountUp({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [reduced, value, started]);
+  }, [mounted, reduced, started]);
 
   useEffect(() => {
     if (!started || reduced) return;
@@ -83,7 +92,8 @@ export function CountUp({
   return (
     <span
       ref={ref}
-      className={`transition-shadow duration-600 ${done && started ? "drop-shadow-[0_0_24px_rgba(108,92,231,0.15)]" : ""}`}
+      suppressHydrationWarning
+      className={`transition-shadow duration-600 ${done && started ? "drop-shadow-[0_0_24px_rgba(108,92,231,0.25)]" : ""}`}
     >
       {prefix}{format(display)}{suffix}
     </span>

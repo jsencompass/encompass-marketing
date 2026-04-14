@@ -14,7 +14,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CredibilityBand } from "@/components/CredibilityBand";
 import { PactPortfolioMap } from "@/components/proof/PactPortfolioMap";
 import { DrawOnReveal } from "@/components/motion/DrawOnReveal";
-import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
+
 import { getAllPosts } from "@/lib/insights";
 import { PostThumbnail } from "@/components/insights/PostThumbnail";
 
@@ -52,21 +52,6 @@ export default function Home() {
       <HeroSpotlight>
         <section className="relative min-h-[70vh] md:min-h-[85vh] bg-bg-base">
           <HeroBackground />
-          {/* Hero imagery placeholder — overlay card */}
-          <div className="absolute top-20 right-6 z-10 hidden w-[300px] lg:block">
-            <div className="rounded-xl border border-dashed border-accent-dim bg-bg-raised/70 p-4 backdrop-blur-md">
-              <div className="flex items-center gap-2 text-[11px] text-text-tertiary">
-                <span className="text-accent-text">&#x25C8;</span>
-                <span className="font-semibold uppercase tracking-widest">Image Placeholder</span>
-              </div>
-              <p className="mt-2 font-mono text-12 text-text-secondary">/public/hero/hero-bg.jpg</p>
-              <p className="mt-1 font-mono text-14 font-medium text-accent-text">2400 &times; 1400</p>
-              <p className="mt-1 text-[11px] text-text-tertiary">JPG, progressive, ~300KB</p>
-              <p className="mt-2 text-12 leading-relaxed text-text-secondary">
-                Institutional parking structure at dusk, downtown LA. Avoid foreign-language signage. Will render behind hero with dark overlay.
-              </p>
-            </div>
-          </div>
           <div className="relative mx-auto max-w-[1100px] px-6 pt-32 pb-24 md:pt-40 md:pb-32">
             <HeroEntrance>
               <HeroEyebrow>Controllership for Parking Revenue</HeroEyebrow>
@@ -246,6 +231,33 @@ export default function Home() {
 
       {/* ─── Closing CTA ─── */}
       <ClosingCTA />
+
+      {/* Organization JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Encompass Parking",
+            legalName: "Encompass Parking, LLC",
+            url: "https://encompassparking.com",
+            logo: "https://encompassparking.com/og-default.png",
+            description: "Owner-aligned parking controllership: monthly close-pack reconciliation, audits, and findings for parking facility owners.",
+            founder: [
+              { "@type": "Person", name: "Joe Dudek" },
+              { "@type": "Person", name: "Jason Scott" },
+              { "@type": "Person", name: "Steven Grant" },
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "sales",
+              email: "contact@encompassparking.com",
+              url: "https://encompassparking.com/contact",
+            },
+          }),
+        }}
+      />
     </>
   );
 }

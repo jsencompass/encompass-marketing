@@ -155,6 +155,30 @@ export default function Services() {
       </section>
 
       <ClosingCTA />
+
+      {/* Service JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Parking Asset Controllership",
+            serviceType: "Parking Operations Audit and Reconciliation",
+            provider: {
+              "@type": "Organization",
+              name: "Encompass Parking",
+              url: "https://encompassparking.com",
+            },
+            areaServed: { "@type": "Country", name: "United States" },
+            offers: [
+              { "@type": "Offer", name: "PACT Oversight Foundation", description: "For portfolios establishing controllership for the first time. Automated data feeds required.", price: "2250", priceCurrency: "USD" },
+              { "@type": "Offer", name: "PACT Oversight Performance", description: "For portfolios with mixed data posture and deeper variance closure needs.", price: "3500", priceCurrency: "USD" },
+              { "@type": "Offer", name: "PACT Oversight Enterprise", description: "For institutional portfolios requiring cross-operator normalization and executive-level rollups.", price: "6750", priceCurrency: "USD" },
+            ],
+          }),
+        }}
+      />
     </>
   );
 }

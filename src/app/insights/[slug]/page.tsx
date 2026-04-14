@@ -33,6 +33,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author.name],
+      images: [{ url: `/og/insights/${slug}.png`, width: 1200, height: 630 }],
     },
   };
 }
