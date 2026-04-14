@@ -81,6 +81,15 @@ All 8 ATTORNEY-REVIEW flags closed with conservative defaults (Sessions 5 + 7):
 - LLC registered mailing address for Privacy Policy (currently `[Mailing address TBD]` with JASON-TODO in `/privacy`)
 - parking-guru SKILL.md — authoritative bio narratives for Dudek/Scott/Grant (path: `/mnt/skills/user/parking-guru/SKILL.md`)
 
+## Security (from Session 15 audit)
+
+- **Upstash Redis provisioning** — rate limiting is non-functional until Redis is provisioned. Jason: Vercel dashboard > Storage > Create Redis > link to project. No code changes needed.
+- Origin/Referer check on API routes — defense-in-depth header validation on POST endpoints
+- Rate limit threshold review — consider raising contact from 3/hour to 5/hour
+- Shared NAT mitigation — consider per-email secondary key for rate limiting
+- CSP nonce migration — blocked by Next.js static rendering. Revisit if site moves to dynamic rendering or Next.js adds static-compatible nonce support
+- Dev dependency upgrades — @types/node (20→25), eslint (9→10), typescript (5→6). Schedule as separate session.
+
 ## Deferred-from-session
 
 - ~~Insights index editorial header + featured treatment upgrade~~ — SHIPPED Session 14.1: editorial header (eyebrow + H1 + sub-deck + Reveal stagger + HR), FEATURED pill, 2-col featured card layout, "Recent" sub-heading

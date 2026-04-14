@@ -54,12 +54,22 @@ export async function POST(req: NextRequest) {
   if (!body.name?.trim() || !body.email?.trim() || !body.message?.trim()) {
     return NextResponse.json({ ok: false, error: "Name, email, and message are required." }, { status: 400 });
   }
+  if (body.name.length > 200 || body.email.length > 254 || body.message.length > 5000) {
+    return NextResponse.json({ ok: false, error: "Input too long." }, { status: 400 });
+  }
+  if ((body.organization && body.organization.length > 200) || (body.phone && body.phone.length > 50)) {
+    return NextResponse.json({ ok: false, error: "Input too long." }, { status: 400 });
+  }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
     return NextResponse.json({ ok: false, error: "Please enter a valid email address." }, { status: 400 });
   }
 
-  // Turnstile
-  if (body.turnstileToken) {
+  // Turnstile — required when secret key is configured
+  const turnstileConfigured = !!process.env.TURNSTILE_SECRET_KEY;
+  if (turnstileConfigured) {
+    if (!body.turnstileToken) {
+      return NextResponse.json({ ok: false, error: "Spam verification failed. Please try again." }, { status: 400 });
+    }
     const valid = await verifyTurnstile(body.turnstileToken, ip);
     if (!valid) {
       return NextResponse.json({ ok: false, error: "Spam verification failed. Please try again." }, { status: 400 });
