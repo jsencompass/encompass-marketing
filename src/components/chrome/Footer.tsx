@@ -67,14 +67,14 @@ export function Footer() {
                         href={l.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-14 text-text-secondary transition-colors hover:text-text-primary"
+                        className="inline-flex min-h-[44px] items-center text-14 text-text-secondary transition-colors hover:text-text-primary"
                       >
                         {l.label}
                       </a>
                     ) : (
                       <Link
                         href={l.href}
-                        className="text-14 text-text-secondary transition-colors hover:text-text-primary"
+                        className="inline-flex min-h-[44px] items-center text-14 text-text-secondary transition-colors hover:text-text-primary"
                       >
                         {l.label}
                       </Link>

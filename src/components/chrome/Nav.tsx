@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useMemo } from "react";
+import { usePathname } from "next/navigation";
 
 const links = [
   { label: "How It Works", href: "/how-it-works" },
@@ -16,6 +17,7 @@ function lerp(a: number, b: number, t: number) {
 }
 
 export function Nav() {
+  const pathname = usePathname();
   const [scrollY, setScrollY] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -55,15 +57,18 @@ export function Nav() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-14 font-medium text-text-secondary transition-colors hover:text-text-primary"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const isActive = pathname === l.href || (l.href !== "/" && pathname.startsWith(l.href));
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`text-14 font-medium transition-colors ${isActive ? "text-text-primary border-b-2 border-accent pb-0.5" : "text-text-secondary hover:text-text-primary"}`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
           <a
             href="https://encompass-ppb-web.vercel.app"
             target="_blank"
@@ -87,23 +92,27 @@ export function Nav() {
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div
-          className="absolute left-0 w-full border-b border-border bg-bg-base md:hidden"
-          style={{ top: `${navHeight}px` }}
-        >
-          <nav className="mx-auto flex max-w-[1200px] flex-col gap-4 px-6 py-6">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-16 font-medium text-text-secondary transition-colors hover:text-text-primary"
-              >
-                {l.label}
-              </Link>
-            ))}
+      {/* Mobile menu — slide animation */}
+      <div
+        className={`absolute left-0 w-full border-b border-border bg-bg-base md:hidden transition-all duration-[240ms] ease-out origin-top ${
+          mobileOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-95 pointer-events-none"
+        }`}
+        style={{ top: `${navHeight}px` }}
+      >
+        <nav className="mx-auto flex max-w-[1200px] flex-col gap-4 px-6 py-6">
+            {links.map((l) => {
+              const isActive = pathname === l.href || (l.href !== "/" && pathname.startsWith(l.href));
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`text-16 font-medium transition-colors ${isActive ? "text-text-primary border-l-2 border-accent pl-3" : "text-text-secondary hover:text-text-primary"}`}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
             <a
               href="https://encompass-ppb-web.vercel.app"
               target="_blank"
@@ -114,7 +123,6 @@ export function Nav() {
             </a>
           </nav>
         </div>
-      )}
     </header>
   );
 }

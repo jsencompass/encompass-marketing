@@ -11,10 +11,12 @@ export const metadata: Metadata = {
     "Quarterly notes from the Encompass principals on parking controllership, operator dynamics, revenue governance, and industry shifts.",
 };
 
+const POSTS_PER_PAGE = 12;
+
 export default function Insights() {
-  const posts = getAllPosts();
-  const featured = posts.find((p) => p.featured);
-  const remaining = posts.filter((p) => p !== featured);
+  const allPosts = getAllPosts();
+  const featured = allPosts.find((p) => p.featured);
+  const remaining = allPosts.filter((p) => p !== featured).slice(0, POSTS_PER_PAGE - 1);
 
   return (
     <>
@@ -36,7 +38,7 @@ export default function Insights() {
 
       <section className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
 
-      {posts.length === 0 ? (
+      {allPosts.length === 0 ? (
         <div className="mt-16 max-w-xl">
           <p className="text-18 text-text-secondary">
             First edition coming soon. Subscribe to get it in your inbox.
