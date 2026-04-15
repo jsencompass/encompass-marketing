@@ -72,7 +72,7 @@ export default function Insights() {
                 </span>
                 <Link
                   href={`/insights/${featured.slug}`}
-                  className="card-lift block overflow-hidden rounded-lg border border-border bg-bg-raised md:grid md:grid-cols-5 md:gap-8"
+                  className="card-lift block overflow-hidden rounded-lg bg-bg-raised md:grid md:grid-cols-5 md:gap-8"
                 >
                   <PostThumbnail slug={featured.slug} className="aspect-[16/9] md:col-span-2" />
                   <div className="p-8 md:col-span-3 md:py-8 md:pr-8 md:pl-0">
@@ -104,7 +104,7 @@ export default function Insights() {
                 <Reveal key={post.slug} delay={index * 0.1}>
                   <Link
                     href={`/insights/${post.slug}`}
-                    className="card-lift h-full overflow-hidden rounded-lg border border-border bg-bg-raised"
+                    className="card-lift h-full overflow-hidden rounded-lg bg-bg-raised"
                   >
                     <PostThumbnail slug={post.slug} className="aspect-[16/9]" />
                     <div className="p-8">

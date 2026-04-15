@@ -52,7 +52,8 @@ Standard Tailwind spacing scale (4px base unit). Section padding: 96–128px ver
 
 ## Component Vocabulary
 
-- **Cards**: `rounded-lg border border-border bg-bg-raised p-8`. Hover state adds `border-accent/40`.
+- **Cards** (general): `rounded-lg border border-border bg-bg-raised p-8`. Hover state adds `border-accent/40`.
+- **Cards** (insights): `rounded-lg bg-bg-raised` (NO border). Edge definition from bg-bg-raised/bg-bg-base contrast. Border was removed in S16.2 because the 1px border produced subpixel artifacts at grid gap boundaries.
 - **Eyebrow labels**: `text-12 font-semibold uppercase tracking-widest text-text-tertiary`
 - **Tags**: Pill-shaped, small — `rounded-full px-3 py-0.5 text-12 font-medium`
 - **CTA buttons**: `rounded-full bg-accent px-6 py-3 text-14 font-semibold text-white`
