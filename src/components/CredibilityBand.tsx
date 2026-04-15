@@ -8,10 +8,10 @@ const verticalsList = "airports, hospitality, medical, class\u00A0A, municipal, 
 
 const statItems = [
   { id: "years", numeric: 70, prefix: "", suffix: "+", label: "years combined in parking operations" },
-  { id: "lax", display: "LAX", label: "$85M revenue, 800+ employees managed" },
-  { id: "verticals", display: "ALL VERTICALS", list: verticalsList },
   { id: "projects", numeric: 800, prefix: "", suffix: "+", label: "PARCS and technology projects delivered" },
   { id: "shops", numeric: 3000, prefix: "", suffix: "+", label: "Parking PI mystery shops completed" },
+  { id: "lax", display: "LAX", label: "$85M revenue, 800+ employees managed" },
+  { id: "verticals", display: "ALL VERTICALS", list: verticalsList },
 ];
 
 export function CredibilityBand() {

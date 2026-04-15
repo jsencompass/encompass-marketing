@@ -20,16 +20,16 @@ import { getAllPosts } from "@/lib/insights";
 import { PostThumbnail } from "@/components/insights/PostThumbnail";
 
 const capabilities = [
-  { name: "Implementation + PPB", description: "Paid onboarding that establishes the starting truth set. Maps sessions, transactions, validations, and credentials into one reconcilable view.", tag: "Base" },
+  { name: "Implementation + PPB", description: "Every new site starts with a paid Parking Performance Baseline (PPB). Think of it as a baseline audit: we ingest and normalize your data, map sessions to transactions to validations to deposits, and produce the starting truth set your operation is measured against. The PPB is what makes a site controls-ready for recurring PACT Oversight.", tag: "Base" },
   { name: "PACT Oversight", description: "Monthly close-pack audit, session-to-deposit tie-out, and exception governance. Rate, product, and validation integrity managed as operating levers.", tag: "Base" },
-  { name: "Remote Command Center", description: "24/7 monitoring, alert triage, and dispatch for revenue-at-risk incidents. Permissioned actions with time-stamped evidence.", tag: "Optional" },
-  { name: "Remote Call Center", description: "Customer support via Umojo\u2019s NexPark platform, operated under Encompass scripts and authority limits.", tag: "Optional" },
+  { name: "Remote Command Center", description: "24/7 remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. Permissioned operational actions with time-stamped evidence. Reduces reliance on onsite coverage during nights, weekends, and low-volume hours. Attached where the coverage math works.", tag: "Optional" },
+  { name: "Remote Call Center", description: "Branded customer support operating under Encompass scripts, authority limits, and refund governance. Every interaction logged and fed back into the control layer. No more refund-first defaults.", tag: "Optional" },
 ];
 
 const tiers = [
-  { name: "Foundation", price: "$2,250", description: "For portfolios establishing controllership for the first time. Automated data feeds required.", highlight: false },
-  { name: "Performance", price: "$3,500", description: "For portfolios with mixed data posture and deeper variance closure needs.", highlight: true },
-  { name: "Enterprise", price: "$6,750", description: "For institutional portfolios requiring cross-operator normalization and executive-level rollups.", highlight: false },
+  { name: "Foundation", price: "$2,250+", description: "For portfolios establishing controllership for the first time. Automated data feeds required.", highlight: false },
+  { name: "Performance", price: "$3,500+", description: "For portfolios with mixed data posture and deeper variance closure needs.", highlight: true },
+  { name: "Enterprise", price: "$6,750+", description: "For institutional portfolios requiring cross-operator normalization and executive-level rollups.", highlight: false },
 ];
 
 const platformIcons: Record<string, React.ReactNode> = {
@@ -40,7 +40,7 @@ const platformIcons: Record<string, React.ReactNode> = {
 };
 
 const platforms = [
-  { key: "pact", name: "PACT\u2122", title: "Parking Asset Control Tower", description: "The vendor-agnostic controllership layer. Reconciles revenue, governs exceptions, enforces policy across any operator and any stack." },
+  { key: "pact", name: "PACT\u2122", title: "Parking Asset Control Tower (PACT)", description: "The vendor-agnostic controllership layer. Reconciles revenue, governs exceptions, enforces policy across any operator and any stack." },
   { key: "pi", name: "Parking PI\u2122", title: "Mystery Shop Platform", description: "The industry\u2019s only mystery shop platform purpose-built for parking. 3,000+ shops completed. Shopper portal, weighted scoring, client dashboard." },
   { key: "protrack", name: "ProTrack\u2122", title: "Project Management", description: "Project management platform for PARCS installations and technology upgrades. 800+ projects. Backbone of institutional-grade delivery." },
   { key: "command", name: "Command Center", title: "Remote Operations", description: "Remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. 24/7 coverage with permissioned operational response." },
@@ -62,7 +62,7 @@ export default function Home() {
               </HeroTitle>
               <HeroSubhead>
                 Encompass is the controllership layer for parking assets. We sit
-                above any operator and any technology stack &mdash; reconciling
+                above any operator and any technology stack, reconciling
                 revenue, governing exceptions, and continuously improving NOI
                 across every site in the portfolio.
               </HeroSubhead>
@@ -95,7 +95,7 @@ export default function Home() {
             <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Why Encompass Exists</p>
             <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Until Encompass, nobody did.</h2>
             <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
-              Parking is a $30B industry managed by capable parties across fractured seams. Operators run throughput. PARCS vendors run devices. Finance teams receive month-end packets. Everyone is doing a real job &mdash; and until Encompass, the full chain of proof, closure, and policy discipline belonged to no one. That gap is where NOI erodes quietly, through drift, exceptions, and controls that go unverified. We built the controllership layer to close it.
+              Parking is a $30B industry managed by capable parties across fractured seams. Operators run throughput. PARCS vendors run devices. Finance teams receive month-end packets. Everyone is doing a real job, and until Encompass, the full chain of proof, closure, and policy discipline belonged to no one. That gap is where NOI erodes quietly, through drift, exceptions, and controls that go unverified. We built the controllership layer to close it.
             </p>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {[
@@ -121,7 +121,7 @@ export default function Home() {
       <Reveal>
         <section className="border-b border-border">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Parking Asset Control Tower</p>
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Parking Asset Control Tower (PACT)</p>
             <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">A recurring controllership layer, delivered per site-month.</h2>
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {capabilities.map((cap, i) => (
@@ -159,7 +159,7 @@ export default function Home() {
               ))}
             </div>
             <p className="mt-8 text-14 text-text-tertiary">
-              Implementation + PPB: $4,500 per site. Optional modules priced separately.{" "}
+              Implementation + PPB: $4,500+ per site. Optional modules priced separately.{" "}
               <Link href="/services" className="text-text-secondary underline underline-offset-4 transition-colors hover:text-text-primary">See Services for the full matrix.</Link>
             </p>
           </div>
@@ -195,8 +195,8 @@ export default function Home() {
       <Reveal>
         <section className="border-b border-border">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Latest from Insights</p>
-            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Notes from the field.</h2>
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Insights</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">What we see when we audit the numbers.</h2>
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {getAllPosts().slice(0, 2).map((post, i) => (
                 <Reveal key={post.slug} delay={i * 0.12}>
@@ -232,7 +232,7 @@ export default function Home() {
             <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">PACT makes revenue proof continuous.</h2>
             <div className="mt-12"><PactPortfolioMap /></div>
             <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
-              Session-to-deposit tie-out. Exception governance with reason codes and closure standards. Rate, product, and validation integrity tracked as operating levers. Every site, every month.
+              Session-to-deposit tie-out against source-of-truth data. Exception governance with reason codes, approval hierarchies, and closure standards. Rate, product, and validation integrity tracked as operating levers across a live portfolio. Every site, every month, against the same specification.
             </p>
           </div>
         </section>

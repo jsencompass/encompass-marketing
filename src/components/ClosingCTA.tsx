@@ -9,8 +9,9 @@ export function ClosingCTA() {
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
           We work with institutional owners, management companies, and
-          self-operated portfolios evaluating whether their current controls
-          match the scale of their assets.
+          self-operated portfolios whose parking operations have outgrown
+          their governance. If that is the question you are asking, start
+          a conversation.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
