@@ -807,3 +807,34 @@ Final pre-launch audit gate. Accessibility, content quality, code quality, plus 
 - Keyboard navigation walkthrough (manual by Jason; checklist in findings)
 - Screen reader smoke test (manual by Jason; checklist in findings)
 - Behavioral consent UX test (manual by Jason; checklist in findings)
+
+## Session 16.1: Consent Banner + DNSS Link + Insights Artifact + Article Container
+
+**Date**: 2026-04-14
+
+### Shipped
+
+**Consent banner auto-dismiss fix** (`ConsentBanner.tsx`):
+- Root cause: `getServerSnapshot()` returned `"pending"`, causing SSR to render the banner. Client hydration then read localStorage (which had a prior consent decision for returning users), returned a non-pending value, and hid the banner. This created a flash-then-dismiss that appeared as auto-closing.
+- Fix: `getServerSnapshot()` now returns `"denied"` so the banner never renders in SSR HTML. On client hydration, `getSnapshot()` reads actual localStorage: fresh users get `"pending"` (banner appears), returning users get their stored decision (banner stays hidden).
+- Also: moved GPC side effect out of `getSnapshot()` (was violating `useSyncExternalStore` purity requirement) into a guarded `useEffect`.
+
+**DNSS footer link functional** (`Footer.tsx`):
+- Changed from `reopen()` (which removed consent and showed the banner) to `deny()` (directly records opt-out)
+- Added confirmation toast: "Opt-out recorded. Analytics will not track you on this site." (6-second display, `aria-live="polite"` for screen readers)
+- `aria-label` added for accessibility
+- Idempotent: works whether user has previously interacted or not
+
+**Insights card vertical line artifacts** (`Reveal.tsx`):
+- Root cause: Reveal component set inline styles (`opacity`, `transform`, `transition`) on mount and kept them permanently after the reveal animation. The persistent `transition: transform` property kept each Reveal wrapper on its own compositing layer. At grid gap boundaries, compositing layer edges produced subpixel rendering artifacts visible as thin vertical lines at card corners.
+- Fix: After the reveal transition completes, `el.removeAttribute("style")` clears all inline styles. The element returns to default CSS cascade (no compositing layer, no subpixel artifacts).
+- This is the fourth attempt at this fix. Prior attempts addressed PostThumbnail borders (S15.1), JS-blocked Reveal (S15.2), and scale() compositing (S16). None identified the actual producing mechanism: the persistent inline `transition` property.
+
+**Article page card container** (`[slug]/page.tsx`):
+- Wrapped article content in `rounded-2xl border border-border/40 bg-bg-raised shadow-xl shadow-black/20`
+- Padding: `px-6 py-12 md:px-16 md:py-16`
+- Added border-t divider before Next/Prev navigation
+
+### Deferred
+
+None. All 4 deliverables shipped.
