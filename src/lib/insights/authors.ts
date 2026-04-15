@@ -9,7 +9,7 @@ export const authors: Record<string, Author> = {
   joe: {
     name: "Joe Dudek",
     role: "Operations & Governance",
-    bio: "35+ years in parking. Ran LAX parking — $85M revenue, 800+ employees. Leads governance at Encompass.",
+    bio: "35+ years in parking. Ran LAX parking: $85M revenue, 800+ employees. Leads governance at Encompass.",
     initials: "JD",
   },
   jason: {
@@ -27,7 +27,7 @@ export const authors: Record<string, Author> = {
   encompass: {
     name: "Encompass Parking",
     role: "Controllership for Parking Revenue",
-    bio: "Encompass is the controllership layer for parking assets — reconciling revenue, governing exceptions, and continuously improving NOI.",
+    bio: "Encompass is the controllership layer for parking assets, reconciling revenue, governing exceptions, and continuously improving NOI.",
     initials: "EP",
   },
 };
