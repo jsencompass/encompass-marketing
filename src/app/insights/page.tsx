@@ -157,11 +157,11 @@ export default function Insights() {
             {/* Mid-grid interstitial */}
             {remaining.length > 4 && (
               <section className="py-12 md:py-16 border-y border-border/30 my-8 md:my-12">
-                <div className="max-w-[640px] mx-auto text-center px-6">
+                <div className="max-w-[560px] mx-auto text-center px-6">
                   <p className="text-sm uppercase tracking-[0.2em] text-accent-text mb-3 font-mono">Stay current</p>
-                  <h3 className="text-2xl md:text-3xl text-text-primary mb-4 font-semibold">New posts every 1 to 2 weeks.</h3>
-                  <p className="text-text-secondary mb-6 leading-relaxed">Field notes on controllership, close-pack discipline, and the patterns we see across 40+ portfolio engagements. Delivered to your inbox.</p>
-                  <div className="max-w-[400px] mx-auto">
+                  <h3 className="text-2xl md:text-3xl text-text-primary mb-4 font-semibold">Field notes on parking controllership.</h3>
+                  <p className="text-text-secondary mb-6 leading-relaxed">Delivered when we have something worth sending.</p>
+                  <div className="max-w-[420px] mx-auto">
                     <NewsletterSignup variant="inline" />
                   </div>
                 </div>
@@ -169,11 +169,6 @@ export default function Insights() {
             )}
             </>
           )}
-
-          {/* Newsletter */}
-          <div className="mt-16 max-w-xl">
-            <NewsletterSignup variant="inline" />
-          </div>
         </>
       )}
     </section>

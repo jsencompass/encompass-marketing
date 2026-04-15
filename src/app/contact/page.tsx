@@ -283,13 +283,7 @@ export default function Contact() {
 
           {/* ─── Insights Subscribe ─── */}
           <div className="mt-12">
-            <h3 className="text-18 font-semibold text-text-primary">Insights</h3>
-            <p className="mt-2 text-14 leading-relaxed text-text-secondary">
-              What we see when we audit the numbers. Rate drift, validation leakage, operator incentive conflicts, PARCS tradeoffs, and the operating disciplines that keep NOI intact. Delivered quarterly to owners who want more than a month-end summary.
-            </p>
-            <div className="mt-4 max-w-[400px]">
-              <NewsletterSignup variant="inline" />
-            </div>
+            <NewsletterSignup variant="inline" />
           </div>
         </div>
         </Reveal>
