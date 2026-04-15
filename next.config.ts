@@ -44,11 +44,6 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  experimental: {
-    sri: {
-      algorithm: "sha256",
-    },
-  },
   headers: async () => [
     {
       source: "/(.*)",

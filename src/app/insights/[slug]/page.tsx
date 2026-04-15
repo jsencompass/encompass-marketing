@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/insights";
 import { getAdjacentPosts } from "@/lib/insights/navigation";
@@ -54,18 +53,6 @@ export default async function InsightPost({
     <>
     <ReadingProgress />
     <article className="mx-auto max-w-[800px] px-6 py-24 md:py-32">
-      {/* Cover image */}
-      <div className="mx-auto mb-12 max-w-[960px]">
-        <Image
-          src={`/og/insights/${slug}.png`}
-          alt={`Cover image for ${post.title}`}
-          width={1200}
-          height={630}
-          className="w-full h-auto rounded-lg"
-          priority
-        />
-      </div>
-
       {/* Breadcrumb */}
       <nav className="text-14 text-text-tertiary" aria-label="Breadcrumb">
         <Link href="/insights" className="hover:text-text-secondary transition-colors">

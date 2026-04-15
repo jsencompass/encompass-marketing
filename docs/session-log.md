@@ -691,3 +691,53 @@ Jason walked the live production site post-S15 and flagged four bugs plus reques
 ### Deferred
 
 None. All 8 deliverables shipped.
+
+## Session 15.2: Production Bug Follow-Up + Motion Audit + Cover Image Rollback
+
+**Date**: 2026-04-14
+
+### Root Cause Discovery
+
+**`experimental.sri` was blocking the turbopack runtime script on production.** The SRI hash for `turbopack-0-8jh2aajye4q.js` did not match the served content (build-time hash: `keqc+R0rh4kCvxmpl5hR6A3c5wAK4dYpXxu43YUENWs=`, CDN-served hash: `rHwcKMcgdY9Vm+PE8iY72BFzeCnCllkrjBmehf1wdqM=`). This blocked the turbopack runtime from executing, which prevented ALL client-side JavaScript from running.
+
+This single root cause explains every client-side bug reported across S15 and S15.1:
+- **Consent banner non-functional**: React hydration never completed, onClick handlers never attached
+- **Nav transparent on scroll**: Scroll listener in useEffect never ran
+- **Hero invisible** (pre-S15.1): motion/react animations never fired because JS didn't execute; S15.1's CSS keyframe fix made the hero visible independently of JS
+- **Insights visual artifacts**: Reveal component's IntersectionObserver never initialized; elements were visible (SSR) but without smooth animations
+
+### Shipped
+
+**Removed `experimental.sri`** (`next.config.ts`):
+- The turbopack runtime's content changes between build time and CDN serving
+- SRI hashes generated at build time become stale, blocking the script
+- All S15 CSP hardening directives preserved (`object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `upgrade-insecure-requests`)
+
+**PACT map pins reverted to original coordinates** (`PactPortfolioMap.tsx`):
+- Original SVG coordinates from pre-S15.1 commit (5af52ff) converted to CSS percentages
+- SVG viewBox `0 0 100 80` → left: x%, top: (y/80)*100%
+- 12 pins at original positions: DTLA cluster (4), Hollywood, WeHo, Century City, Westwood, Pasadena, Mid-city, South-central, LAX/coastal
+- Pulse animation restored: `div-pin-pulse` CSS keyframe (scale 1→3, opacity 0.6→0), staggered delays per pin
+- `prefers-reduced-motion` respected: pulse disabled via global CSS rule
+
+**OG cover images removed from post pages** (`[slug]/page.tsx`):
+- Removed `<Image>` component and wrapper div added in S15.1
+- OG PNGs retained in `public/og/insights/` for social media previews (openGraph.images metadata unchanged)
+- Typography-led post layout: breadcrumb → H1 → byline → prose
+
+**Motion/react SSR audit** (Phase C):
+- `grep -rn "from ['\"]motion" src/` → 0 matches. No motion/react imports remain in the codebase
+- The motion library was only used in HeroEntrance (removed in S15.1)
+- Reveal, CountUp, DrawOnReveal, RouteProgress all use vanilla JS (useEffect + IntersectionObserver), not motion/react
+- SSR opacity:0 check across all 6 routes: 0 problematic matches (the 16 matches on homepage are intentional `opacity:0.6`/`0.7` on PACT data bars)
+
+### Documentation
+
+- Updated: `docs/session-log.md` — this entry
+- Updated: `docs/audit-findings-session-15.md` — SRI root cause documented
+- Updated: `docs/integrations.md` — SRI section updated (removed)
+- Updated: `docs/backlog.md` — closed items
+
+### Deferred
+
+None. All 7 deliverables shipped.

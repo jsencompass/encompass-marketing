@@ -102,7 +102,7 @@ Configured in `next.config.ts`. Enforced (not report-only) since Session 8.
 - `form-action 'self'` — added Session 15
 - `upgrade-insecure-requests` — added Session 15
 
-**Subresource Integrity:** `experimental.sri` enabled with SHA-256 (Session 15). Framework scripts carry `integrity` attributes at build time.
+**Subresource Integrity:** `experimental.sri` was enabled in S15 but **removed in S15.2**. The turbopack runtime's SRI hash mismatched between build time and CDN serving, blocking ALL client-side JavaScript. SRI is not compatible with the current Next.js 16 + Vercel deployment pipeline.
 
 ## Upstash for Redis (Rate Limiting)
 

@@ -1,14 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import { useReducedMotion } from "@/lib/motion/useReducedMotion";
 
 const pins = [
-  { top: 55, left: 50, label: "DTLA" },
-  { top: 50, left: 40, label: "Koreatown" },
-  { top: 25, left: 45, label: "Hollywood" },
-  { top: 65, left: 20, label: "Culver City" },
-  { top: 25, left: 85, label: "Pasadena" },
-  { top: 75, left: 48, label: "South LA" },
+  { left: 38, top: 45, delay: 0, label: "DTLA 1" },
+  { left: 42, top: 50, delay: 0.4, label: "DTLA 2" },
+  { left: 36, top: 52.5, delay: 0.8, label: "DTLA 3" },
+  { left: 44, top: 47.5, delay: 1.2, label: "DTLA 4" },
+  { left: 28, top: 37.5, delay: 0.3, label: "Hollywood" },
+  { left: 24, top: 42.5, delay: 1.1, label: "WeHo" },
+  { left: 55, top: 52.5, delay: 0.7, label: "Century City" },
+  { left: 58, top: 47.5, delay: 1.5, label: "Westwood" },
+  { left: 68, top: 35, delay: 0.5, label: "Pasadena" },
+  { left: 40, top: 68.75, delay: 0.9, label: "Mid-city" },
+  { left: 46, top: 72.5, delay: 1.3, label: "South-central" },
+  { left: 18, top: 77.5, delay: 1.6, label: "LAX/coastal" },
 ];
 
 const stats = [
@@ -26,6 +33,8 @@ const dataBars = [
 ];
 
 export function PactPortfolioMap() {
+  const reduced = useReducedMotion();
+
   return (
     <div>
       {/* Desktop: map with overlaid cards */}
@@ -57,7 +66,13 @@ export function PactPortfolioMap() {
             className="absolute z-10"
             style={{ top: `${pin.top}%`, left: `${pin.left}%` }}
           >
-            <span className="block h-3 w-3 rounded-full bg-accent shadow-[0_0_8px_2px_rgba(108,92,231,0.4)]" />
+            <span className="block h-3 w-3 rounded-full bg-accent" />
+            {!reduced && (
+              <span
+                className="absolute inset-0 rounded-full bg-accent div-pin-pulse"
+                style={{ animationDelay: `${pin.delay}s` }}
+              />
+            )}
           </div>
         ))}
 
@@ -138,7 +153,7 @@ export function PactPortfolioMap() {
           <div className="absolute inset-0 bg-gradient-to-br from-[--bg-base]/40 via-transparent to-[--bg-base]/60" aria-hidden="true" />
           {pins.map((pin, i) => (
             <div key={i} className="absolute" style={{ top: `${pin.top}%`, left: `${pin.left}%` }}>
-              <span className="block h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_6px_2px_rgba(108,92,231,0.4)]" />
+              <span className="block h-2.5 w-2.5 rounded-full bg-accent" />
             </div>
           ))}
         </div>
