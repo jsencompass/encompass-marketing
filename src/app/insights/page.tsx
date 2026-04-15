@@ -120,9 +120,6 @@ export default function Insights() {
             <div className="grid gap-8 md:grid-cols-2">
               {remaining.map((post, index) => (
                 <Reveal key={post.slug} delay={(index % 4) * 0.1}>
-                  {index === 4 && remaining.length > 4 && (
-                    <div className="col-span-full mb-8 -mt-0" />
-                  )}
                   <Link
                     href={`/insights/${post.slug}`}
                     className="group card-lift h-full overflow-hidden rounded-lg bg-bg-raised flex flex-col"

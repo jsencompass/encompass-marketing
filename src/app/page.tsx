@@ -117,6 +117,20 @@ export default function Home() {
         </section>
       </Reveal>
 
+      {/* ─── Proof Visual ─── */}
+      <Reveal>
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">What Governance Looks Like</p>
+            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">PACT makes revenue proof continuous.</h2>
+            <div className="mt-12"><PactPortfolioMap /></div>
+            <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
+              Session-to-deposit tie-out against source-of-truth data. Exception governance with reason codes, approval hierarchies, and closure standards. Rate, product, and validation integrity tracked as operating levers across a live portfolio. Every site, every month, against the same specification.
+            </p>
+          </div>
+        </section>
+      </Reveal>
+
       {/* ─── What We Do — PACT ─── */}
       <Reveal>
         <section className="border-b border-border">
@@ -221,20 +235,6 @@ export default function Home() {
                 Read all insights <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
               </Link>
             </div>
-          </div>
-        </section>
-      </Reveal>
-
-      {/* ─── Proof Visual ─── */}
-      <Reveal>
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">What Governance Looks Like</p>
-            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">PACT makes revenue proof continuous.</h2>
-            <div className="mt-12"><PactPortfolioMap /></div>
-            <p className="mt-6 max-w-3xl text-14 leading-relaxed text-text-secondary">
-              Session-to-deposit tie-out against source-of-truth data. Exception governance with reason codes, approval hierarchies, and closure standards. Rate, product, and validation integrity tracked as operating levers across a live portfolio. Every site, every month, against the same specification.
-            </p>
           </div>
         </section>
       </Reveal>
