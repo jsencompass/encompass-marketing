@@ -16,7 +16,9 @@
 
 **C2 — Homepage hero invisible (FIXED S15.1):** `motion/react` library applied `style="opacity:0"` inline in SSR. Fix: replaced with CSS keyframe animations (`hero-stagger` class). Hero now renders visible in SSR HTML; CSS handles entrance animation.
 
-**C3 — Consent banner non-functional (FIXED S15.1):** Click handlers not attaching due to unreliable hydration caused by motion library SSR mismatch. Resolved as side-effect of C2 hero fix.
+**C3 — Consent banner non-functional (FIXED S15.2):** Root cause was NOT motion library hydration mismatch (S15.1 hypothesis was wrong). Actual root cause: `experimental.sri` generated an SRI hash for the turbopack runtime (`turbopack-0-8jh2aajye4q.js`) that did not match the CDN-served content. Browser blocked the script, preventing ALL client-side JavaScript from executing. Fix: removed `experimental.sri` from next.config.ts. Evidence: `curl` hash verification showed build-time hash `keqc+R0...` vs CDN-served hash `rHwcKMc...`.
+
+**C4 — Nav transparent on scroll (FIXED S15.2):** Same root cause as C3 — turbopack SRI mismatch blocked JS. Nav's scroll listener in useEffect never ran. Fix: same as C3 (SRI removal).
 
 **S1 — Rate limiting not functional (RESOLVED S15.1):** Jason provisioned Upstash Redis via Vercel Marketplace. Code updated to read `KV_REST_API_URL`/`KV_REST_API_TOKEN` (Vercel canonical names). Production now fails-closed if credentials missing.
 

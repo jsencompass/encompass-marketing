@@ -95,6 +95,13 @@ body {
 .map-pin-pulse {
   animation: map-pin-pulse 2.5s ease-in-out infinite;
 }
+@keyframes div-pin-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.div-pin-pulse {
+  animation: div-pin-pulse 2s ease-out infinite;
+}
 
 /* ─── PACT confidence ring pulse ─── */
 @keyframes confidence-pulse {
