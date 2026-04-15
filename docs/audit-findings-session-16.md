@@ -166,3 +166,19 @@ Added to `docs/pre-launch-audit.md`:
 - New section: "Post-merge production walk (mandatory per session)"
 - New sixth launch-readiness criterion: production walk completion
 - Session 16 completion stamp
+
+## Post-Deploy Production Walk (2026-04-14)
+
+| Check | Status |
+|---|---|
+| No SRI integrity attributes | PASS (0 found) |
+| Hero visible (no inline opacity:0) | PASS (hero-stagger class, no inline styles) |
+| Page titles use `\|` separator (no em-dashes) | PASS |
+| Reveal: no scale() in transforms | PASS (no matches) |
+| Consent banner buttons present | PASS (Accept + Opt out) |
+| All 21 routes return HTTP 200 | PASS |
+| All 6 security headers present | PASS |
+| PACT pins at original coordinates | PASS (38/45%, 42/50%, 36/52.5%...) |
+| motion package not in bundle | PASS (0 references) |
+
+**Note:** Behavioral tests (click handlers, keyboard navigation, screen reader) require Jason's manual verification. Checklists provided in Steps 2, 5, and 6 above.
