@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useConsent } from "@/components/compliance/ConsentBanner";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
@@ -40,7 +41,14 @@ const columns = [
 ];
 
 export function Footer() {
-  const { reopen } = useConsent();
+  const { deny } = useConsent();
+  const [dnssConfirm, setDnssConfirm] = useState(false);
+
+  const handleDNSS = () => {
+    deny();
+    setDnssConfirm(true);
+    setTimeout(() => setDnssConfirm(false), 6000);
+  };
 
   return (
     <footer className="border-t border-border bg-bg-base">
@@ -95,14 +103,18 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <button
-              onClick={() => {
-                reopen();
-                window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-              }}
+              type="button"
+              onClick={handleDNSS}
               className="text-12 text-text-tertiary underline underline-offset-4 transition-colors hover:text-text-secondary"
+              aria-label="Do Not Sell or Share My Personal Information. Record your opt-out preference."
             >
               Do Not Sell or Share My Personal Information
             </button>
+            {dnssConfirm && (
+              <span className="text-12 text-accent-text" role="status" aria-live="polite">
+                Opt-out recorded. Analytics will not track you on this site.
+              </span>
+            )}
             <span className="text-12 text-text-tertiary">·</span>
             <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
               Encompass Parking, LLC &middot; Los Angeles

@@ -52,7 +52,7 @@ export default async function InsightPost({
   return (
     <>
     <ReadingProgress />
-    <article className="mx-auto max-w-[800px] px-6 py-24 md:py-32">
+    <article className="mx-auto max-w-[800px] mt-12 mb-24 md:mt-16 rounded-2xl border border-border/40 bg-bg-raised px-6 py-12 md:px-16 md:py-16 shadow-xl shadow-black/20">
       {/* Breadcrumb */}
       <nav className="text-14 text-text-tertiary" aria-label="Breadcrumb">
         <Link href="/insights" className="hover:text-text-secondary transition-colors">
@@ -117,9 +117,11 @@ export default async function InsightPost({
         <ShareRow title={post.title} url={`/insights/${slug}`} />
       </div>
 
-      {/* Navigation — loop-around */}
+      {/* Navigation */}
       {prevPost && nextPost && (
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        <>
+        <div className="mt-12 border-t border-border/30 pt-12" />
+        <div className="grid gap-4 md:grid-cols-2">
           <Link href={`/insights/${prevPost.slug}`} className="card-lift rounded-lg border border-border bg-bg-raised p-6">
             <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">&larr; Previous Post</p>
             <p className="mt-2 text-18 font-semibold text-text-primary">{prevPost.title}</p>
@@ -133,6 +135,7 @@ export default async function InsightPost({
             <p className="mt-2 text-[13px] text-text-tertiary">{new Date(nextPost.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</p>
           </Link>
         </div>
+        </>
       )}
 
       {/* Newsletter */}
