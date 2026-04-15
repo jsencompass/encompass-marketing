@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Reveal } from "@/components/motion/Reveal";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 
 const portfolioSizes = [
   "Select one",
@@ -263,7 +264,7 @@ export default function Contact() {
           ) : (
             <div className="mt-6 rounded-lg border border-border bg-bg-raised p-8">
               <p className="text-14 text-text-tertiary">
-                Scheduling URL pending &mdash; Cal.com setup in progress.
+                Scheduling URL pending. Cal.com setup in progress.
               </p>
             </div>
           )}
@@ -278,6 +279,17 @@ export default function Contact() {
                 contact@encompassparking.com
               </a>
             </p>
+          </div>
+
+          {/* ─── Insights Subscribe ─── */}
+          <div className="mt-12">
+            <h3 className="text-18 font-semibold text-text-primary">Insights</h3>
+            <p className="mt-2 text-14 leading-relaxed text-text-secondary">
+              What we see when we audit the numbers. Rate drift, validation leakage, operator incentive conflicts, PARCS tradeoffs, and the operating disciplines that keep NOI intact. Delivered quarterly to owners who want more than a month-end summary.
+            </p>
+            <div className="mt-4 max-w-[400px]">
+              <NewsletterSignup variant="inline" />
+            </div>
           </div>
         </div>
         </Reveal>

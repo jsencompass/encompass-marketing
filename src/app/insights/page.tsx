@@ -5,6 +5,20 @@ import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { Reveal } from "@/components/motion/Reveal";
 import { PostThumbnail } from "@/components/insights/PostThumbnail";
 
+const categoryMap: Record<string, string> = {
+  "01-why-controllership": "Controllership",
+  "02-lost-art-parking-audit": "Audit",
+  "03-four-lane-operating-model": "Operations",
+  "04-noi-erosion-patterns": "NOI + Revenue",
+  "05-what-a-real-close-pack-looks-like": "Close Pack",
+  "06-validation-absorption-drift": "NOI + Revenue",
+  "07-parcs-uptime-revenue-at-risk": "Technology",
+  "08-monthly-report-isnt-proof": "Close Pack",
+  "09-remote-command-center-economics": "Operations",
+  "10-parking-pi-scoring": "Audit",
+  "11-reconciliation-vs-reporting": "Close Pack",
+};
+
 export const metadata: Metadata = {
   title: "Insights | Encompass Parking",
   description:
@@ -74,7 +88,12 @@ export default function Insights() {
                   href={`/insights/${featured.slug}`}
                   className="card-lift block overflow-hidden rounded-lg bg-bg-raised md:grid md:grid-cols-5 md:gap-8"
                 >
-                  <PostThumbnail slug={featured.slug} className="aspect-[16/9] md:col-span-2" />
+                  <div className="relative md:col-span-2">
+                    <PostThumbnail slug={featured.slug} className="aspect-[16/9]" />
+                    {categoryMap[featured.slug] && (
+                      <span className="absolute top-3 left-3 z-10 rounded-full bg-accent/12 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent-text">{categoryMap[featured.slug]}</span>
+                    )}
+                  </div>
                   <div className="p-8 md:col-span-3 md:py-8 md:pr-8 md:pl-0">
                     <h2 className="text-3xl font-semibold tracking-tight text-text-primary">
                       {featured.title}
@@ -101,12 +120,20 @@ export default function Insights() {
             <h2 className="mb-8 text-2xl font-semibold text-text-primary">Recent</h2>
             <div className="grid gap-8 md:grid-cols-2">
               {remaining.map((post, index) => (
-                <Reveal key={post.slug} delay={index * 0.1}>
+                <Reveal key={post.slug} delay={(index % 4) * 0.1}>
+                  {index === 4 && remaining.length > 4 && (
+                    <div className="col-span-full mb-8 -mt-0" />
+                  )}
                   <Link
                     href={`/insights/${post.slug}`}
                     className="card-lift h-full overflow-hidden rounded-lg bg-bg-raised"
                   >
-                    <PostThumbnail slug={post.slug} className="aspect-[16/9]" />
+                    <div className="relative">
+                      <PostThumbnail slug={post.slug} className="aspect-[16/9]" />
+                      {categoryMap[post.slug] && (
+                        <span className="absolute top-3 left-3 z-10 rounded-full bg-accent/12 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent-text">{categoryMap[post.slug]}</span>
+                      )}
+                    </div>
                     <div className="p-8">
                     <h3 className="text-18 font-semibold text-text-primary">
                       {post.title}
@@ -126,6 +153,20 @@ export default function Insights() {
                 </Reveal>
               ))}
             </div>
+
+            {/* Mid-grid interstitial */}
+            {remaining.length > 4 && (
+              <section className="py-12 md:py-16 border-y border-border/30 my-8 md:my-12">
+                <div className="max-w-[640px] mx-auto text-center px-6">
+                  <p className="text-sm uppercase tracking-[0.2em] text-accent-text mb-3 font-mono">Stay current</p>
+                  <h3 className="text-2xl md:text-3xl text-text-primary mb-4 font-semibold">New posts every 1 to 2 weeks.</h3>
+                  <p className="text-text-secondary mb-6 leading-relaxed">Field notes on controllership, close-pack discipline, and the patterns we see across 40+ portfolio engagements. Delivered to your inbox.</p>
+                  <div className="max-w-[400px] mx-auto">
+                    <NewsletterSignup variant="inline" />
+                  </div>
+                </div>
+              </section>
+            )}
             </>
           )}
 

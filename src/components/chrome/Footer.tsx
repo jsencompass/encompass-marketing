@@ -65,7 +65,7 @@ export function Footer() {
             <h3 className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
               {col.title}
             </h3>
-            <ul className="mt-4 flex flex-col gap-3">
+            <ul className="mt-4 flex flex-col gap-1">
               {col.links.map((l) => {
                 const isExternal = l.href.startsWith("http");
                 return (
