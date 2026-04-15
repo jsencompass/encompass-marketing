@@ -190,6 +190,28 @@ export default function Services() {
                   </Link>
                 </div>
               </div>
+
+              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
+                <h3 className="text-xl font-semibold text-text-primary">Close-Pack Standard Design</h3>
+                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">A design engagement for owners who want to define the close-pack artifact itself, before bringing it to operators. We produce the template: variance categories, reason code taxonomy, approval hierarchy, exception escalation paths, and the evidence standard operators must meet. Becomes the owner&rsquo;s specification document that every current and future operator is measured against.</p>
+                <div className="mt-6 pt-4 border-t border-border/30">
+                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project</p>
+                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
+                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
+                <h3 className="text-xl font-semibold text-text-primary">Parking Operations Training</h3>
+                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Custom training engagements for owner-side asset managers, acquisitions teams, and property managers who want to understand parking operations well enough to hold operators accountable. Covers revenue control, PARCS fundamentals, rate and validation policy, financial statement literacy, and the tells that indicate operational drift. Half-day, full-day, or multi-session formats.</p>
+                <div className="mt-6 pt-4 border-t border-border/30">
+                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by format</p>
+                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
+                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
