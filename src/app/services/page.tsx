@@ -192,8 +192,8 @@ export default function Services() {
               </div>
 
               <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Close-Pack Standard Design</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">A design engagement for owners who want to define the close-pack artifact itself, before bringing it to operators. We produce the template: variance categories, reason code taxonomy, approval hierarchy, exception escalation paths, and the evidence standard operators must meet. Becomes the owner&rsquo;s specification document that every current and future operator is measured against.</p>
+                <h3 className="text-xl font-semibold text-text-primary">Parking Technology Design</h3>
+                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Upstream technology consulting for owners planning new builds, renovations, or system replacements. We design the technology layer: lane configuration, equipment selection, patron flow, payment architecture, integration requirements, and future-state flexibility. Vendor-agnostic recommendations based on operational requirements, not vendor relationships. Delivered as a technology design package the procurement team can bid against.</p>
                 <div className="mt-6 pt-4 border-t border-border/30">
                   <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project</p>
                   <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
@@ -203,10 +203,10 @@ export default function Services() {
               </div>
 
               <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Parking Operations Training</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Custom training engagements for owner-side asset managers, acquisitions teams, and property managers who want to understand parking operations well enough to hold operators accountable. Covers revenue control, PARCS fundamentals, rate and validation policy, financial statement literacy, and the tells that indicate operational drift. Half-day, full-day, or multi-session formats.</p>
+                <h3 className="text-xl font-semibold text-text-primary">Third-Party Project Management</h3>
+                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent project management for parking technology installations, replacements, and integrations. We represent the owner&rsquo;s interest through scope definition, vendor milestone tracking, installation oversight, integration testing, and punch-list governance. Covers PARCS, LPR, payment systems, access control, EV charging infrastructure, and adjacent technologies. The vendor builds it. We make sure it works the way it was specified.</p>
                 <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by format</p>
+                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project scope</p>
                   <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
                     Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
                   </Link>
