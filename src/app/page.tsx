@@ -200,15 +200,16 @@ export default function Home() {
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {getAllPosts().slice(0, 2).map((post, i) => (
                 <Reveal key={post.slug} delay={i * 0.12}>
-                  <Link href={`/insights/${post.slug}`} className="card-lift h-full overflow-hidden rounded-lg bg-bg-raised">
-                    <PostThumbnail slug={post.slug} className="aspect-[16/9]" />
-                    <div className="p-6">
-                      <h3 className="text-18 font-semibold text-text-primary">{post.title}</h3>
-                      <p className="mt-2 text-14 leading-relaxed text-text-secondary">{post.excerpt.substring(0, 120)}&hellip;</p>
-                      <div className="mt-3 flex items-center gap-3 text-12 text-text-tertiary">
-                        <span>{post.author.name}</span>
-                        <span>&middot;</span>
-                        <span>{post.readingTime}</span>
+                  <Link href={`/insights/${post.slug}`} className="group card-lift h-full overflow-hidden rounded-lg bg-bg-raised flex flex-col">
+                    <div className="relative aspect-[16/9] overflow-hidden bg-bg-elevated">
+                      <PostThumbnail slug={post.slug} className="h-full w-full" />
+                    </div>
+                    <div className="p-5 md:p-6 flex flex-col flex-1">
+                      <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent-text transition-colors mb-2">{post.title}</h3>
+                      <p className="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-4 flex-1">{post.excerpt}</p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono tracking-wide text-text-tertiary bg-bg-base/40">{post.author.name}</span>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono tracking-wide text-text-tertiary bg-bg-base/40">{post.readingTime}</span>
                       </div>
                     </div>
                   </Link>
