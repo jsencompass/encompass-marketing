@@ -181,7 +181,7 @@ export default function Services() {
                 </div>
               </div>
               <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Mystery Shop and Operational Audit</h3>
+                <h3 className="text-xl font-semibold text-text-primary">Operational Performance Audit</h3>
                 <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent evaluation of site-level operational performance. Trained auditors visit sites unannounced, evaluate against standardized scoring criteria, and document findings with time-stamped evidence. Covers revenue controls, customer experience, operator compliance, and condition. Delivered as a portfolio-level scorecard with site-by-site detail. Can be one-time or quarterly cadence.</p>
                 <div className="mt-6 pt-4 border-t border-border/30">
                   <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by site count</p>

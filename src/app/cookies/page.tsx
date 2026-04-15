@@ -177,10 +177,10 @@ export default function Cookies() {
             If you have questions about our tracking practices, please contact
             us at{" "}
             <a
-              href="mailto:privacy@encompassparking.com"
+              href="mailto:legal@encompassparking.com"
               className="text-accent-text underline underline-offset-4"
             >
-              privacy@encompassparking.com
+              legal@encompassparking.com
             </a>
             .
           </p>

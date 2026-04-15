@@ -104,10 +104,10 @@ export default function Accessibility() {
             remediation targets are tracked internally. If you encounter a
             barrier, please contact{" "}
             <a
-              href="mailto:accessibility@encompassparking.com"
+              href="mailto:legal@encompassparking.com"
               className="text-accent-text underline underline-offset-4"
             >
-              accessibility@encompassparking.com
+              legal@encompassparking.com
             </a>{" "}
             and we will respond within five business days.
           </p>
@@ -126,10 +126,10 @@ export default function Accessibility() {
             <p>
               Email:{" "}
               <a
-                href="mailto:accessibility@encompassparking.com"
+                href="mailto:legal@encompassparking.com"
                 className="text-accent-text underline underline-offset-4"
               >
-                accessibility@encompassparking.com
+                legal@encompassparking.com
               </a>
             </p>
           </address>

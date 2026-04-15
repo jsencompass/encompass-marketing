@@ -190,10 +190,10 @@ export default function Privacy() {
           <p className="mt-4">
             To exercise any of these rights, please contact us at{" "}
             <a
-              href="mailto:privacy@encompassparking.com"
+              href="mailto:legal@encompassparking.com"
               className="text-accent-text underline underline-offset-4"
             >
-              privacy@encompassparking.com
+              legal@encompassparking.com
             </a>
             . We will verify your identity before processing your request and
             respond within 45 days as required by law.
@@ -274,10 +274,10 @@ export default function Privacy() {
             promptly. If you believe we have collected information from a child
             under 16, please contact us at{" "}
             <a
-              href="mailto:privacy@encompassparking.com"
+              href="mailto:legal@encompassparking.com"
               className="text-accent-text underline underline-offset-4"
             >
-              privacy@encompassparking.com
+              legal@encompassparking.com
             </a>
             .
           </p>
@@ -306,15 +306,14 @@ export default function Privacy() {
           <address className="mt-4 not-italic">
             <p>Encompass Parking, LLC</p>
             <p>Attn: Privacy Officer</p>
-            {/* JASON-TODO: Replace with real LLC registered mailing address */}
-            <p className="text-text-tertiary">[Mailing address TBD]</p>
-            <p>Los Angeles, California</p>
+            <p>1401 21st St, Ste R</p>
+            <p>Sacramento, CA 95811</p>
             <p>
               <a
-                href="mailto:privacy@encompassparking.com"
+                href="mailto:legal@encompassparking.com"
                 className="text-accent-text underline underline-offset-4"
               >
-                privacy@encompassparking.com
+                legal@encompassparking.com
               </a>
             </p>
           </address>

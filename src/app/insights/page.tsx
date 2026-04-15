@@ -4,6 +4,7 @@ import { getAllPosts } from "@/lib/insights";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { Reveal } from "@/components/motion/Reveal";
 import { PostThumbnail } from "@/components/insights/PostThumbnail";
+import { InlineSubscribe } from "@/components/insights/InlineSubscribe";
 
 const categoryMap: Record<string, string> = {
   "01-why-controllership": "Controllership",
@@ -161,9 +162,7 @@ export default function Insights() {
                   <p className="text-sm uppercase tracking-[0.2em] text-accent-text mb-3 font-mono">Stay current</p>
                   <h3 className="text-2xl md:text-3xl text-text-primary mb-4 font-semibold">Field notes on parking controllership.</h3>
                   <p className="text-text-secondary mb-6 leading-relaxed">Delivered when we have something worth sending.</p>
-                  <div className="max-w-[420px] mx-auto">
-                    <NewsletterSignup variant="inline" />
-                  </div>
+                  <InlineSubscribe />
                 </div>
               </section>
             )}
