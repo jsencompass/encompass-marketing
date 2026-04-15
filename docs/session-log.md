@@ -838,3 +838,27 @@ Final pre-launch audit gate. Accessibility, content quality, code quality, plus 
 ### Deferred
 
 None. All 4 deliverables shipped.
+
+## Session 16.2: Insights Card Border Removal
+
+**Date**: 2026-04-14
+
+### Root Cause (5th and final attempt)
+
+Jason performed direct DOM inspection via DevTools element picker on production. The highlighted element at the artifact location was the card `<a>` itself (440.5 x 509.78), not a pseudo-element, Reveal wrapper, or compositing artifact.
+
+The card's `border border-border` class (`1px solid #27272A`) was the producer. The border color blends with `bg-bg-raised` on card faces but becomes visible at the short corner segments where the border meets the page `bg-bg-base` at grid gap boundaries. These corner segments rendered as the "vertical lines" reported since S15.1.
+
+Prior wrong theories: PostThumbnail double border (S15.1), SRI-blocked JS (S15.2), Reveal scale() compositing (S16), Reveal persistent inline styles (S16.1). None identified the actual element because none performed direct DOM inspection.
+
+### Shipped
+
+Removed `border border-border` from insights cards:
+- `src/app/insights/page.tsx`: featured card (line 75) + grid cards (line 107)
+- `src/app/page.tsx`: homepage insights teaser cards (line 203)
+
+Cards now use `bg-bg-raised` on `bg-bg-base` contrast for edge definition. Other card types (pricing, capabilities, services, Next/Prev navigation) retain their borders.
+
+### Deferred
+
+None.

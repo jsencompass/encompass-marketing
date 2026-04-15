@@ -200,7 +200,7 @@ export default function Home() {
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {getAllPosts().slice(0, 2).map((post, i) => (
                 <Reveal key={post.slug} delay={i * 0.12}>
-                  <Link href={`/insights/${post.slug}`} className="card-lift h-full overflow-hidden rounded-lg border border-border bg-bg-raised">
+                  <Link href={`/insights/${post.slug}`} className="card-lift h-full overflow-hidden rounded-lg bg-bg-raised">
                     <PostThumbnail slug={post.slug} className="aspect-[16/9]" />
                     <div className="p-6">
                       <h3 className="text-18 font-semibold text-text-primary">{post.title}</h3>
