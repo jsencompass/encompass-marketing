@@ -87,27 +87,25 @@ export default function Insights() {
                 </span>
                 <Link
                   href={`/insights/${featured.slug}`}
-                  className="card-lift block overflow-hidden rounded-lg bg-bg-raised md:grid md:grid-cols-5 md:gap-8"
+                  className="group card-lift overflow-hidden rounded-lg bg-bg-raised grid md:grid-cols-5 gap-0"
                 >
-                  <div className="relative md:col-span-2">
-                    <PostThumbnail slug={featured.slug} className="aspect-[16/9]" />
+                  <div className="relative md:col-span-2 aspect-[16/9] md:aspect-auto overflow-hidden bg-bg-elevated">
+                    <PostThumbnail slug={featured.slug} className="h-full w-full" />
                     {categoryMap[featured.slug] && (
                       <span className="absolute top-3 left-3 z-10 rounded-full bg-accent/12 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent-text">{categoryMap[featured.slug]}</span>
                     )}
                   </div>
-                  <div className="p-8 md:col-span-3 md:py-8 md:pr-8 md:pl-0">
-                    <h2 className="text-3xl font-semibold tracking-tight text-text-primary">
+                  <div className="md:col-span-3 p-6 md:p-8 flex flex-col justify-center">
+                    <h2 className="text-xl md:text-2xl font-semibold text-text-primary group-hover:text-accent-text transition-colors mb-3">
                       {featured.title}
                     </h2>
-                    <p className="mt-4 text-lg leading-relaxed text-text-secondary">
+                    <p className="text-text-secondary leading-relaxed line-clamp-4 mb-4">
                       {featured.excerpt}
                     </p>
-                    <div className="mt-6 flex items-center gap-4 text-sm text-text-tertiary">
-                      <span>{featured.author.name}</span>
-                      <span>&middot;</span>
-                      <span>{new Date(featured.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
-                      <span>&middot;</span>
-                      <span>{featured.readingTime}</span>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono tracking-wide text-text-tertiary bg-bg-base/40">{featured.author.name}</span>
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono tracking-wide text-text-tertiary bg-bg-base/40">{new Date(featured.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono tracking-wide text-text-tertiary bg-bg-base/40">{featured.readingTime}</span>
                     </div>
                   </div>
                 </Link>
@@ -127,28 +125,26 @@ export default function Insights() {
                   )}
                   <Link
                     href={`/insights/${post.slug}`}
-                    className="card-lift h-full overflow-hidden rounded-lg bg-bg-raised"
+                    className="group card-lift h-full overflow-hidden rounded-lg bg-bg-raised flex flex-col"
                   >
-                    <div className="relative">
-                      <PostThumbnail slug={post.slug} className="aspect-[16/9]" />
+                    <div className="relative aspect-[16/9] overflow-hidden bg-bg-elevated">
+                      <PostThumbnail slug={post.slug} className="h-full w-full" />
                       {categoryMap[post.slug] && (
                         <span className="absolute top-3 left-3 z-10 rounded-full bg-accent/12 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent-text">{categoryMap[post.slug]}</span>
                       )}
                     </div>
-                    <div className="p-8">
-                    <h3 className="text-18 font-semibold text-text-primary">
-                      {post.title}
-                    </h3>
-                    <p className="mt-3 text-14 leading-relaxed text-text-secondary">
-                      {post.excerpt}
-                    </p>
-                    <div className="mt-4 flex items-center gap-3 text-12 text-text-tertiary">
-                      <span>{post.author.name}</span>
-                      <span>&middot;</span>
-                      <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
-                      <span>&middot;</span>
-                      <span>{post.readingTime}</span>
-                    </div>
+                    <div className="p-5 md:p-6 flex flex-col flex-1">
+                      <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent-text transition-colors mb-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-4 flex-1">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono tracking-wide text-text-tertiary bg-bg-base/40">{post.author.name}</span>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono tracking-wide text-text-tertiary bg-bg-base/40">{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono tracking-wide text-text-tertiary bg-bg-base/40">{post.readingTime}</span>
+                      </div>
                     </div>
                   </Link>
                 </Reveal>
