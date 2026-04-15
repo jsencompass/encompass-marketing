@@ -5,7 +5,7 @@ import { ImagePlaceholder } from "@/components/placeholders/ImagePlaceholder";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
-  title: "How It Works — Encompass Parking",
+  title: "How It Works | Encompass Parking",
   description:
     "Four lanes, one standard of rigor. How Encompass delivers recurring controllership for parking assets.",
 };
@@ -54,7 +54,7 @@ export default function HowItWorks() {
           </h1>
           <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
             Encompass scales by turning parking expertise into standard work. The
-            objective is not founder-driven heroics across more garages &mdash; it
+            objective is not founder-driven heroics across more garages. It
             is a repeatable production system that delivers the same governance
             quality at site 200 as it does at site 5.
           </p>
@@ -123,7 +123,7 @@ export default function HowItWorks() {
               </h2>
               <p className="mt-8 max-w-3xl text-18 leading-relaxed text-text-secondary">
                 Reason codes, approval hierarchies, permission boundaries, exception
-                taxonomy, standard close artifact sets, governance cadences &mdash;
+                taxonomy, standard close artifact sets, governance cadences;
                 these do not change site-to-site. What changes is the data source,
                 the operator&rsquo;s workflow, and the parking stack. The control
                 layer adapts to the stack without bending the standards. That is how
@@ -151,7 +151,7 @@ export default function HowItWorks() {
                 Our discipline applies whether you own, manage, or operate a
                 Class&nbsp;A office, a mixed-use asset, on- and off-street, an
                 airport, a hospital, a hotel, valet, or hybrid operations. We&rsquo;ve
-                done the work inside every type of parking asset &mdash; and the
+                done the work inside every type of parking asset, and the
                 control framework is the same regardless of what sits on top of it.
               </p>
               <div className="mt-12">

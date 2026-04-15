@@ -17,7 +17,7 @@ export async function renderMarkdown(content: string): Promise<string> {
 
   // Step 1: Extract and replace code blocks with placeholders
   const codeBlocks: string[] = [];
-  let processed = content.replace(/```(\w+)?\n([\s\S]*?)```/g, (_, lang, code) => {
+  const processed = content.replace(/```(\w+)?\n([\s\S]*?)```/g, (_, lang, code) => {
     const language = lang || "text";
     let rendered: string;
     try {
@@ -62,13 +62,13 @@ export async function renderMarkdown(content: string): Promise<string> {
       result.push('<hr class="my-8 border-border" />');
     } else if (trimmed.startsWith("*Originally published")) {
       // Attribution line — render as small italic
-      let attribution = trimmed
+      const attribution = trimmed
         .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-accent-text underline underline-offset-4" target="_blank" rel="noopener noreferrer">$1</a>')
         .replace(/^\*/, "").replace(/\*$/, "");
       result.push(`<p class="mt-12 text-14 italic text-text-tertiary">${attribution}</p>`);
     } else if (!trimmed.startsWith("<")) {
       // Regular paragraph
-      let p = trimmed
+      const p = trimmed
         .replace(/\*\*(.+?)\*\*/g, '<strong class="text-text-primary">$1</strong>')
         .replace(/\*(.+?)\*/g, "<em>$1</em>")
         .replace(/`([^`]+)`/g, "<code>$1</code>")

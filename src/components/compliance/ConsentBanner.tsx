@@ -1,48 +1,61 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useSyncExternalStore, useCallback } from "react";
 
 const CONSENT_KEY = "encompass-consent";
 
 export type ConsentState = "accepted" | "denied" | "pending";
 
-export function useConsent() {
-  const [consent, setConsentState] = useState<ConsentState>("pending");
+let listeners: Array<() => void> = [];
+function emitChange() {
+  for (const listener of listeners) listener();
+}
 
-  useEffect(() => {
-    // Honor Global Privacy Control
-    if (
-      typeof navigator !== "undefined" &&
-      (navigator as Navigator & { globalPrivacyControl?: boolean })
-        .globalPrivacyControl === true
-    ) {
-      localStorage.setItem(CONSENT_KEY, "denied");
-      setConsentState("denied");
-      console.log(
-        "[Encompass] Global Privacy Control detected — analytics opted out automatically."
-      );
-      return;
-    }
+function subscribe(callback: () => void) {
+  listeners = [...listeners, callback];
+  return () => { listeners = listeners.filter((l) => l !== callback); };
+}
 
+function getSnapshot(): ConsentState {
+  // Honor Global Privacy Control
+  if (
+    typeof navigator !== "undefined" &&
+    (navigator as Navigator & { globalPrivacyControl?: boolean })
+      .globalPrivacyControl === true
+  ) {
     const stored = localStorage.getItem(CONSENT_KEY);
-    if (stored === "accepted" || stored === "denied") {
-      setConsentState(stored);
+    if (stored !== "denied") {
+      localStorage.setItem(CONSENT_KEY, "denied");
+      console.log("[Encompass] Global Privacy Control detected; analytics opted out automatically.");
     }
-  }, []);
+    return "denied";
+  }
+
+  const stored = localStorage.getItem(CONSENT_KEY);
+  if (stored === "accepted" || stored === "denied") return stored;
+  return "pending";
+}
+
+function getServerSnapshot(): ConsentState {
+  return "pending";
+}
+
+export function useConsent() {
+  const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const accept = useCallback(() => {
     localStorage.setItem(CONSENT_KEY, "accepted");
-    setConsentState("accepted");
+    emitChange();
   }, []);
 
   const deny = useCallback(() => {
     localStorage.setItem(CONSENT_KEY, "denied");
-    setConsentState("denied");
+    emitChange();
   }, []);
 
   const reopen = useCallback(() => {
     localStorage.removeItem(CONSENT_KEY);
-    setConsentState("pending");
+    emitChange();
   }, []);
 
   return { consent, accept, deny, reopen };

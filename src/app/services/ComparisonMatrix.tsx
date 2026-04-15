@@ -72,7 +72,7 @@ const categories: Category[] = [
       { name: "Monthly close-pack audit", tooltip: "Standardized monthly audit of the operator's financial close package.", foundation: true, performance: true, enterprise: true },
       { name: "Exception governance", tooltip: "Driving exceptions to closure with reason codes, tiered approvals, and deadline standards.", foundation: true, performance: true, enterprise: true },
       { name: "Variance workup and root-cause analysis", tooltip: "Deep investigation of revenue variances beyond standard exception handling.", foundation: false, performance: true, enterprise: true },
-      { name: "Owner-facing monthly summary", tooltip: "Synthesized executive report — not an inbox dump. Key metrics, exceptions, and recommendations.", foundation: true, performance: true, enterprise: true },
+      { name: "Owner-facing monthly summary", tooltip: "Synthesized executive report, not an inbox dump. Key metrics, exceptions, and recommendations.", foundation: true, performance: true, enterprise: true },
     ],
   },
   {
@@ -87,7 +87,7 @@ const categories: Category[] = [
   {
     name: "Governance cadence",
     features: [
-      { name: "Monthly calibration", tooltip: "Standard monthly governance rhythm — audit, variance, closure, summary, calibration.", foundation: true, performance: true, enterprise: true },
+      { name: "Monthly calibration", tooltip: "Standard monthly governance rhythm: audit, variance, closure, summary, calibration.", foundation: true, performance: true, enterprise: true },
       { name: "Bi-weekly calibration calls", tooltip: "More frequent check-ins for sites with active variance workups or transition periods.", foundation: false, performance: true, enterprise: true },
       { name: "Priority escalation path", tooltip: "Direct access to Encompass principals for urgent revenue-at-risk situations.", foundation: false, performance: true, enterprise: true },
       { name: "Dedicated analyst", tooltip: "Named Encompass analyst assigned to your portfolio for continuity and relationship management.", foundation: true, performance: true, enterprise: true },

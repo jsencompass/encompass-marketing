@@ -4,7 +4,7 @@ import { ClosingCTA } from "@/components/ClosingCTA";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
-  title: "Who We Are — Encompass Parking",
+  title: "Who We Are | Encompass Parking",
   description:
     "Three principals with seventy years of combined parking operations experience. Built by operators who've owned the problem.",
 };
@@ -131,7 +131,7 @@ export default function WhoWeAre() {
               <div className="mt-8 max-w-3xl space-y-6">
                 <p className="text-16 leading-relaxed text-text-secondary">
                   Jason and Steven first met as opposing consultants on Westfield
-                  Valley Fair in San Jose &mdash; a $1.1B renovation for
+                  Valley Fair in San Jose, a $1.1B renovation for
                   Unibail-Rodamco-Westfield with 4,200+ new parking spaces and full
                   PARCS deployment, complicated mid-construction by COVID. They
                   crossed paths again on opposing sides at Sacramento International
@@ -150,7 +150,7 @@ export default function WhoWeAre() {
                   One Beverly Hills became the catalyst. A $10 billion mixed-use
                   development with institutional governance requirements that no
                   single consulting engagement could satisfy on a recurring basis.
-                  The owner didn&rsquo;t need another audit &mdash; they needed a
+                  The owner didn&rsquo;t need another audit. They needed a
                   permanent controllership function that could operate across
                   operators, normalize across technology stacks, and deliver
                   closure-grade evidence every month.

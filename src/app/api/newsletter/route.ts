@@ -68,10 +68,10 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: `Encompass Parking <${fromEmail}>`,
       to: [email],
-      subject: "Confirm your subscription — Encompass Parking",
+      subject: "Confirm your subscription | Encompass Parking",
       html: `
         <h2>Confirm your subscription</h2>
-        <p>You requested to subscribe to Encompass Parking insights — quarterly notes on parking controllership, operator dynamics, and revenue governance.</p>
+        <p>You requested to subscribe to Encompass Parking insights, quarterly notes on parking controllership, operator dynamics, and revenue governance.</p>
         <p><a href="${confirmUrl}" style="display:inline-block;padding:12px 24px;background:#6C5CE7;color:white;text-decoration:none;border-radius:24px;font-weight:600">Confirm subscription</a></p>
         <p style="color:#666;font-size:14px;margin-top:24px">If you didn't request this, you can safely ignore this email. This link expires in 7 days.</p>
       `,

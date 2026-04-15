@@ -741,3 +741,69 @@ This single root cause explains every client-side bug reported across S15 and S1
 ### Deferred
 
 None. All 7 deliverables shipped.
+
+## Session 16: Pre-Launch Accessibility + Content + Code Quality Audit
+
+**Date**: 2026-04-14
+
+### Context
+
+Final pre-launch audit gate. Accessibility, content quality, code quality, plus S15-lineage regression prevention items.
+
+### Shipped
+
+**Insights card vertical line artifacts fixed** (`Reveal.tsx`):
+- Root cause: post-animation `transform: translateY(0) scale(1)` created a compositing layer. Combined with card's `rounded-lg border overflow-hidden`, subpixel rendering artifacts appeared at card corners.
+- Fix: removed `scale()` from Reveal animation. Initial: `translateY(32px)` (was `translateY(48px) scale(0.97)`). Final: `transform: none` (was `translateY(0) scale(1)`).
+
+**Em-dash/en-dash regression fix** (58+ instances):
+- 28 em-dashes fixed across 4 MDX posts (01-04)
+- 30+ em-dashes fixed across UI copy: page titles (`—` to `|`), metadata, tooltips, email templates, RSS description
+- En-dash price ranges changed to hyphens
+- Zero em-dashes/en-dashes remaining in user-visible content
+
+**Lint errors resolved** (10 problems to 0):
+- `useReducedMotion.ts`: converted from `useState`+`useEffect` to `useSyncExternalStore` (proper React 19 pattern for browser API)
+- `ConsentBanner.tsx`: converted `useConsent` from `useState`+`useEffect` to `useSyncExternalStore` for localStorage (proper external store pattern)
+- `CountUp.tsx`: refactored to DOM-based animation (avoids `setState` in effect body), `useSyncExternalStore`-based reduced motion
+- `RouteProgress.tsx`: refactored from state-driven to ref-driven DOM updates
+- Fixed unused imports (`Metadata` in contact, `Link` in services)
+- Fixed `prefer-const` (3 instances in render.ts)
+
+**`motion` package removed**: zero imports remained since S15.1. `pnpm remove motion` successful. Build clean.
+
+**CSP directive inventory documented**: 12 directives mapped with allow-lists, purposes, and hardening status. See `docs/audit-findings-session-16.md` Step 3.
+
+**Process update**: `docs/pre-launch-audit.md` updated with mandatory post-merge production walk requirement and sixth launch-readiness criterion.
+
+**Launch-readiness memo**: `docs/launch-readiness.md` created. Recommendation: conditional GO. Five of six criteria met. Sixth (behavioral production walk) requires Jason's 15-minute manual verification.
+
+### Accessibility Assessment
+
+- **Contrast**: All token combinations meet WCAG AA (verified via design system values)
+- **Reduced motion**: Global CSS rule + `useSyncExternalStore`-based hook. All animation components respect it.
+- **axe-core**: Last run S6 (0 critical, 4 serious decorative items since fixed). Requires Chrome for re-run (manual by Jason).
+- **Keyboard + screen reader**: Manual verification checklists provided in findings doc.
+
+### Code Quality
+
+- **Lint**: 0 errors, 0 warnings
+- **TypeScript**: `pnpm tsc --noEmit` clean
+- **Dependencies**: `motion` removed. `pnpm audit` endpoint deprecated (410); previous audit clean.
+- **Links**: All 21 routes return HTTP 200. 0 broken links.
+- **Placeholder text**: 1 known (`[Mailing address TBD]` on /privacy, Jason to provide)
+
+### Documentation
+
+- NEW: `docs/audit-findings-session-16.md`
+- NEW: `docs/launch-readiness.md`
+- Updated: `docs/pre-launch-audit.md` (process update + completion stamp)
+- Updated: `docs/session-log.md` (this entry)
+- Updated: `docs/backlog.md` (closed items)
+
+### Deferred
+
+- axe-core re-run (requires Chrome; Jason runs `npx playwright test`)
+- Keyboard navigation walkthrough (manual by Jason; checklist in findings)
+- Screen reader smoke test (manual by Jason; checklist in findings)
+- Behavioral consent UX test (manual by Jason; checklist in findings)

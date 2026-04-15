@@ -1,20 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 export function RouteProgress() {
   const pathname = usePathname();
-  const [progress, setProgress] = useState(0);
-  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setVisible(true);
-    setProgress(80);
+    const el = ref.current;
+    if (!el) return;
 
-    const t1 = setTimeout(() => setProgress(100), 300);
-    const t2 = setTimeout(() => setVisible(false), 600);
-    const t3 = setTimeout(() => setProgress(0), 800);
+    el.style.width = "80%";
+    el.style.opacity = "1";
+
+    const t1 = setTimeout(() => { el.style.width = "100%"; }, 300);
+    const t2 = setTimeout(() => { el.style.opacity = "0"; }, 600);
+    const t3 = setTimeout(() => { el.style.width = "0%"; }, 800);
 
     return () => {
       clearTimeout(t1);
@@ -23,15 +25,14 @@ export function RouteProgress() {
     };
   }, [pathname]);
 
-  if (!visible && progress === 0) return null;
-
   return (
     <div
+      ref={ref}
       className="fixed top-0 left-0 z-[100] h-[3px] bg-accent"
       style={{
-        width: `${progress}%`,
-        opacity: visible ? 1 : 0,
-        transition: progress === 0 ? "none" : "width 300ms ease-out, opacity 200ms ease-out",
+        width: "0%",
+        opacity: 0,
+        transition: "width 300ms ease-out, opacity 200ms ease-out",
         boxShadow: "0 0 12px rgba(108, 92, 231, 0.7)",
       }}
     />

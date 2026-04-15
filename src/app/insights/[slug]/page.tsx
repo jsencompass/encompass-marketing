@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!post) return { title: "Not Found" };
 
   return {
-    title: `${post.title} — Encompass Parking`,
+    title: `${post.title} | Encompass Parking`,
     description: post.excerpt,
     ...(post.canonicalUrl && { alternates: { canonical: post.canonicalUrl } }),
     openGraph: {

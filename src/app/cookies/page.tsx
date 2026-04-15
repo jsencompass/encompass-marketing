@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie & Tracking Notice — Encompass Parking",
+  title: "Cookie & Tracking Notice | Encompass Parking",
   description:
     "How Encompass Parking uses analytics and tracking on its website. We use cookieless, privacy-first analytics.",
 };

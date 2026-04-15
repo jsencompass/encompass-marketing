@@ -26,14 +26,14 @@ export function Reveal({
     }
 
     el.style.opacity = "0";
-    el.style.transform = "translateY(48px) scale(0.97)";
+    el.style.transform = "translateY(32px)";
     el.style.transition = `opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           el.style.opacity = "1";
-          el.style.transform = "translateY(0) scale(1)";
+          el.style.transform = "none";
           observer.unobserve(el);
         }
       },
