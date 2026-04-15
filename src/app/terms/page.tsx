@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — Encompass Parking",
+  title: "Terms of Use | Encompass Parking",
   description: "Terms of Use for the Encompass Parking website.",
 };
 

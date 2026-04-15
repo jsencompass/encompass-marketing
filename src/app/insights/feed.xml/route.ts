@@ -21,7 +21,7 @@ export async function GET() {
   <channel>
     <title>Encompass Insights</title>
     <link>https://encompassparking.com/insights</link>
-    <description>Quarterly notes on parking controllership — operator dynamics, revenue governance, industry shifts.</description>
+    <description>Quarterly notes on parking controllership, operator dynamics, revenue governance, and industry shifts.</description>
     <language>en-us</language>
     <atom:link href="https://encompassparking.com/insights/feed.xml" rel="self" type="application/rss+xml" />
     ${items}

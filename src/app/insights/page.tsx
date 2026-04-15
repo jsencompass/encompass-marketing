@@ -6,7 +6,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { PostThumbnail } from "@/components/insights/PostThumbnail";
 
 export const metadata: Metadata = {
-  title: "Insights — Encompass Parking",
+  title: "Insights | Encompass Parking",
   description:
     "Quarterly notes from the Encompass principals on parking controllership, operator dynamics, revenue governance, and industry shifts.",
 };

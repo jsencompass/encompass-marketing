@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Encompass Parking",
+  title: "Privacy Policy | Encompass Parking",
   description:
     "Privacy Policy for Encompass Parking, LLC. Learn how we collect, use, and protect your information.",
 };
@@ -108,13 +108,13 @@ export default function Privacy() {
           <ul className="mt-4 list-disc space-y-2 pl-6">
             <li>
               <strong className="text-text-primary">Vercel</strong> (US-based,
-              SOC 2 Type II compliant) &mdash; hosting, serverless functions,
+              SOC 2 Type II compliant). Hosting, serverless functions,
               and cookieless analytics. May process IP addresses for security,
               CDN routing, and abuse prevention.
             </li>
             <li>
-              <strong className="text-text-primary">Resend</strong> (US-based)
-              &mdash; transactional email delivery for contact form
+              <strong className="text-text-primary">Resend</strong> (US-based).
+              Transactional email delivery for contact form
               submissions and newsletter communications. Processes email
               addresses you provide when you submit a form or subscribe.
             </li>
@@ -122,7 +122,7 @@ export default function Privacy() {
               <strong className="text-text-primary">
                 Cloudflare Turnstile
               </strong>{" "}
-              (US-based) &mdash; spam protection on our contact form. Does not
+              (US-based). Spam protection on our contact form. Does not
               set cookies or collect personal data beyond IP address for
               challenge verification. IP addresses are processed only for the
               duration of the challenge.

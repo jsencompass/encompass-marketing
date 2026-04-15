@@ -90,6 +90,13 @@ All 8 ATTORNEY-REVIEW flags closed with conservative defaults (Sessions 5 + 7):
 - CSP nonce migration — blocked by Next.js static rendering. Revisit if site moves to dynamic rendering or Next.js adds static-compatible nonce support
 - Dev dependency upgrades — @types/node (20→25), eslint (9→10), typescript (5→6). Schedule as separate session.
 
+## Session 16 Audit (closed items)
+
+- ~~Insights card vertical line artifacts~~ — FIXED S16: Reveal component `transform: scale(1)` creating compositing layer artifacts. Removed scale, set final transform to `none`.
+- ~~Em-dash/en-dash regression~~ — FIXED S16: 58+ instances across MDX content and UI copy
+- ~~motion package removal~~ — DONE S16: zero imports since S15.1, `pnpm remove motion`
+- ~~Lint errors (10 problems)~~ — FIXED S16: all `set-state-in-effect` violations resolved via `useSyncExternalStore` and ref-based patterns
+
 ## Deferred-from-session
 
 - ~~Insights index editorial header + featured treatment upgrade~~ — SHIPPED Session 14.1: editorial header (eyebrow + H1 + sub-deck + Reveal stagger + HR), FEATURED pill, 2-col featured card layout, "Recent" sub-heading

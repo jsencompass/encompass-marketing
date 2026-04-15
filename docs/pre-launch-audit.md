@@ -1,6 +1,6 @@
 # Pre-Launch Audit: Scope, Methodology, Deliverables
 
-**Status:** Session 15 complete: 2026-04-14. Session 16 pending.
+**Status:** Session 15 complete: 2026-04-14. Session 16 complete: 2026-04-14. Launch-readiness: conditional GO (see `docs/launch-readiness.md`).
 
 **Session 15 summary:** 1 critical fixed (Turnstile bypass), 1 serious fixed (input length), 1 serious open (Upstash Redis not provisioned — Jason action), 4 moderate (1 fixed, 1 accepted, 2 backlog), 5 low. CSP hardened with 4 new directives + experimental SRI. Nonce migration deferred (Next.js requires dynamic rendering). External graders blocked by infrastructure — manual verification required. Full findings: `docs/audit-findings-session-15.md`.
 
@@ -19,8 +19,29 @@ The site is launch-ready when all five of the following hold:
 3. **Zero known high-severity dependency vulnerabilities** (`pnpm audit` clean at high+).
 4. **Every defensive control tested empirically, not just deployed.** Honeypot, Turnstile, rate limit, CSP, HSTS; each one gets a live test with paste-able evidence.
 5. **Every public page proofed end to end** for broken links, typos, em-dash regressions, factual errors, and placeholder leakage into production HTML.
+6. **Every session's production walk completed and passing**, with behavioral (not just structural) verification of all interactive elements touched.
 
-Below any of these five thresholds, the site is not launch-ready and the finding gets a remediation session before traffic is driven.
+Below any of these six thresholds, the site is not launch-ready and the finding gets a remediation session before traffic is driven.
+
+---
+
+## Post-merge production walk (mandatory per session)
+
+Every session's Final Report must include a production walk checklist. The walk is performed AFTER main-merge AND AFTER the production deploy has completed (not on preview). The walk is behavioral, not structural:
+
+- **Behavioral** means clicking, typing, scrolling, submitting, and observing the result
+- **Structural** (insufficient alone) means inspecting DOM, reading HTML, checking computed styles
+
+The walk includes, at minimum:
+
+- Primary CTAs on every page touched this session: click, observe state change or navigation
+- Any form modified this session: submit with valid input, observe success response
+- Any interactive component modified this session: interact, observe correct behavior
+- Any third-party integration touched (Cal.com, Turnstile, analytics, rate limit): exercise and observe correct behavior
+- Consent banner (every session until explicitly retired from the walk): click Accept, observe dismiss + localStorage + next-load behavior
+- One incognito reload of / to verify SSR state is clean
+
+Walk results must be paste-able in the Final Report. A check-mark is only valid with a behavioral observation attached.
 
 ---
 

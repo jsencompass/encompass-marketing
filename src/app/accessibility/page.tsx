@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Accessibility Statement — Encompass Parking",
+  title: "Accessibility Statement | Encompass Parking",
   description:
     "Encompass Parking is committed to digital accessibility conforming to WCAG 2.1 Level AA.",
 };

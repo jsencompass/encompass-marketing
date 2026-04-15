@@ -21,11 +21,9 @@ export function CountUp({
   formatThousands?: boolean;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  // SSR-truthful: initial state is the final value so crawlers see the real number
-  const [display, setDisplay] = useState(value);
-  const [started, setStarted] = useState(false);
+  const [display] = useState(value);
   const [done, setDone] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const startedRef = useRef(false);
   const reduced = useReducedMotion();
 
   const format = useCallback(
@@ -37,63 +35,48 @@ export function CountUp({
     [formatThousands]
   );
 
-  // On mount, reset to 0 for animation (only in browser)
   useEffect(() => {
-    setMounted(true);
-    if (!reduced) {
-      setDisplay(0);
-    }
-  }, [reduced]);
-
-  useEffect(() => {
-    if (!mounted || reduced) {
-      setDone(true);
-      return;
-    }
+    if (reduced) return;
 
     const el = ref.current;
     if (!el) return;
 
+    // Use ref-based DOM manipulation to avoid setState-in-effect lint
+    el.textContent = `${prefix}${format(0)}${suffix}`;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started) {
-          setStarted(true);
+        if (entry.isIntersecting && !startedRef.current) {
+          startedRef.current = true;
           observer.unobserve(el);
+
+          const ms = duration * 1000;
+          const animStart = performance.now();
+          const tick = (now: number) => {
+            const elapsed = now - animStart;
+            const progress = Math.min(elapsed / ms, 1);
+            const current = Math.round(easeOutCubic(progress) * value);
+            el.textContent = `${prefix}${format(current)}${suffix}`;
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              setDone(true);
+            }
+          };
+          requestAnimationFrame(tick);
         }
       },
       { threshold: 0.3 }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [mounted, reduced, started]);
-
-  useEffect(() => {
-    if (!started || reduced) return;
-
-    const ms = duration * 1000;
-    const start = performance.now();
-    let raf: number;
-
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / ms, 1);
-      setDisplay(Math.round(easeOutCubic(progress) * value));
-      if (progress < 1) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        setDone(true);
-      }
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [started, value, duration, reduced]);
+  }, [reduced, value, duration, format, prefix, suffix]);
 
   return (
     <span
       ref={ref}
       suppressHydrationWarning
-      className={`transition-shadow duration-600 ${done && started ? "drop-shadow-[0_0_24px_rgba(108,92,231,0.25)]" : ""}`}
+      className={`transition-shadow duration-600 ${done || reduced ? "drop-shadow-[0_0_24px_rgba(108,92,231,0.25)]" : ""}`}
     >
       {prefix}{format(display)}{suffix}
     </span>

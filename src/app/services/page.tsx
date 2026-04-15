@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { ComparisonMatrix } from "./ComparisonMatrix";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
-  title: "Services & Pricing — Encompass Parking",
+  title: "Services & Pricing | Encompass Parking",
   description:
     "Three tiers, modular add-ons, no hidden scope. Encompass controllership services priced per site-month.",
 };
@@ -80,7 +79,7 @@ export default function Services() {
                   Remote Command Center
                 </h3>
                 <p className="mt-2 font-mono text-24 font-medium text-text-primary">
-                  $500&ndash;$15,000+
+                  $500-$15,000+
                   <span className="text-14 text-text-tertiary"> per site-month</span>
                 </p>
                 <p className="mt-4 text-14 leading-relaxed text-text-secondary">
@@ -128,7 +127,7 @@ export default function Services() {
                 Parking PI&trade; Mystery Shop Program
               </h2>
               <div className="mt-8 flex flex-wrap items-baseline gap-4">
-                <p className="font-mono text-32 font-medium text-text-primary">$80&ndash;$250</p>
+                <p className="font-mono text-32 font-medium text-text-primary">$80-$250</p>
                 <p className="text-14 text-text-tertiary">per shop</p>
               </div>
               <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
@@ -147,7 +146,7 @@ export default function Services() {
           <p className="text-14 text-text-tertiary">
             <strong className="text-text-secondary">Every engagement includes defined scope allowances.</strong>{" "}
             If operational workload materially exceeds included capacity, we
-            discuss an adjusted tier or overage openly &mdash; no surprise
+            discuss an adjusted tier or overage openly. No surprise
             invoices, no quietly absorbed scope creep. This keeps quality and
             economics aligned for both sides.
           </p>
