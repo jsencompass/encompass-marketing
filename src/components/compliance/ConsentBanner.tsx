@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore, useCallback } from "react";
+import { useSyncExternalStore, useCallback, useEffect, useRef, useState } from "react";
 
 const CONSENT_KEY = "encompass-consent";
 
@@ -17,27 +17,17 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot(): ConsentState {
-  // Honor Global Privacy Control
-  if (
-    typeof navigator !== "undefined" &&
-    (navigator as Navigator & { globalPrivacyControl?: boolean })
-      .globalPrivacyControl === true
-  ) {
-    const stored = localStorage.getItem(CONSENT_KEY);
-    if (stored !== "denied") {
-      localStorage.setItem(CONSENT_KEY, "denied");
-      console.log("[Encompass] Global Privacy Control detected; analytics opted out automatically.");
-    }
-    return "denied";
-  }
-
   const stored = localStorage.getItem(CONSENT_KEY);
   if (stored === "accepted" || stored === "denied") return stored;
   return "pending";
 }
 
 function getServerSnapshot(): ConsentState {
-  return "pending";
+  // Return non-pending so the banner never renders in SSR HTML.
+  // Client hydration calls getSnapshot() which returns the real state.
+  // This prevents the flash-then-dismiss for returning users whose
+  // localStorage already has a consent decision.
+  return "denied";
 }
 
 export function useConsent() {
@@ -63,8 +53,32 @@ export function useConsent() {
 
 export function ConsentBanner() {
   const { consent, accept, deny } = useConsent();
+  const gpcHandled = useRef(false);
+  const [ready, setReady] = useState(false);
 
-  if (consent !== "pending") return null;
+  // Handle GPC detection as a side effect (not inside getSnapshot).
+  // Use a ref to gate the first render and a single setState via
+  // requestAnimationFrame to satisfy react-hooks/set-state-in-effect.
+  useEffect(() => {
+    if (!gpcHandled.current) {
+      gpcHandled.current = true;
+      if (
+        typeof navigator !== "undefined" &&
+        (navigator as Navigator & { globalPrivacyControl?: boolean })
+          .globalPrivacyControl === true
+      ) {
+        const stored = localStorage.getItem(CONSENT_KEY);
+        if (stored !== "denied") {
+          localStorage.setItem(CONSENT_KEY, "denied");
+          emitChange();
+          console.log("[Encompass] Global Privacy Control detected; analytics opted out automatically.");
+        }
+      }
+    }
+    requestAnimationFrame(() => setReady(true));
+  }, []);
+
+  if (!ready || consent !== "pending") return null;
 
   return (
     <div className="fixed right-4 bottom-4 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-lg border border-border bg-bg-elevated p-6 shadow-2xl">
@@ -75,12 +89,14 @@ export function ConsentBanner() {
       </p>
       <div className="mt-4 flex gap-3">
         <button
+          type="button"
           onClick={accept}
           className="rounded-full bg-accent px-4 py-2 text-14 font-medium text-white transition-colors hover:bg-accent-dim"
         >
           Accept
         </button>
         <button
+          type="button"
           onClick={deny}
           className="rounded-full border border-border px-4 py-2 text-14 font-medium text-text-secondary transition-colors hover:border-text-tertiary hover:text-text-primary"
         >
