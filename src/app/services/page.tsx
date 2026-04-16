@@ -250,27 +250,81 @@ export default function Services() {
       </div>
 
       {/* ─── Parking PI ─── */}
-      <section className="border-t border-border bg-bg-raised">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <Reveal>
-            <>
-              <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-                Independent Verification
+      <section
+        className="py-16"
+        style={{
+          background: "linear-gradient(180deg, #0F0F11 0%, #0A0A0B 100%)",
+        }}
+      >
+        <div className="mx-auto max-w-[1200px] px-6">
+          <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+            Independent verification
+          </p>
+          <h2 className="mt-3 text-32 font-semibold tracking-tight md:text-48">
+            Parking PI Mystery Shop Program.
+          </h2>
+
+          <div
+            className="relative overflow-hidden mt-6 p-10 rounded-2xl border border-accent/30 grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-9 items-center"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(108,92,231,0.06) 0%, transparent 50%)",
+            }}
+          >
+            <div
+              className="absolute -top-24 -right-24 w-[300px] h-[300px] pointer-events-none rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(108,92,231,0.08) 0%, transparent 70%)",
+              }}
+            />
+
+            <div className="relative">
+              <p className="text-[15px] leading-[1.65] text-text-secondary mb-[22px]">
+                Trained shoppers visit your sites unannounced and score against
+                a standardized methodology built for parking, not retail.
+                Findings delivered as a portfolio-level scorecard with
+                site-by-site detail.
               </p>
-              <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-                Parking PI&trade; Mystery Shop Program
-              </h2>
-              <div className="mt-8 flex flex-wrap items-baseline gap-4">
-                <p className="font-mono text-32 font-medium text-text-primary">$80-$250</p>
-                <p className="text-14 text-text-tertiary">per shop</p>
+              <div className="flex gap-3">
+                <Link
+                  href="/contact"
+                  className="cta-primary inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-[13px] font-medium text-white transition-all hover:brightness-110"
+                >
+                  Request a program
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-[13px] font-medium text-text-primary transition-all hover:border-white/30 hover:bg-white/5"
+                >
+                  See sample report
+                </Link>
               </div>
-              <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-                Purpose-built for parking. 3,000+ shops completed across the
-                western United States. Shopper portal, weighted scoring, client
-                dashboard.
-              </p>
-            </>
-          </Reveal>
+            </div>
+
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { value: "$80\u2013250", label: "per shop" },
+                  { value: "3,000+", label: "shops completed" },
+                  { value: "100+", label: "sites scored" },
+                  { value: "11", label: "western US states" },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="pt-3.5 border-t border-accent/15"
+                  >
+                    <div className="font-mono text-[34px] font-medium tracking-[-0.025em] text-text-primary">
+                      {stat.value}
+                    </div>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent-text mt-1">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
