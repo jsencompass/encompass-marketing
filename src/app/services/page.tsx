@@ -43,32 +43,61 @@ export default function Services() {
       {/* ─── Comparison Matrix ─── */}
       <ComparisonMatrix />
 
-      {/* ─── Implementation + PPB ─── */}
-      <section className="border-t border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <Reveal>
-            <div className="rounded-lg border border-border bg-bg-raised p-8 md:p-12">
-              <div className="flex flex-wrap items-baseline justify-between gap-4">
-                <div>
-                  <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-                    Required for All New Engagements
-                  </p>
-                  <h2 className="mt-4 text-32 font-semibold tracking-tight">
-                    Implementation + Parking Performance Baseline
-                  </h2>
-                </div>
-                <p className="font-mono text-32 font-medium text-text-primary">
-                  $4,500
-                  <span className="text-14 text-text-tertiary"> per site</span>
-                </p>
-              </div>
-              <p className="mt-6 max-w-2xl text-16 leading-relaxed text-text-secondary">
-                Paid onboarding that establishes the starting truth set. Maps sessions, transactions, validations, and credentials into one reconcilable view. The Parking Performance Baseline (PPB) is what makes a site controls-ready for recurring PACT Oversight.
-              </p>
+      {/* ─── Implementation + PPB Strip ─── */}
+      <div className="my-14">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div
+            className="relative overflow-hidden p-7 rounded-[14px] border border-accent/35 flex items-center gap-6 flex-wrap"
+            style={{
+              background:
+                "linear-gradient(135deg, #1a1430 0%, var(--bg-elevated) 60%)",
+            }}
+          >
+            <div
+              className="absolute top-0 left-0 right-0 h-0.5"
+              style={{
+                background:
+                  "linear-gradient(90deg, #6C5CE7 0%, transparent 60%)",
+              }}
+            />
+            <div className="shrink-0 w-[52px] h-[52px] rounded-xl bg-accent/18 grid place-items-center">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--accent-text)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
             </div>
-          </Reveal>
+            <div className="flex-1 min-w-[280px]">
+              <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent-text mb-1.5">
+                Required for all new sites
+              </div>
+              <div className="text-[17px] font-medium mb-1.5">
+                Implementation + Parking Performance Baseline (PPB)
+              </div>
+              <div className="text-[13px] text-text-secondary leading-[1.55] max-w-[560px]">
+                Paid onboarding that establishes the starting truth set. The PPB
+                is what makes a site controls-ready for recurring PACT Oversight.
+                Roughly 6 to 8 weeks per site.
+              </div>
+            </div>
+            <div className="w-px self-stretch bg-accent/20 mx-1 hidden md:block" />
+            <div className="shrink-0 text-right">
+              <div className="font-mono text-[26px] font-medium">$4,500</div>
+              <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-accent-text">
+                per site, one-time
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* ─── Optional Modules ─── */}
       <section className="border-t border-border">
