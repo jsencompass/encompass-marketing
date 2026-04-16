@@ -100,46 +100,103 @@ export default function Services() {
       </div>
 
       {/* ─── Optional Modules ─── */}
-      <section className="border-t border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            Optional Modules
+      <div className="py-6 pb-14">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+            Optional modules
           </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
+          <h2 className="mt-3 text-32 font-semibold tracking-tight md:text-48">
             Attach where coverage economics justify it.
           </h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <Reveal delay={0}>
-              <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
-                <span className="mb-4 inline-block rounded-full bg-accent/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent-text">ADD-ON MODULE</span>
-                <h3 className="text-18 font-semibold text-text-primary">
+          <p className="mt-3 text-[15px] text-text-secondary">
+            Each module is independently scoped and priced. Attach to any tier.
+          </p>
+          <div className="flex flex-col gap-3.5 mt-8">
+            {/* Remote Command Center */}
+            <div className="group grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-6 p-6 md:p-7 border border-border/70 rounded-xl bg-bg-raised items-start transition-all duration-150 hover:border-accent/45 hover:bg-[#1c1c20]">
+              <div className="w-14 h-14 rounded-[11px] bg-accent/10 grid place-items-center transition-colors duration-150 group-hover:bg-accent/18">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-text)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <div className="inline-block bg-accent/15 text-accent-text text-[10px] uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full mb-2 font-mono">
+                  Add-on module
+                </div>
+                <div className="text-[17px] font-medium mb-1.5">
                   Remote Command Center
-                </h3>
-                <p className="mt-2 text-14 text-text-secondary">
-                  Priced on scope
-                </p>
-                <p className="mt-4 text-14 leading-relaxed text-text-secondary">
-                  24/7 remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. Permissioned operational actions with time-stamped evidence. Reduces reliance on onsite coverage during nights, weekends, and low-volume hours. Attached where the coverage math works.
-                </p>
+                </div>
+                <div className="text-[13px] text-text-secondary leading-[1.6]">
+                  24/7 remote monitoring, alert triage, and dispatch for
+                  revenue-at-risk incidents. Permissioned operational actions
+                  with time-stamped evidence. Reduces reliance on onsite coverage
+                  during nights, weekends, and low-volume hours.
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mt-[18px] pt-[18px] border-t border-border/60">
+                  <div className="px-0 md:px-4 md:pl-0 py-2.5 md:py-0">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Coverage</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">24/7 monitoring</div>
+                  </div>
+                  <div className="px-0 md:px-4 py-2.5 md:py-0 border-t md:border-t-0 md:border-l border-border/50">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Authority</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Permissioned actions</div>
+                  </div>
+                  <div className="px-0 md:px-4 py-2.5 md:py-0 border-t md:border-t-0 md:border-l border-border/50">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Audit trail</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Time-stamped evidence</div>
+                  </div>
+                </div>
               </div>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
-                <span className="mb-4 inline-block rounded-full bg-accent/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent-text">ADD-ON MODULE</span>
-                <h3 className="text-18 font-semibold text-text-primary">
+              <div className="self-start inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent/12 border border-accent/30 rounded-full text-[12px] text-accent-text font-mono tracking-wide font-medium whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-text" />
+                Priced on scope
+              </div>
+            </div>
+
+            {/* Remote Call Center */}
+            <div className="group grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-6 p-6 md:p-7 border border-border/70 rounded-xl bg-bg-raised items-start transition-all duration-150 hover:border-accent/45 hover:bg-[#1c1c20]">
+              <div className="w-14 h-14 rounded-[11px] bg-accent/10 grid place-items-center transition-colors duration-150 group-hover:bg-accent/18">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-text)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <div className="inline-block bg-accent/15 text-accent-text text-[10px] uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full mb-2 font-mono">
+                  Add-on module
+                </div>
+                <div className="text-[17px] font-medium mb-1.5">
                   Remote Call Center
-                </h3>
-                <p className="mt-2 text-14 text-text-secondary">
-                  Priced on scope
-                </p>
-                <p className="mt-4 text-14 leading-relaxed text-text-secondary">
-                  Branded customer support operating under Encompass scripts, authority limits, and refund governance. Every interaction logged and fed back into the control layer. No more refund-first defaults.
-                </p>
+                </div>
+                <div className="text-[13px] text-text-secondary leading-[1.6]">
+                  Branded customer support operating under Encompass scripts,
+                  authority limits, and refund governance. Every interaction
+                  logged and fed back into the control layer. No more
+                  refund-first defaults.
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mt-[18px] pt-[18px] border-t border-border/60">
+                  <div className="px-0 md:px-4 md:pl-0 py-2.5 md:py-0">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Operating model</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Branded support</div>
+                  </div>
+                  <div className="px-0 md:px-4 py-2.5 md:py-0 border-t md:border-t-0 md:border-l border-border/50">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Refund control</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Authority limits</div>
+                  </div>
+                  <div className="px-0 md:px-4 py-2.5 md:py-0 border-t md:border-t-0 md:border-l border-border/50">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Feedback loop</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Logged into control layer</div>
+                  </div>
+                </div>
               </div>
-            </Reveal>
+              <div className="self-start inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent/12 border border-accent/30 rounded-full text-[12px] text-accent-text font-mono tracking-wide font-medium whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-text" />
+                Priced on scope
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ─── Engagements ─── */}
       <Reveal>
