@@ -862,3 +862,42 @@ Cards now use `bg-bg-raised` on `bg-bg-base` contrast for edge definition. Other
 ### Deferred
 
 None.
+
+## Session 18: /services Railway-Style Redesign
+
+**Date**: 2026-04-15
+
+### Context
+
+Jason approved a Railway-style redesign of /services after reviewing an interactive HTML mockup. The redesign replaces the matrix-first pricing view with tier-cards-first and adds interactive portfolio sizing, sticky comparison headers, and premium module treatments.
+
+### Shipped (8 phases)
+
+**Phase 1 — Tier cards**: Three tier cards (Foundation / Performance / Enterprise) replacing matrix as primary pricing view. Floating "Most common" badge on featured Performance tier.
+
+**Phase 2 — Portfolio sizer**: Interactive range slider (1-60 sites) with live tier recommendation. "Matches your portfolio" pill on recommended card. Client component boundary: TierSection wraps tier cards + sizer with shared state.
+
+**Phase 3 — Comparison matrix**: Sticky tier header docking below nav at top-[80px]. Featured Performance column purple tint. Hover-synchronized row highlighting. 5 categories, 18 feature rows.
+
+**Phase 4 — PPB strip**: Horizontal callout with gradient background, icon-left body-middle price-right layout, top-edge accent line.
+
+**Phase 5 — Optional modules**: Vertical stack with icon-left body-middle pill-right layout. 3-column spec strip inside each card. "Priced on scope" pill.
+
+**Phase 6 — Engagement cards**: 9 cards in 3x3 grid with 7 category types (Baseline, Transition, Strategy, Advisory, Procurement, Audit, Technology). Top-edge purple accent bar animation on hover.
+
+**Phase 7 — Parking PI**: Premium 2-column card with purple corner glow, 4-stat grid with accent top-borders.
+
+**Phase 8 — Global cleanup**: Unused imports removed, grep verifications pass (0 PACT 1/2/3, 0 Standard as tier name), docs updated.
+
+### New Components
+
+- `src/components/services/TierSection.tsx` — client component with shared recommendation state
+- `src/components/services/PortfolioSizer.tsx` — range slider with custom styling
+
+### Tier Names
+
+Foundation, Performance, Enterprise. "Standard" retired. "PACT 1/2/3" numbering never introduced.
+
+### Deferred
+
+None.

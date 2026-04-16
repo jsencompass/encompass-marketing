@@ -93,6 +93,26 @@ Animations:
 
 `@media (prefers-reduced-motion: reduce)` disables all transitions and animations globally. The `Reveal` component checks `matchMedia` and auto-applies the revealed state immediately.
 
+## Services Page Patterns (Session 18)
+
+### Tier Card Pattern
+Grid-cols-3 on desktop, stacked on mobile. Each card: `rounded-[14px] p-7 bg-bg-raised border border-border/70`. Featured card gets gradient background (`linear-gradient(180deg, rgba(108,92,231,0.10) 0%, var(--bg-elevated) 70%)`), accent border, and floating "Most common" badge (`absolute -top-[13px]`). PACT eyebrow above tier name, price with `font-mono text-[38px]`, bullet list with accent-colored dash markers, and CTA at bottom. Optional "Matches your portfolio" pill at card bottom when recommended by sizer.
+
+### Sticky Tier Header (Comparison Matrix)
+`sticky top-[80px] z-[15]` docks below main nav (`z-50`). Semi-transparent background with `backdrop-blur-lg`. Contains tier names stacked above Request buttons. Featured Performance column has `bg-accent/8` tint. Shadow: `0 6px 24px rgba(0,0,0,0.35)`.
+
+### Featured Column Tinting
+In comparison matrix rows, the Performance column (3rd child) gets `bg-accent/5` base tint via `[&>*:nth-child(3)]:bg-accent/5`, deepening to `accent/10` on row hover.
+
+### Spec Strip Pattern
+3-column grid inside module cards with `border-l border-border/50` dividers. Each cell: mono label (`text-[10px] uppercase tracking-[0.12em] text-text-tertiary`) above primary-weight value (`text-[13px] font-medium`). Mobile: single-column with `border-t` between cells.
+
+### Engagement Card Hover Accent Line
+`absolute top-0 left-0 h-0.5 bg-accent w-0 group-hover:w-full transition-[width] duration-[250ms]`. Purple bar draws from left to right on hover. Respects prefers-reduced-motion via global motion.css rule.
+
+### Portfolio Sizer
+Interactive range slider (`input[type=range]`) with custom track (4px, `rgba(108,92,231,0.18)`) and thumb (18px circle, `var(--accent)`). Styled via `.portfolio-slider` in globals.css. Displays site count and recommended tier name live.
+
 ## Dark Mode
 
 Site is dark-only for v1. No light mode toggle.

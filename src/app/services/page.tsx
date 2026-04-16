@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { TierSection } from "@/components/services/TierSection";
 import { ComparisonMatrix } from "./ComparisonMatrix";
-import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Services & Pricing | Encompass Parking",
