@@ -1,243 +1,168 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { InfoTooltip } from "@/components/ui/InfoTooltip";
 
-type Availability = true | false | "Add-on";
+type CellValue = true | false | string;
 
-interface Feature {
+interface MatrixRow {
   name: string;
-  tooltip: string;
-  foundation: Availability;
-  performance: Availability;
-  enterprise: Availability;
+  foundation: CellValue;
+  performance: CellValue;
+  enterprise: CellValue;
 }
 
-interface Category {
+interface MatrixCategory {
   name: string;
-  features: Feature[];
+  rows: MatrixRow[];
 }
 
-const categories: Category[] = [
+const categories: MatrixCategory[] = [
   {
-    name: "Data posture and onboarding",
-    features: [
-      { name: "Automated transaction ingestion", tooltip: "Direct data feeds from PARCS, LPR, and payment systems normalized into a single reconcilable format.", foundation: true, performance: true, enterprise: true },
-      { name: "Manual artifact processing", tooltip: "Digitization and normalization of manual close packs, paper tickets, and non-automated data sources.", foundation: false, performance: true, enterprise: true },
-      { name: "Cross-operator normalization", tooltip: "Standardizing data across multiple operators with different PARCS and reporting formats into one portfolio view.", foundation: false, performance: false, enterprise: true },
+    name: "Foundational components",
+    rows: [
+      { name: "Monthly close pack audit", foundation: true, performance: true, enterprise: true },
+      { name: "Session-to-deposit tie-out", foundation: true, performance: true, enterprise: true },
+      { name: "Owner-facing month-end summary", foundation: true, performance: true, enterprise: true },
+      { name: "Exception log with reason codes", foundation: true, performance: true, enterprise: true },
     ],
   },
   {
-    name: "Pricing, products, and market governance",
-    features: [
-      { name: "Rate integrity monitoring", tooltip: "Continuous verification that published rates match what the PARCS system is actually charging.", foundation: true, performance: true, enterprise: true },
-      { name: "Product mix optimization", tooltip: "Analysis and recommendations for revenue-optimal product configurations (early bird, monthly, event, etc.).", foundation: false, performance: true, enterprise: true },
-      { name: "Competitive market benchmarking", tooltip: "Rate positioning relative to nearby competitors and market demand signals.", foundation: false, performance: false, enterprise: true },
+    name: "Governance & oversight",
+    rows: [
+      { name: "Variance workup with closure standards", foundation: false, performance: true, enterprise: true },
+      { name: "Tiered exception approval hierarchy", foundation: false, performance: true, enterprise: true },
+      { name: "Rate and validation policy governance", foundation: false, performance: true, enterprise: true },
+      { name: "Continuous improvement memos", foundation: false, performance: true, enterprise: true },
     ],
   },
   {
-    name: "Validations and discount governance",
-    features: [
-      { name: "Validation policy compliance", tooltip: "Verifying that discount and validation programs operate within authorized parameters.", foundation: true, performance: true, enterprise: true },
-      { name: "Validation abuse detection", tooltip: "Identifying patterns of validation misuse, over-discounting, or credential sharing.", foundation: false, performance: true, enterprise: true },
-      { name: "Custom discount taxonomy", tooltip: "Asset-class-specific discount and validation frameworks aligned to portfolio governance standards.", foundation: false, performance: false, enterprise: true },
+    name: "Cadence & reviews",
+    rows: [
+      { name: "Quarterly principal review", foundation: true, performance: true, enterprise: false },
+      { name: "Monthly principal review", foundation: false, performance: true, enterprise: true },
+      { name: "Bi-weekly sync cadence", foundation: false, performance: false, enterprise: true },
+      { name: "Quarterly executive review", foundation: false, performance: false, enterprise: true },
     ],
   },
   {
-    name: "Monthly parkers and lease compliance",
-    features: [
-      { name: "Monthly parker reconciliation", tooltip: "Matching monthly parker billing against access credentials and actual usage.", foundation: true, performance: true, enterprise: true },
-      { name: "Lease compliance audit", tooltip: "Verifying monthly and reserved parking lease terms match actual access and billing.", foundation: false, performance: true, enterprise: true },
+    name: "Multi-operator & complex environments",
+    rows: [
+      { name: "Multi-operator governance design", foundation: false, performance: false, enterprise: true },
+      { name: "Custom close-pack artifact specs", foundation: false, performance: false, enterprise: true },
+      { name: "Dedicated principal liaison", foundation: false, performance: false, enterprise: true },
+      { name: "Stack-agnostic data ingest", foundation: "Standard", performance: "Standard", enterprise: "Custom" },
     ],
   },
   {
-    name: "Channels, aggregators, and allocation",
-    features: [
-      { name: "Channel revenue tracking", tooltip: "Reconciling revenue from third-party aggregators, apps, and direct channels.", foundation: true, performance: true, enterprise: true },
-      { name: "Allocation discipline", tooltip: "Governing inventory allocation across channels to optimize yield and prevent overselling.", foundation: false, performance: true, enterprise: true },
+    name: "Sites & portfolio scale",
+    rows: [
+      { name: "Sites included in baseline", foundation: "1\u20135", performance: "5\u201325", enterprise: "25+" },
+      { name: "Implementation + PPB required", foundation: true, performance: true, enterprise: true },
+      { name: "Module attach available", foundation: true, performance: true, enterprise: true },
     ],
   },
-  {
-    name: "Uptime and operations health",
-    features: [
-      { name: "Equipment uptime monitoring", tooltip: "Tracking PARCS device availability and downtime impact on revenue.", foundation: true, performance: true, enterprise: true },
-      { name: "Credential and permissions audit", tooltip: "Regular review of operator access levels, system permissions, and credential hygiene.", foundation: false, performance: true, enterprise: true },
-    ],
-  },
-  {
-    name: "Close artifacts and variance closure",
-    features: [
-      { name: "Session-to-deposit reconciliation", tooltip: "Tracing every parking session through transaction, settlement, and bank deposit.", foundation: true, performance: true, enterprise: true },
-      { name: "Monthly close-pack audit", tooltip: "Standardized monthly audit of the operator's financial close package.", foundation: true, performance: true, enterprise: true },
-      { name: "Exception governance", tooltip: "Driving exceptions to closure with reason codes, tiered approvals, and deadline standards.", foundation: true, performance: true, enterprise: true },
-      { name: "Variance workup and root-cause analysis", tooltip: "Deep investigation of revenue variances beyond standard exception handling.", foundation: false, performance: true, enterprise: true },
-      { name: "Owner-facing monthly summary", tooltip: "Synthesized executive report, not an inbox dump. Key metrics, exceptions, and recommendations.", foundation: true, performance: true, enterprise: true },
-    ],
-  },
-  {
-    name: "Portfolio standardization and executive reporting",
-    features: [
-      { name: "Portfolio-level rollup reporting", tooltip: "Aggregated performance views across all sites in the portfolio.", foundation: false, performance: false, enterprise: true },
-      { name: "Executive dashboard access", tooltip: "Real-time portfolio dashboard with drill-down to site-level metrics.", foundation: false, performance: false, enterprise: true },
-      { name: "Operator scorecard and SLA tracking", tooltip: "Standardized operator performance metrics tracked against service level agreements.", foundation: false, performance: false, enterprise: true },
-      { name: "Quarterly business review", tooltip: "In-depth quarterly review with Encompass principals covering portfolio performance and strategic recommendations.", foundation: false, performance: false, enterprise: true },
-    ],
-  },
-  {
-    name: "Governance cadence",
-    features: [
-      { name: "Monthly calibration", tooltip: "Standard monthly governance rhythm: audit, variance, closure, summary, calibration.", foundation: true, performance: true, enterprise: true },
-      { name: "Bi-weekly calibration calls", tooltip: "More frequent check-ins for sites with active variance workups or transition periods.", foundation: false, performance: true, enterprise: true },
-      { name: "Priority escalation path", tooltip: "Direct access to Encompass principals for urgent revenue-at-risk situations.", foundation: false, performance: true, enterprise: true },
-      { name: "Dedicated analyst", tooltip: "Named Encompass analyst assigned to your portfolio for continuity and relationship management.", foundation: true, performance: true, enterprise: true },
-    ],
-  },
-];
-
-const tiers = [
-  { key: "foundation" as const, name: "Foundation", price: "$2,250", data: "Automated feeds" },
-  { key: "performance" as const, name: "Performance", price: "$3,500", data: "Mixed posture", highlight: true },
-  { key: "enterprise" as const, name: "Enterprise", price: "$6,750", data: "Any posture" },
 ];
 
 function Check() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="mx-auto">
-      <circle cx="8" cy="8" r="8" fill="var(--status-revenue)" fillOpacity="0.15" />
-      <path d="M5 8l2 2 4-4" stroke="var(--status-revenue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
+  return <span className="text-accent text-[15px]">&#x2713;</span>;
 }
 
-function Cross() {
-  return <span className="block text-center text-text-tertiary">&mdash;</span>;
+function Dash() {
+  return <span className="inline-block w-3.5 h-px bg-[#3a3a40]" aria-hidden="true" />;
 }
 
-function CellValue({ value }: { value: Availability }) {
+function CellContent({ value }: { value: CellValue }) {
   if (value === true) return <Check />;
-  if (value === "Add-on") return <span className="block text-center text-12 text-text-secondary">Add-on</span>;
-  return <Cross />;
+  if (value === false) return <Dash />;
+  return <span>{value}</span>;
 }
 
 export function ComparisonMatrix() {
-  const [expandedTier, setExpandedTier] = useState<string | null>(null);
-
   return (
-    <section className="border-t border-border">
-      <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-        {/* ─── Desktop: Full Matrix ─── */}
-        <div className="hidden lg:block overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="sticky top-16 z-10 bg-bg-base">
-                <th className="w-[40%] pb-6 text-left" />
-                {tiers.map((t) => (
-                  <th
-                    key={t.key}
-                    className={`w-[20%] pb-6 text-center ${t.highlight ? "border-x border-t border-accent rounded-t-lg" : ""}`}
-                  >
-                    <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">{t.name}</p>
-                    <p className="mt-2 font-mono text-32 font-medium text-text-primary">{t.price}</p>
-                    <p className="mt-1 text-12 text-text-tertiary">per site-month</p>
-                    <Link
-                      href={`/contact?tier=${t.key}`}
-                      className="mt-3 inline-block rounded-full bg-accent px-4 py-1.5 text-12 font-semibold text-white transition-colors hover:bg-accent-dim"
-                    >
-                      Request this tier
-                    </Link>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {categories.map((cat) => (
-                <>
-                  <tr key={cat.name}>
-                    <td
-                      colSpan={4}
-                      className="border-t border-border pt-8 pb-3 text-12 font-semibold uppercase tracking-widest text-text-tertiary"
-                    >
-                      {cat.name}
-                    </td>
-                  </tr>
-                  {cat.features.map((f) => (
-                    <tr key={f.name} className="border-t border-border/50 hover:bg-bg-raised/50 transition-colors">
-                      <td className="py-3 pr-4 text-14 text-text-secondary">
-                        {f.name}
-                        <InfoTooltip text={f.tooltip} />
-                      </td>
-                      <td className="py-3 text-center"><CellValue value={f.foundation} /></td>
-                      <td className={`py-3 text-center ${tiers[1].highlight ? "border-x border-accent/20" : ""}`}>
-                        <CellValue value={f.performance} />
-                      </td>
-                      <td className="py-3 text-center"><CellValue value={f.enterprise} /></td>
-                    </tr>
-                  ))}
-                </>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <section className="bg-[#0F0F11] py-14 mt-8" id="compare-features">
+      {/* ─── Section header ─── */}
+      <div className="mx-auto max-w-[1200px] px-6 mb-8">
+        <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+          Compare features
+        </p>
+        <h2 className="mt-3 text-32 font-semibold tracking-tight md:text-48">
+          Every line item, every tier.
+        </h2>
+        <p className="mt-3 max-w-2xl text-[15px] text-text-secondary leading-[1.6]">
+          The headers dock below the nav as you scroll, so you can match any
+          feature to its tier without losing context. Hover any row to track it
+          across columns.
+        </p>
+      </div>
 
-        {/* ─── Mobile: Accordion ─── */}
-        <div className="lg:hidden space-y-4">
-          {tiers.map((t) => (
-            <div
-              key={t.key}
-              className={`rounded-lg border ${t.highlight ? "border-accent" : "border-border"} bg-bg-raised`}
-            >
-              <button
-                onClick={() => setExpandedTier(expandedTier === t.key ? null : t.key)}
-                className="flex w-full items-center justify-between p-6 text-left"
-                aria-expanded={expandedTier === t.key}
+      {/* ─── Sticky tier header ─── */}
+      <div className="sticky top-[80px] z-[15] bg-[#0F0F11]/98 backdrop-blur-lg border-b border-border/70 py-3.5 shadow-[0_6px_24px_rgba(0,0,0,0.35)]">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-0 items-stretch">
+            <div />
+            <div className="py-1.5 px-2 flex flex-col items-center gap-2">
+              <div className="text-[14px] font-medium text-text-primary tracking-[-0.005em] text-center leading-[1.2]">
+                Foundation
+              </div>
+              <Link
+                href="/contact?tier=foundation"
+                className="px-4 py-1.5 text-[12px] rounded-[7px] border border-white/18 bg-transparent text-text-primary font-medium hover:border-white/50 transition-all whitespace-nowrap"
               >
-                <div>
-                  <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">{t.name}</p>
-                  <p className="mt-1 font-mono text-32 font-medium text-text-primary">{t.price}</p>
-                  <p className="text-12 text-text-tertiary">per site-month &middot; {t.data}</p>
-                </div>
-                <span className={`text-24 text-text-tertiary transition-transform ${expandedTier === t.key ? "rotate-45" : ""}`}>
-                  +
-                </span>
-              </button>
-              {expandedTier === t.key && (
-                <div className="border-t border-border px-6 pb-6">
-                  {categories.map((cat) => {
-                    const included = cat.features.filter((f) => f[t.key] === true);
-                    const addons = cat.features.filter((f) => f[t.key] === "Add-on");
-                    if (included.length === 0 && addons.length === 0) return null;
-                    return (
-                      <div key={cat.name} className="mt-4">
-                        <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">{cat.name}</p>
-                        <ul className="mt-2 space-y-2">
-                          {included.map((f) => (
-                            <li key={f.name} className="flex items-start gap-2 text-14 text-text-secondary">
-                              <span className="mt-1 block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-status-revenue" />
-                              {f.name}
-                            </li>
-                          ))}
-                          {addons.map((f) => (
-                            <li key={f.name} className="flex items-start gap-2 text-14 text-text-tertiary">
-                              <span className="mt-1 block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-text-tertiary" />
-                              {f.name} (Add-on)
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    );
-                  })}
-                  <Link
-                    href={`/contact?tier=${t.key}`}
-                    className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-14 font-semibold text-white transition-colors hover:bg-accent-dim"
-                  >
-                    Request this tier
-                  </Link>
-                </div>
-              )}
+                Request
+              </Link>
             </div>
-          ))}
+            <div className="py-1.5 px-2 flex flex-col items-center gap-2 bg-accent/8 border-l border-r border-accent/20 rounded-md">
+              <div className="text-[14px] font-medium text-text-primary tracking-[-0.005em] text-center leading-[1.2]">
+                Performance
+              </div>
+              <Link
+                href="/contact?tier=performance"
+                className="px-4 py-1.5 text-[12px] rounded-[7px] border border-accent bg-accent text-white font-medium hover:border-accent/90 transition-all whitespace-nowrap"
+              >
+                Request
+              </Link>
+            </div>
+            <div className="py-1.5 px-2 flex flex-col items-center gap-2">
+              <div className="text-[14px] font-medium text-text-primary tracking-[-0.005em] text-center leading-[1.2]">
+                Enterprise
+              </div>
+              <Link
+                href="/contact?tier=enterprise"
+                className="px-4 py-1.5 text-[12px] rounded-[7px] border border-white/18 bg-transparent text-text-primary font-medium hover:border-white/50 transition-all whitespace-nowrap"
+              >
+                Request
+              </Link>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* ─── Matrix rows ─── */}
+      <div className="mx-auto max-w-[1200px] px-6 mt-6">
+        {categories.map((cat) => (
+          <div key={cat.name}>
+            <div className="pt-8 pb-2.5 font-mono text-[11px] uppercase tracking-[0.15em] text-text-tertiary border-b border-border/60 mb-1">
+              {cat.name}
+            </div>
+            {cat.rows.map((row) => (
+              <div
+                key={row.name}
+                className="grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-0 py-3.5 border-b border-border/40 items-center transition-colors duration-100 hover:bg-accent/5 [&:hover_.feature-label]:text-accent-text [&>*:nth-child(3)]:bg-accent/5 [&:hover>*:nth-child(3)]:bg-accent/10"
+              >
+                <div className="feature-label text-[14px] text-text-primary pr-4 transition-colors">
+                  {row.name}
+                </div>
+                <div className="text-[14px] text-text-secondary px-3 text-center">
+                  <CellContent value={row.foundation} />
+                </div>
+                <div className="text-[14px] text-text-primary px-3 text-center">
+                  <CellContent value={row.performance} />
+                </div>
+                <div className="text-[14px] text-text-secondary px-3 text-center">
+                  <CellContent value={row.enterprise} />
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   );

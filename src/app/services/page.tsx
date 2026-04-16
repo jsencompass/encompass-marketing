@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { TierSection } from "@/components/services/TierSection";
+import { ComparisonMatrix } from "./ComparisonMatrix";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
@@ -38,6 +39,9 @@ export default function Services() {
           Every engagement includes defined scope allowances. If operational workload materially exceeds included capacity, we discuss an adjusted tier or overage openly. No surprise invoices, no quietly absorbed scope creep. This keeps quality and economics aligned for both sides.
         </p>
       </div>
+
+      {/* ─── Comparison Matrix ─── */}
+      <ComparisonMatrix />
 
       {/* ─── Implementation + PPB ─── */}
       <section className="border-t border-border">
