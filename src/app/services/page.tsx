@@ -199,109 +199,55 @@ export default function Services() {
       </div>
 
       {/* ─── Engagements ─── */}
-      <Reveal>
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Consulting Services</p>
-            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Engagements</h2>
-            <p className="mt-4 text-18 text-text-secondary">For owners who need specific work, outside the monthly cadence.</p>
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Parking Performance Baseline (Standalone)</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">A one-time engagement for owners who want the baseline truth set without committing to recurring oversight. Full PPB artifact delivered: data pipeline established, session-to-deposit tie-out, permissions posture documented, exception taxonomy, and control gap findings. Owner keeps the baseline and decides next steps.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by portfolio size</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
+      <div className="py-6 pb-14">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+            Engagements
+          </p>
+          <h2 className="mt-3 text-32 font-semibold tracking-tight md:text-48">
+            For owners who need specific work, outside the monthly cadence.
+          </h2>
+          <p className="mt-3 text-[15px] text-text-secondary">
+            Project-based and advisory engagements. Bolt onto PACT Oversight or stand alone.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-8">
+            {[
+              { category: "Baseline", title: "Parking Performance Baseline (Standalone)", description: "One-time engagement for owners who want the baseline truth set without committing to recurring oversight.", priceNote: "Priced by portfolio size", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg> },
+              { category: "Transition", title: "Operator Transition Support", description: "Independent control layer during operator changes. Baseline outgoing, audit handover, verify incoming meets spec.", priceNote: "Priced on scope", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="8 3 4 7 8 11" /><path d="M4 7h16" /><polyline points="16 21 20 17 16 13" /><path d="M20 17H4" /></svg> },
+              { category: "Strategy", title: "Rate and Revenue Strategy Review", description: "Data-driven analysis of rate structure, validation program, and product mix. Revenue strategy memo with expected impact.", priceNote: "Priced by scope", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg> },
+              { category: "Advisory", title: "Feasibility Study", description: "For new builds, expansions, acquisitions, repositioning. Demand, supply, pricing sensitivity, NOI scenarios.", priceNote: "Priced by project", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2" /><line x1="9" y1="22" x2="9" y2="2" /><line x1="15" y1="22" x2="15" y2="2" /><path d="M4 12h16" /></svg> },
+              { category: "Procurement", title: "Technical Specifications and PARCS Procurement", description: "Vendor-agnostic spec writing for PARCS, LPR, payment, and integrations. We run the RFP. No commissions, no preferred partners.", priceNote: "Priced by project scope", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg> },
+              { category: "Procurement", title: "Operator RFP and Selection", description: "Independent operator procurement. Owner-aligned RFP, evaluation against capability and proposal, contract negotiation support.", priceNote: "Priced by portfolio size", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg> },
+              { category: "Audit", title: "Operational Performance Audit", description: "Trained auditors evaluate site-level operational performance unannounced. Portfolio scorecard with site-by-site detail.", priceNote: "Priced by site count", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg> },
+              { category: "Technology", title: "Parking Technology Design", description: "Upstream technology consulting. Lane configuration, equipment selection, payment architecture, integration requirements.", priceNote: "Priced by project", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg> },
+              { category: "Technology", title: "Third-Party Project Management", description: "Independent PM for parking technology installations. Vendor milestone tracking, oversight, integration testing, punch-list governance.", priceNote: "Priced by project scope", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="20" x2="12" y2="10" /><line x1="18" y1="20" x2="18" y2="4" /><line x1="6" y1="20" x2="6" y2="16" /></svg> },
+            ].map((card) => (
+              <Link
+                key={card.title}
+                href="/contact"
+                className="group relative overflow-hidden p-5 border border-border/70 rounded-xl bg-bg-raised flex flex-col gap-2.5 transition-all duration-150 hover:border-accent/40 hover:bg-[#1c1c20]"
+              >
+                <div className="absolute top-0 left-0 h-0.5 bg-accent w-0 group-hover:w-full transition-[width] duration-[250ms]" />
+                <div className="w-10 h-10 rounded-[9px] bg-accent/10 grid place-items-center mb-1 group-hover:bg-accent/20 transition-colors duration-150 text-accent-text">
+                  {card.icon}
                 </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Operator Transition Support</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">When you are changing operators (RFP, selection, or transition period), Encompass provides the independent control layer during the transition. We baseline the outgoing operator, establish continuity requirements, audit the handover, and verify the incoming operator is meeting spec from site-month one. Finite engagement, typically six to nine months.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> on scope</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
+                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary">
+                  {card.category}
                 </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Rate and Revenue Strategy Review</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">An advisory engagement for owners who suspect their rate structure, validation program, or product mix is leaving money on the table. Data-driven analysis of transactions, comparable market rates, validation absorption patterns, and product elasticity. Deliverable is a revenue strategy memo with specific moves and expected impact. Standalone or bolted onto PACT Oversight.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by scope</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
+                <div className="text-[15px] font-medium text-text-primary leading-[1.3]">
+                  {card.title}
                 </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Feasibility Study</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">For new builds, expansions, acquisitions, and repositioning projects. We model demand, supply, pricing sensitivity, operating expense structure, and net operating income across multiple scenarios. Includes stakeholder interviews, site surveys, comparable property analysis, and sensitivity modeling. Deliverable is an underwriting-grade report the capital team can defend.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
+                <div className="text-[13px] text-text-secondary leading-[1.55] flex-1">
+                  {card.description}
                 </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Technical Specifications and PARCS Procurement</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent specification writing for PARCS, LPR, payment, and adjacent technology stacks. We produce performance-based specs that protect the owner, run the vendor RFP, evaluate responses against stated requirements, and support contract negotiation. Vendor-agnostic by design. No commissions, no preferred partners, no rebates.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project scope</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
+                <div className="font-mono text-[11px] text-text-tertiary pt-2.5 border-t border-border/60 tracking-wide">
+                  {card.priceNote}
                 </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Operator RFP and Selection</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent operator procurement for owners who need a new management partner. We write the RFP to the owner&rsquo;s requirements rather than the industry&rsquo;s boilerplate, manage the process, evaluate responses on operational capability and financial proposal, conduct site visits and reference checks, and support contract negotiation. The objective is the right operator, not the cheapest bid.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by portfolio size</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Operational Performance Audit</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent evaluation of site-level operational performance. Trained auditors visit sites unannounced, evaluate against standardized scoring criteria, and document findings with time-stamped evidence. Covers revenue controls, customer experience, operator compliance, and condition. Delivered as a portfolio-level scorecard with site-by-site detail. Can be one-time or quarterly cadence.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by site count</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Parking Technology Design</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Upstream technology consulting for owners planning new builds, renovations, or system replacements. We design the technology layer: lane configuration, equipment selection, patron flow, payment architecture, integration requirements, and future-state flexibility. Vendor-agnostic recommendations based on operational requirements, not vendor relationships. Delivered as a technology design package the procurement team can bid against.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Third-Party Project Management</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent project management for parking technology installations, replacements, and integrations. We represent the owner&rsquo;s interest through scope definition, vendor milestone tracking, installation oversight, integration testing, and punch-list governance. Covers PARCS, LPR, payment systems, access control, EV charging infrastructure, and adjacent technologies. The vendor builds it. We make sure it works the way it was specified.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project scope</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
+              </Link>
+            ))}
           </div>
-        </section>
-      </Reveal>
+        </div>
+      </div>
 
       {/* ─── Parking PI ─── */}
       <section className="border-t border-border bg-bg-raised">
