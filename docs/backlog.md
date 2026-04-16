@@ -97,6 +97,16 @@ All 8 ATTORNEY-REVIEW flags closed with conservative defaults (Sessions 5 + 7):
 - ~~motion package removal~~ — DONE S16: zero imports since S15.1, `pnpm remove motion`
 - ~~Lint errors (10 problems)~~ — FIXED S16: all `set-state-in-effect` violations resolved via `useSyncExternalStore` and ref-based patterns
 
+## Session 18 (closed items)
+
+- ~~/services Railway-style redesign~~ — SHIPPED S18: 8-phase redesign with tier cards, portfolio sizer, sticky comparison header, PPB strip, module stack, engagement cards, Parking PI premium treatment
+- ~~Tier name standardization (Foundation / Performance / Enterprise)~~ — SHIPPED S18: "Standard" retired, PACT 1/2/3 numbering never introduced
+- ~~Sticky comparison header~~ — SHIPPED S18: sticky at top-[80px], z-[15]
+- ~~Portfolio sizer interactive~~ — SHIPPED S18: TierSection client component with range slider
+- ~~Add-on vertical stack treatment~~ — SHIPPED S18: icon-left body-middle pill-right layout with spec strips
+- ~~Engagement card category pills~~ — SHIPPED S18: 7 categories with Lucide-style SVG icons
+- ~~Parking PI premium treatment~~ — SHIPPED S18: 2-column card with purple glow, 4-stat grid
+
 ## Deferred-from-session
 
 - ~~Insights index editorial header + featured treatment upgrade~~ — SHIPPED Session 14.1: editorial header (eyebrow + H1 + sub-deck + Reveal stagger + HR), FEATURED pill, 2-col featured card layout, "Recent" sub-heading

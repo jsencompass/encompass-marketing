@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ClosingCTA } from "@/components/ClosingCTA";
+import { TierSection } from "@/components/services/TierSection";
 import { ComparisonMatrix } from "./ComparisonMatrix";
-import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Services & Pricing | Encompass Parking",
@@ -14,27 +14,23 @@ export default function Services() {
   return (
     <>
       {/* ─── Page Header ─── */}
-      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-          <p className="text-12 font-semibold uppercase tracking-widest text-accent-text">
-            Services &amp; Pricing
-          </p>
-          <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
-            Three tiers. Modular add-ons. No hidden scope.
-          </h1>
-          <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-            Every engagement is priced per site-month against a published tier.
-            Scope expansion happens through paid module attach, not absorption.
-            Implementation plus Parking Performance Baseline (PPB) is required for
-            every new site.
-          </p>
-        </section>
+      <section className="mx-auto max-w-[1200px] px-6 pt-24 pb-8 md:pt-32 md:pb-12">
+        <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+          Pricing &amp; models
+        </p>
+        <h1 className="mt-4 max-w-3xl text-48 font-semibold leading-tight tracking-tight md:text-64 md:leading-[1.1]">
+          Three tiers. Modular add-ons. No hidden scope.
+        </h1>
+        <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
+          Every engagement is priced per site-month against a published tier.
+          Scope expansion happens through paid module attach, not absorption.
+          Implementation plus Parking Performance Baseline (PPB) is required for
+          every new site.
+        </p>
+      </section>
 
-      {/* ─── Comparison Matrix ─── */}
-      <Reveal>
-        <div className="mx-auto max-w-[1200px] bg-bg-raised border border-border/40 rounded-2xl shadow-xl shadow-black/20 overflow-hidden mt-8 md:mt-12">
-          <ComparisonMatrix />
-        </div>
-      </Reveal>
+      {/* ─── Tier Cards + Portfolio Sizer ─── */}
+      <TierSection />
 
       {/* ─── Scope Allowances ─── */}
       <div className="mt-6 mb-12 mx-auto max-w-[1200px] border-l-2 border-accent/30 pl-6">
@@ -43,202 +39,291 @@ export default function Services() {
         </p>
       </div>
 
-      {/* ─── Implementation + PPB ─── */}
-      <section className="border-t border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <Reveal>
-            <div className="rounded-lg border border-border bg-bg-raised p-8 md:p-12">
-              <div className="flex flex-wrap items-baseline justify-between gap-4">
-                <div>
-                  <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-                    Required for All New Engagements
-                  </p>
-                  <h2 className="mt-4 text-32 font-semibold tracking-tight">
-                    Implementation + Parking Performance Baseline
-                  </h2>
-                </div>
-                <p className="font-mono text-32 font-medium text-text-primary">
-                  $4,500
-                  <span className="text-14 text-text-tertiary"> per site</span>
-                </p>
-              </div>
-              <p className="mt-6 max-w-2xl text-16 leading-relaxed text-text-secondary">
-                Paid onboarding that establishes the starting truth set. Maps sessions, transactions, validations, and credentials into one reconcilable view. The Parking Performance Baseline (PPB) is what makes a site controls-ready for recurring PACT Oversight.
-              </p>
+      {/* ─── Comparison Matrix ─── */}
+      <ComparisonMatrix />
+
+      {/* ─── Implementation + PPB Strip ─── */}
+      <div className="my-14">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div
+            className="relative overflow-hidden p-7 rounded-[14px] border border-accent/35 flex items-center gap-6 flex-wrap"
+            style={{
+              background:
+                "linear-gradient(135deg, #1a1430 0%, var(--bg-elevated) 60%)",
+            }}
+          >
+            <div
+              className="absolute top-0 left-0 right-0 h-0.5"
+              style={{
+                background:
+                  "linear-gradient(90deg, #6C5CE7 0%, transparent 60%)",
+              }}
+            />
+            <div className="shrink-0 w-[52px] h-[52px] rounded-xl bg-accent/18 grid place-items-center">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--accent-text)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
             </div>
-          </Reveal>
+            <div className="flex-1 min-w-[280px]">
+              <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent-text mb-1.5">
+                Required for all new sites
+              </div>
+              <div className="text-[17px] font-medium mb-1.5">
+                Implementation + Parking Performance Baseline (PPB)
+              </div>
+              <div className="text-[13px] text-text-secondary leading-[1.55] max-w-[560px]">
+                Paid onboarding that establishes the starting truth set. The PPB
+                is what makes a site controls-ready for recurring PACT Oversight.
+                Roughly 6 to 8 weeks per site.
+              </div>
+            </div>
+            <div className="w-px self-stretch bg-accent/20 mx-1 hidden md:block" />
+            <div className="shrink-0 text-right">
+              <div className="font-mono text-[26px] font-medium">$4,500</div>
+              <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-accent-text">
+                per site, one-time
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* ─── Optional Modules ─── */}
-      <section className="border-t border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-            Optional Modules
+      <div className="py-6 pb-14">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+            Optional modules
           </p>
-          <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
+          <h2 className="mt-3 text-32 font-semibold tracking-tight md:text-48">
             Attach where coverage economics justify it.
           </h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <Reveal delay={0}>
-              <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
-                <span className="mb-4 inline-block rounded-full bg-accent/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent-text">ADD-ON MODULE</span>
-                <h3 className="text-18 font-semibold text-text-primary">
+          <p className="mt-3 text-[15px] text-text-secondary">
+            Each module is independently scoped and priced. Attach to any tier.
+          </p>
+          <div className="flex flex-col gap-3.5 mt-8">
+            {/* Remote Command Center */}
+            <div className="group grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-6 p-6 md:p-7 border border-border/70 rounded-xl bg-bg-raised items-start transition-all duration-150 hover:border-accent/45 hover:bg-[#1c1c20]">
+              <div className="w-14 h-14 rounded-[11px] bg-accent/10 grid place-items-center transition-colors duration-150 group-hover:bg-accent/18">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-text)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <div className="inline-block bg-accent/15 text-accent-text text-[10px] uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full mb-2 font-mono">
+                  Add-on module
+                </div>
+                <div className="text-[17px] font-medium mb-1.5">
                   Remote Command Center
-                </h3>
-                <p className="mt-2 text-14 text-text-secondary">
-                  Priced on scope
-                </p>
-                <p className="mt-4 text-14 leading-relaxed text-text-secondary">
-                  24/7 remote monitoring, alert triage, and dispatch for revenue-at-risk incidents. Permissioned operational actions with time-stamped evidence. Reduces reliance on onsite coverage during nights, weekends, and low-volume hours. Attached where the coverage math works.
-                </p>
+                </div>
+                <div className="text-[13px] text-text-secondary leading-[1.6]">
+                  24/7 remote monitoring, alert triage, and dispatch for
+                  revenue-at-risk incidents. Permissioned operational actions
+                  with time-stamped evidence. Reduces reliance on onsite coverage
+                  during nights, weekends, and low-volume hours.
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mt-[18px] pt-[18px] border-t border-border/60">
+                  <div className="px-0 md:px-4 md:pl-0 py-2.5 md:py-0">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Coverage</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">24/7 monitoring</div>
+                  </div>
+                  <div className="px-0 md:px-4 py-2.5 md:py-0 border-t md:border-t-0 md:border-l border-border/50">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Authority</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Permissioned actions</div>
+                  </div>
+                  <div className="px-0 md:px-4 py-2.5 md:py-0 border-t md:border-t-0 md:border-l border-border/50">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Audit trail</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Time-stamped evidence</div>
+                  </div>
+                </div>
               </div>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <div className="card-lift rounded-lg border border-border bg-bg-raised p-8">
-                <span className="mb-4 inline-block rounded-full bg-accent/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent-text">ADD-ON MODULE</span>
-                <h3 className="text-18 font-semibold text-text-primary">
+              <div className="self-start inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent/12 border border-accent/30 rounded-full text-[12px] text-accent-text font-mono tracking-wide font-medium whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-text" />
+                Priced on scope
+              </div>
+            </div>
+
+            {/* Remote Call Center */}
+            <div className="group grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-6 p-6 md:p-7 border border-border/70 rounded-xl bg-bg-raised items-start transition-all duration-150 hover:border-accent/45 hover:bg-[#1c1c20]">
+              <div className="w-14 h-14 rounded-[11px] bg-accent/10 grid place-items-center transition-colors duration-150 group-hover:bg-accent/18">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-text)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <div className="inline-block bg-accent/15 text-accent-text text-[10px] uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full mb-2 font-mono">
+                  Add-on module
+                </div>
+                <div className="text-[17px] font-medium mb-1.5">
                   Remote Call Center
-                </h3>
-                <p className="mt-2 text-14 text-text-secondary">
-                  Priced on scope
-                </p>
-                <p className="mt-4 text-14 leading-relaxed text-text-secondary">
-                  Branded customer support operating under Encompass scripts, authority limits, and refund governance. Every interaction logged and fed back into the control layer. No more refund-first defaults.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Engagements ─── */}
-      <Reveal>
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-            <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">Consulting Services</p>
-            <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">Engagements</h2>
-            <p className="mt-4 text-18 text-text-secondary">For owners who need specific work, outside the monthly cadence.</p>
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Parking Performance Baseline (Standalone)</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">A one-time engagement for owners who want the baseline truth set without committing to recurring oversight. Full PPB artifact delivered: data pipeline established, session-to-deposit tie-out, permissions posture documented, exception taxonomy, and control gap findings. Owner keeps the baseline and decides next steps.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by portfolio size</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
+                </div>
+                <div className="text-[13px] text-text-secondary leading-[1.6]">
+                  Branded customer support operating under Encompass scripts,
+                  authority limits, and refund governance. Every interaction
+                  logged and fed back into the control layer. No more
+                  refund-first defaults.
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mt-[18px] pt-[18px] border-t border-border/60">
+                  <div className="px-0 md:px-4 md:pl-0 py-2.5 md:py-0">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Operating model</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Branded support</div>
+                  </div>
+                  <div className="px-0 md:px-4 py-2.5 md:py-0 border-t md:border-t-0 md:border-l border-border/50">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Refund control</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Authority limits</div>
+                  </div>
+                  <div className="px-0 md:px-4 py-2.5 md:py-0 border-t md:border-t-0 md:border-l border-border/50">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary mb-1">Feedback loop</div>
+                    <div className="text-[13px] font-medium text-text-primary leading-[1.3]">Logged into control layer</div>
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Operator Transition Support</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">When you are changing operators (RFP, selection, or transition period), Encompass provides the independent control layer during the transition. We baseline the outgoing operator, establish continuity requirements, audit the handover, and verify the incoming operator is meeting spec from site-month one. Finite engagement, typically six to nine months.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> on scope</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Rate and Revenue Strategy Review</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">An advisory engagement for owners who suspect their rate structure, validation program, or product mix is leaving money on the table. Data-driven analysis of transactions, comparable market rates, validation absorption patterns, and product elasticity. Deliverable is a revenue strategy memo with specific moves and expected impact. Standalone or bolted onto PACT Oversight.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by scope</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Feasibility Study</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">For new builds, expansions, acquisitions, and repositioning projects. We model demand, supply, pricing sensitivity, operating expense structure, and net operating income across multiple scenarios. Includes stakeholder interviews, site surveys, comparable property analysis, and sensitivity modeling. Deliverable is an underwriting-grade report the capital team can defend.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Technical Specifications and PARCS Procurement</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent specification writing for PARCS, LPR, payment, and adjacent technology stacks. We produce performance-based specs that protect the owner, run the vendor RFP, evaluate responses against stated requirements, and support contract negotiation. Vendor-agnostic by design. No commissions, no preferred partners, no rebates.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project scope</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Operator RFP and Selection</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent operator procurement for owners who need a new management partner. We write the RFP to the owner&rsquo;s requirements rather than the industry&rsquo;s boilerplate, manage the process, evaluate responses on operational capability and financial proposal, conduct site visits and reference checks, and support contract negotiation. The objective is the right operator, not the cheapest bid.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by portfolio size</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Operational Performance Audit</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent evaluation of site-level operational performance. Trained auditors visit sites unannounced, evaluate against standardized scoring criteria, and document findings with time-stamped evidence. Covers revenue controls, customer experience, operator compliance, and condition. Delivered as a portfolio-level scorecard with site-by-site detail. Can be one-time or quarterly cadence.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by site count</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Parking Technology Design</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Upstream technology consulting for owners planning new builds, renovations, or system replacements. We design the technology layer: lane configuration, equipment selection, patron flow, payment architecture, integration requirements, and future-state flexibility. Vendor-agnostic recommendations based on operational requirements, not vendor relationships. Delivered as a technology design package the procurement team can bid against.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex flex-col rounded-lg border border-border bg-bg-raised p-8 h-full">
-                <h3 className="text-xl font-semibold text-text-primary">Third-Party Project Management</h3>
-                <p className="mt-3 flex-1 text-14 leading-relaxed text-text-secondary">Independent project management for parking technology installations, replacements, and integrations. We represent the owner&rsquo;s interest through scope definition, vendor milestone tracking, installation oversight, integration testing, and punch-list governance. Covers PARCS, LPR, payment systems, access control, EV charging infrastructure, and adjacent technologies. The vendor builds it. We make sure it works the way it was specified.</p>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <p className="text-12 text-text-tertiary"><span className="text-accent-text">Priced</span> by project scope</p>
-                  <Link href="/contact" className="mt-3 inline-flex items-center gap-1 text-14 font-medium text-accent-text hover:text-text-primary transition-colors">
-                    Start a conversation <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                  </Link>
-                </div>
+              <div className="self-start inline-flex items-center gap-1.5 px-3.5 py-2 bg-accent/12 border border-accent/30 rounded-full text-[12px] text-accent-text font-mono tracking-wide font-medium whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-text" />
+                Priced on scope
               </div>
             </div>
           </div>
-        </section>
-      </Reveal>
+        </div>
+      </div>
+
+      {/* ─── Engagements ─── */}
+      <div className="py-6 pb-14">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+            Engagements
+          </p>
+          <h2 className="mt-3 text-32 font-semibold tracking-tight md:text-48">
+            For owners who need specific work, outside the monthly cadence.
+          </h2>
+          <p className="mt-3 text-[15px] text-text-secondary">
+            Project-based and advisory engagements. Bolt onto PACT Oversight or stand alone.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-8">
+            {[
+              { category: "Baseline", title: "Parking Performance Baseline (Standalone)", description: "One-time engagement for owners who want the baseline truth set without committing to recurring oversight.", priceNote: "Priced by portfolio size", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg> },
+              { category: "Transition", title: "Operator Transition Support", description: "Independent control layer during operator changes. Baseline outgoing, audit handover, verify incoming meets spec.", priceNote: "Priced on scope", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="8 3 4 7 8 11" /><path d="M4 7h16" /><polyline points="16 21 20 17 16 13" /><path d="M20 17H4" /></svg> },
+              { category: "Strategy", title: "Rate and Revenue Strategy Review", description: "Data-driven analysis of rate structure, validation program, and product mix. Revenue strategy memo with expected impact.", priceNote: "Priced by scope", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg> },
+              { category: "Advisory", title: "Feasibility Study", description: "For new builds, expansions, acquisitions, repositioning. Demand, supply, pricing sensitivity, NOI scenarios.", priceNote: "Priced by project", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2" /><line x1="9" y1="22" x2="9" y2="2" /><line x1="15" y1="22" x2="15" y2="2" /><path d="M4 12h16" /></svg> },
+              { category: "Procurement", title: "Technical Specifications and PARCS Procurement", description: "Vendor-agnostic spec writing for PARCS, LPR, payment, and integrations. We run the RFP. No commissions, no preferred partners.", priceNote: "Priced by project scope", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg> },
+              { category: "Procurement", title: "Operator RFP and Selection", description: "Independent operator procurement. Owner-aligned RFP, evaluation against capability and proposal, contract negotiation support.", priceNote: "Priced by portfolio size", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg> },
+              { category: "Audit", title: "Operational Performance Audit", description: "Trained auditors evaluate site-level operational performance unannounced. Portfolio scorecard with site-by-site detail.", priceNote: "Priced by site count", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg> },
+              { category: "Technology", title: "Parking Technology Design", description: "Upstream technology consulting. Lane configuration, equipment selection, payment architecture, integration requirements.", priceNote: "Priced by project", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg> },
+              { category: "Technology", title: "Third-Party Project Management", description: "Independent PM for parking technology installations. Vendor milestone tracking, oversight, integration testing, punch-list governance.", priceNote: "Priced by project scope", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="20" x2="12" y2="10" /><line x1="18" y1="20" x2="18" y2="4" /><line x1="6" y1="20" x2="6" y2="16" /></svg> },
+            ].map((card) => (
+              <Link
+                key={card.title}
+                href="/contact"
+                className="group relative overflow-hidden p-5 border border-border/70 rounded-xl bg-bg-raised flex flex-col gap-2.5 transition-all duration-150 hover:border-accent/40 hover:bg-[#1c1c20]"
+              >
+                <div className="absolute top-0 left-0 h-0.5 bg-accent w-0 group-hover:w-full transition-[width] duration-[250ms]" />
+                <div className="w-10 h-10 rounded-[9px] bg-accent/10 grid place-items-center mb-1 group-hover:bg-accent/20 transition-colors duration-150 text-accent-text">
+                  {card.icon}
+                </div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-tertiary">
+                  {card.category}
+                </div>
+                <div className="text-[15px] font-medium text-text-primary leading-[1.3]">
+                  {card.title}
+                </div>
+                <div className="text-[13px] text-text-secondary leading-[1.55] flex-1">
+                  {card.description}
+                </div>
+                <div className="font-mono text-[11px] text-text-tertiary pt-2.5 border-t border-border/60 tracking-wide">
+                  {card.priceNote}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* ─── Parking PI ─── */}
-      <section className="border-t border-border bg-bg-raised">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
-          <Reveal>
-            <>
-              <p className="text-12 font-semibold uppercase tracking-widest text-text-tertiary">
-                Independent Verification
+      <section
+        className="py-16"
+        style={{
+          background: "linear-gradient(180deg, #0F0F11 0%, #0A0A0B 100%)",
+        }}
+      >
+        <div className="mx-auto max-w-[1200px] px-6">
+          <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent-text">
+            Independent verification
+          </p>
+          <h2 className="mt-3 text-32 font-semibold tracking-tight md:text-48">
+            Parking PI Mystery Shop Program.
+          </h2>
+
+          <div
+            className="relative overflow-hidden mt-6 p-10 rounded-2xl border border-accent/30 grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-9 items-center"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(108,92,231,0.06) 0%, transparent 50%)",
+            }}
+          >
+            <div
+              className="absolute -top-24 -right-24 w-[300px] h-[300px] pointer-events-none rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(108,92,231,0.08) 0%, transparent 70%)",
+              }}
+            />
+
+            <div className="relative">
+              <p className="text-[15px] leading-[1.65] text-text-secondary mb-[22px]">
+                Trained shoppers visit your sites unannounced and score against
+                a standardized methodology built for parking, not retail.
+                Findings delivered as a portfolio-level scorecard with
+                site-by-site detail.
               </p>
-              <h2 className="mt-4 text-32 font-semibold tracking-tight md:text-48">
-                Parking PI&trade; Mystery Shop Program
-              </h2>
-              <div className="mt-8 flex flex-wrap items-baseline gap-4">
-                <p className="font-mono text-32 font-medium text-text-primary">$80-$250</p>
-                <p className="text-14 text-text-tertiary">per shop</p>
+              <div className="flex gap-3">
+                <Link
+                  href="/contact"
+                  className="cta-primary inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-[13px] font-medium text-white transition-all hover:brightness-110"
+                >
+                  Request a program
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-[13px] font-medium text-text-primary transition-all hover:border-white/30 hover:bg-white/5"
+                >
+                  See sample report
+                </Link>
               </div>
-              <p className="mt-6 max-w-2xl text-18 leading-relaxed text-text-secondary">
-                Purpose-built for parking. 3,000+ shops completed across the
-                western United States. Shopper portal, weighted scoring, client
-                dashboard.
-              </p>
-            </>
-          </Reveal>
+            </div>
+
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { value: "$80\u2013250", label: "per shop" },
+                  { value: "3,000+", label: "shops completed" },
+                  { value: "100+", label: "sites scored" },
+                  { value: "11", label: "western US states" },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="pt-3.5 border-t border-accent/15"
+                  >
+                    <div className="font-mono text-[34px] font-medium tracking-[-0.025em] text-text-primary">
+                      {stat.value}
+                    </div>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent-text mt-1">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
